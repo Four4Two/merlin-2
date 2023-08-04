@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CHAIN_ID=wasm-2
+CHAIN_ID=blackfury-1
 VAL=$(merlin keys show -a validator --keyring-backend test)
 
 # We can make this a loop in the future, hard with bash, so I copy it twice
