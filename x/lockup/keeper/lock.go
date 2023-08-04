@@ -14,8 +14,8 @@ import (
 	"github.com/gogo/protobuf/proto"
 
 	"github.com/osmosis-labs/osmosis/osmoutils/sumtree"
-	cltypes "github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	"github.com/four4two/merlin/v17/x/lockup/types"
+	cltypes "github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	"github.com/four4two/merlin/v16/x/lockup/types"
 )
 
 // WithdrawAllMaturedLocks withdraws every lock thats in the process of unlocking, and has finished unlocking by

@@ -5,10 +5,10 @@ import (
 	icqtypes "github.com/cosmos/ibc-apps/modules/async-icq/v4/types"
 	packetforwardtypes "github.com/strangelove-ventures/packet-forward-middleware/v4/router/types"
 
-	"github.com/four4two/merlin/v17/app/upgrades"
-	poolmanagertypes "github.com/four4two/merlin/v17/x/poolmanager/types"
-	protorevtypes "github.com/four4two/merlin/v17/x/protorev/types"
-	valsetpreftypes "github.com/four4two/merlin/v17/x/valset-pref/types"
+	"github.com/four4two/merlin/v16/app/upgrades"
+	poolmanagertypes "github.com/four4two/merlin/v16/x/poolmanager/types"
+	protorevtypes "github.com/four4two/merlin/v16/x/protorev/types"
+	valsetpreftypes "github.com/four4two/merlin/v16/x/valset-pref/types"
 )
 
 // UpgradeName defines the on-chain upgrade name for the Merlin v15 upgrade.

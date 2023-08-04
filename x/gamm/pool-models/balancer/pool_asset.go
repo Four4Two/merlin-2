@@ -7,7 +7,7 @@ import (
 
 	"gopkg.in/yaml.v2"
 
-	"github.com/four4two/merlin/v17/x/gamm/types"
+	"github.com/four4two/merlin/v16/x/gamm/types"
 
 	errorsmod "cosmossdk.io/errors"
 	sdk "github.com/cosmos/cosmos-sdk/types"

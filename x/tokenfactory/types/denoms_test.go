@@ -5,8 +5,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	appparams "github.com/four4two/merlin/v17/app/params"
-	"github.com/four4two/merlin/v17/x/tokenfactory/types"
+	appparams "github.com/four4two/merlin/v16/app/params"
+	"github.com/four4two/merlin/v16/x/tokenfactory/types"
 )
 
 func TestDeconstructDenom(t *testing.T) {

@@ -1,7 +1,7 @@
 keeper: 
-  path: "github.com/four4two/merlin/v17/x/twap"
+  path: "github.com/four4two/merlin/v16/x/twap"
   struct: "Keeper"
-client_path: "github.com/four4two/merlin/v17/x/twap/client"
+client_path: "github.com/four4two/merlin/v16/x/twap/client"
 queries:
   ArithmeticTwap:
     proto_wrapper:

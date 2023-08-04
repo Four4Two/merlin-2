@@ -12,14 +12,14 @@ import (
 	distributiontypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
 	"github.com/osmosis-labs/osmosis/osmoutils/accum"
-	cl "github.com/four4two/merlin/v17/x/concentrated-liquidity"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/math"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/model"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	"github.com/four4two/merlin/v17/x/gamm/pool-models/balancer"
-	gammtypes "github.com/four4two/merlin/v17/x/gamm/types"
-	gammmigration "github.com/four4two/merlin/v17/x/gamm/types/migration"
-	poolincentivestypes "github.com/four4two/merlin/v17/x/pool-incentives/types"
+	cl "github.com/four4two/merlin/v16/x/concentrated-liquidity"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/math"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/model"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	"github.com/four4two/merlin/v16/x/gamm/pool-models/balancer"
+	gammtypes "github.com/four4two/merlin/v16/x/gamm/types"
+	gammmigration "github.com/four4two/merlin/v16/x/gamm/types/migration"
+	poolincentivestypes "github.com/four4two/merlin/v16/x/pool-incentives/types"
 )
 
 var (

@@ -1,8 +1,8 @@
 package client
 
 import (
-	"github.com/four4two/merlin/v17/x/superfluid/client/cli"
-	"github.com/four4two/merlin/v17/x/superfluid/client/rest"
+	"github.com/four4two/merlin/v16/x/superfluid/client/cli"
+	"github.com/four4two/merlin/v16/x/superfluid/client/rest"
 
 	govclient "github.com/cosmos/cosmos-sdk/x/gov/client"
 )

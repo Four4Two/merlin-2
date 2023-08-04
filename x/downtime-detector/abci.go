@@ -5,7 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/four4two/merlin/v17/x/downtime-detector/types"
+	"github.com/four4two/merlin/v16/x/downtime-detector/types"
 )
 
 func (k *Keeper) BeginBlock(ctx sdk.Context) {

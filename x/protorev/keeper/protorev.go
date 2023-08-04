@@ -3,7 +3,7 @@ package keeper
 import (
 	"fmt"
 
-	"github.com/four4two/merlin/v17/x/protorev/types"
+	"github.com/four4two/merlin/v16/x/protorev/types"
 
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 

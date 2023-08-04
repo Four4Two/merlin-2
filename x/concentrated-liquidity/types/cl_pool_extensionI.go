@@ -6,7 +6,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/osmosis-labs/osmosis/osmomath"
-	poolmanagertypes "github.com/four4two/merlin/v17/x/poolmanager/types"
+	poolmanagertypes "github.com/four4two/merlin/v16/x/poolmanager/types"
 )
 
 type ConcentratedPoolExtension interface {

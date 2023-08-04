@@ -11,12 +11,12 @@ import (
 	icahosttypes "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/host/types"
 	ibctransfertypes "github.com/cosmos/ibc-go/v4/modules/apps/transfer/types"
 
-	gammtypes "github.com/four4two/merlin/v17/x/gamm/types"
-	superfluidtypes "github.com/four4two/merlin/v17/x/superfluid/types"
+	gammtypes "github.com/four4two/merlin/v16/x/gamm/types"
+	superfluidtypes "github.com/four4two/merlin/v16/x/superfluid/types"
 
-	"github.com/four4two/merlin/v17/app/keepers"
-	"github.com/four4two/merlin/v17/app/upgrades"
-	twaptypes "github.com/four4two/merlin/v17/x/twap/types"
+	"github.com/four4two/merlin/v16/app/keepers"
+	"github.com/four4two/merlin/v16/app/upgrades"
+	twaptypes "github.com/four4two/merlin/v16/x/twap/types"
 )
 
 // We set the app version to pre-upgrade because it will be incremented by one

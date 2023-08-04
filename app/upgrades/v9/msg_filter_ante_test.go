@@ -9,9 +9,9 @@ import (
 
 	ibcchanneltypes "github.com/cosmos/ibc-go/v4/modules/core/04-channel/types"
 
-	"github.com/four4two/merlin/v17/app"
-	v8 "github.com/four4two/merlin/v17/app/upgrades/v8"
-	v9 "github.com/four4two/merlin/v17/app/upgrades/v9"
+	"github.com/four4two/merlin/v16/app"
+	v8 "github.com/four4two/merlin/v16/app/upgrades/v8"
+	v9 "github.com/four4two/merlin/v16/app/upgrades/v9"
 )
 
 func noOpAnteDecorator() sdk.AnteHandler {

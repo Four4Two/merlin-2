@@ -15,10 +15,10 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/types/query"
 
-	"github.com/four4two/merlin/v17/x/gamm/pool-models/balancer"
-	"github.com/four4two/merlin/v17/x/gamm/types"
-	"github.com/four4two/merlin/v17/x/gamm/v2types"
-	poolmanagertypes "github.com/four4two/merlin/v17/x/poolmanager/types"
+	"github.com/four4two/merlin/v16/x/gamm/pool-models/balancer"
+	"github.com/four4two/merlin/v16/x/gamm/types"
+	"github.com/four4two/merlin/v16/x/gamm/v2types"
+	poolmanagertypes "github.com/four4two/merlin/v16/x/poolmanager/types"
 )
 
 var _ types.QueryServer = Querier{}

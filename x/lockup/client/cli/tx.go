@@ -5,7 +5,7 @@ import (
 	"github.com/spf13/pflag"
 
 	"github.com/osmosis-labs/osmosis/osmoutils/osmocli"
-	"github.com/four4two/merlin/v17/x/lockup/types"
+	"github.com/four4two/merlin/v16/x/lockup/types"
 )
 
 // GetTxCmd returns the transaction commands for this module.

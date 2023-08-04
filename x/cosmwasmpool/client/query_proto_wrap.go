@@ -3,8 +3,8 @@ package client
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/four4two/merlin/v17/x/cosmwasmpool"
-	"github.com/four4two/merlin/v17/x/cosmwasmpool/client/queryproto"
+	"github.com/four4two/merlin/v16/x/cosmwasmpool"
+	"github.com/four4two/merlin/v16/x/cosmwasmpool/client/queryproto"
 )
 
 // This file should evolve to being code gen'd, off of `proto/poolmanager/v1beta/query.yml`

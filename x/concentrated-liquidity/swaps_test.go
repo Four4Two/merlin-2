@@ -7,12 +7,12 @@ import (
 	"github.com/stretchr/testify/suite"
 
 	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/four4two/merlin/v17/app/apptesting"
-	cl "github.com/four4two/merlin/v17/x/concentrated-liquidity"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/math"
-	clmath "github.com/four4two/merlin/v17/x/concentrated-liquidity/math"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	poolmanagertypes "github.com/four4two/merlin/v17/x/poolmanager/types"
+	"github.com/four4two/merlin/v16/app/apptesting"
+	cl "github.com/four4two/merlin/v16/x/concentrated-liquidity"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/math"
+	clmath "github.com/four4two/merlin/v16/x/concentrated-liquidity/math"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	poolmanagertypes "github.com/four4two/merlin/v16/x/poolmanager/types"
 )
 
 var _ = suite.TestingSuite(nil)

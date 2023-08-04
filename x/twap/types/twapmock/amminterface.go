@@ -3,7 +3,7 @@ package twapmock
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/four4two/merlin/v17/x/twap/types"
+	"github.com/four4two/merlin/v16/x/twap/types"
 )
 
 var _ types.PoolManagerInterface = &ProgrammedPoolManagerInterface{}

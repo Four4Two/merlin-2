@@ -6,7 +6,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/four4two/merlin/v17/x/poolmanager/client/cli"
+	"github.com/four4two/merlin/v16/x/poolmanager/client/cli"
 )
 
 func TestParseCoinsNoSort(t *testing.T) {

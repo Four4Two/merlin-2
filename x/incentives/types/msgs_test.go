@@ -9,13 +9,13 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/four4two/merlin/v17/x/incentives/types"
-	incentivestypes "github.com/four4two/merlin/v17/x/incentives/types"
+	"github.com/four4two/merlin/v16/x/incentives/types"
+	incentivestypes "github.com/four4two/merlin/v16/x/incentives/types"
 
-	"github.com/four4two/merlin/v17/app/apptesting"
+	"github.com/four4two/merlin/v16/app/apptesting"
 
-	appParams "github.com/four4two/merlin/v17/app/params"
-	lockuptypes "github.com/four4two/merlin/v17/x/lockup/types"
+	appParams "github.com/four4two/merlin/v16/app/params"
+	lockuptypes "github.com/four4two/merlin/v16/x/lockup/types"
 )
 
 // TestMsgCreateGauge tests if valid/invalid create gauge messages are properly validated/invalidated

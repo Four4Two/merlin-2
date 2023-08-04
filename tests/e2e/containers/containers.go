@@ -17,8 +17,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/four4two/merlin/v17/tests/e2e/initialization"
-	txfeestypes "github.com/four4two/merlin/v17/x/txfees/types"
+	"github.com/four4two/merlin/v16/tests/e2e/initialization"
+	txfeestypes "github.com/four4two/merlin/v16/x/txfees/types"
 )
 
 const (

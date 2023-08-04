@@ -28,13 +28,13 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/four4two/merlin/v17/simulation/simtypes"
-	"github.com/four4two/merlin/v17/x/lockup/client/cli"
-	"github.com/four4two/merlin/v17/x/lockup/client/rest"
-	"github.com/four4two/merlin/v17/x/lockup/keeper"
+	"github.com/four4two/merlin/v16/simulation/simtypes"
+	"github.com/four4two/merlin/v16/x/lockup/client/cli"
+	"github.com/four4two/merlin/v16/x/lockup/client/rest"
+	"github.com/four4two/merlin/v16/x/lockup/keeper"
 
-	simulation "github.com/four4two/merlin/v17/x/lockup/simulation"
-	"github.com/four4two/merlin/v17/x/lockup/types"
+	simulation "github.com/four4two/merlin/v16/x/lockup/simulation"
+	"github.com/four4two/merlin/v16/x/lockup/types"
 )
 
 var (

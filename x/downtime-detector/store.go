@@ -7,7 +7,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/osmosis-labs/osmosis/osmoutils"
-	"github.com/four4two/merlin/v17/x/downtime-detector/types"
+	"github.com/four4two/merlin/v16/x/downtime-detector/types"
 )
 
 func (k *Keeper) GetLastBlockTime(ctx sdk.Context) (time.Time, error) {

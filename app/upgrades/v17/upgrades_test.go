@@ -14,11 +14,11 @@ import (
 	abci "github.com/tendermint/tendermint/abci/types"
 
 	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/four4two/merlin/v17/app/apptesting"
-	"github.com/four4two/merlin/v17/app/keepers"
-	v17 "github.com/four4two/merlin/v17/app/upgrades/v17"
-	cltypes "github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	poolmanagertypes "github.com/four4two/merlin/v17/x/poolmanager/types"
+	"github.com/four4two/merlin/v16/app/apptesting"
+	"github.com/four4two/merlin/v16/app/keepers"
+	v17 "github.com/four4two/merlin/v16/app/upgrades/v17"
+	cltypes "github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	poolmanagertypes "github.com/four4two/merlin/v16/x/poolmanager/types"
 )
 
 type UpgradeTestSuite struct {

@@ -7,9 +7,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/testutil/testdata"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	gammtypes "github.com/four4two/merlin/v17/x/gamm/types"
-	poolmanagertypes "github.com/four4two/merlin/v17/x/poolmanager/types"
-	"github.com/four4two/merlin/v17/x/txfees/types"
+	gammtypes "github.com/four4two/merlin/v16/x/gamm/types"
+	poolmanagertypes "github.com/four4two/merlin/v16/x/poolmanager/types"
+	"github.com/four4two/merlin/v16/x/txfees/types"
 )
 
 var defaultPooledAssetAmount = int64(500)

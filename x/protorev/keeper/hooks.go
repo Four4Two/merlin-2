@@ -5,8 +5,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	gammtypes "github.com/four4two/merlin/v17/x/gamm/types"
-	"github.com/four4two/merlin/v17/x/protorev/types"
+	gammtypes "github.com/four4two/merlin/v16/x/gamm/types"
+	"github.com/four4two/merlin/v16/x/protorev/types"
 )
 
 type Hooks struct {

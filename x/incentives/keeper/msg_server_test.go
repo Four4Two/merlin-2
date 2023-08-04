@@ -8,9 +8,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 
-	"github.com/four4two/merlin/v17/x/incentives/keeper"
-	"github.com/four4two/merlin/v17/x/incentives/types"
-	lockuptypes "github.com/four4two/merlin/v17/x/lockup/types"
+	"github.com/four4two/merlin/v16/x/incentives/keeper"
+	"github.com/four4two/merlin/v16/x/incentives/types"
+	lockuptypes "github.com/four4two/merlin/v16/x/lockup/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

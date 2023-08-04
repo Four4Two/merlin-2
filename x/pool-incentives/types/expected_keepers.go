@@ -7,10 +7,10 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
-	gammmigration "github.com/four4two/merlin/v17/x/gamm/types/migration"
-	incentivestypes "github.com/four4two/merlin/v17/x/incentives/types"
-	lockuptypes "github.com/four4two/merlin/v17/x/lockup/types"
-	poolmanagertypes "github.com/four4two/merlin/v17/x/poolmanager/types"
+	gammmigration "github.com/four4two/merlin/v16/x/gamm/types/migration"
+	incentivestypes "github.com/four4two/merlin/v16/x/incentives/types"
+	lockuptypes "github.com/four4two/merlin/v16/x/lockup/types"
+	poolmanagertypes "github.com/four4two/merlin/v16/x/poolmanager/types"
 	epochstypes "github.com/osmosis-labs/osmosis/x/epochs/types"
 )
 

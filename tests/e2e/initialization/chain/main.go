@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/four4two/merlin/v17/tests/e2e/initialization"
+	"github.com/four4two/merlin/v16/tests/e2e/initialization"
 )
 
 func main() {

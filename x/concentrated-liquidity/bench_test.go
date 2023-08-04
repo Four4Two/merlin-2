@@ -10,13 +10,13 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/four4two/merlin/v17/app/apptesting"
-	cl "github.com/four4two/merlin/v17/x/concentrated-liquidity"
-	clmath "github.com/four4two/merlin/v17/x/concentrated-liquidity/math"
-	clmodel "github.com/four4two/merlin/v17/x/concentrated-liquidity/model"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	"github.com/four4two/merlin/v17/x/gamm/pool-models/balancer"
-	gammmigration "github.com/four4two/merlin/v17/x/gamm/types/migration"
+	"github.com/four4two/merlin/v16/app/apptesting"
+	cl "github.com/four4two/merlin/v16/x/concentrated-liquidity"
+	clmath "github.com/four4two/merlin/v16/x/concentrated-liquidity/math"
+	clmodel "github.com/four4two/merlin/v16/x/concentrated-liquidity/model"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	"github.com/four4two/merlin/v16/x/gamm/pool-models/balancer"
+	gammmigration "github.com/four4two/merlin/v16/x/gamm/types/migration"
 )
 
 type BenchTestSuite struct {

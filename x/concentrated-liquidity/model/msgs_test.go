@@ -7,9 +7,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 
-	appParams "github.com/four4two/merlin/v17/app/params"
-	clmodel "github.com/four4two/merlin/v17/x/concentrated-liquidity/model"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
+	appParams "github.com/four4two/merlin/v16/app/params"
+	clmodel "github.com/four4two/merlin/v16/x/concentrated-liquidity/model"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
 )
 
 func TestMsgCreateConcentratedPool(t *testing.T) {

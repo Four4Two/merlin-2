@@ -15,15 +15,15 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	appparams "github.com/four4two/merlin/v17/app/params"
+	appparams "github.com/four4two/merlin/v16/app/params"
 
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	"github.com/cosmos/cosmos-sdk/types/query"
 
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/model"
-	cltypes "github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	lockuptypes "github.com/four4two/merlin/v17/x/lockup/types"
-	"github.com/four4two/merlin/v17/x/superfluid/types"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/model"
+	cltypes "github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	lockuptypes "github.com/four4two/merlin/v16/x/lockup/types"
+	"github.com/four4two/merlin/v16/x/superfluid/types"
 )
 
 var _ types.QueryServer = Querier{}

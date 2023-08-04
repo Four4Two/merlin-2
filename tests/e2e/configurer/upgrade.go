@@ -10,12 +10,12 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	appparams "github.com/four4two/merlin/v17/app/params"
-	v17 "github.com/four4two/merlin/v17/app/upgrades/v17"
-	"github.com/four4two/merlin/v17/tests/e2e/configurer/chain"
-	"github.com/four4two/merlin/v17/tests/e2e/configurer/config"
-	"github.com/four4two/merlin/v17/tests/e2e/containers"
-	"github.com/four4two/merlin/v17/tests/e2e/initialization"
+	appparams "github.com/four4two/merlin/v16/app/params"
+	v17 "github.com/four4two/merlin/v16/app/upgrades/v17"
+	"github.com/four4two/merlin/v16/tests/e2e/configurer/chain"
+	"github.com/four4two/merlin/v16/tests/e2e/configurer/config"
+	"github.com/four4two/merlin/v16/tests/e2e/containers"
+	"github.com/four4two/merlin/v16/tests/e2e/initialization"
 )
 
 type UpgradeSettings struct {

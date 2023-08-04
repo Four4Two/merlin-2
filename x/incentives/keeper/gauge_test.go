@@ -6,8 +6,8 @@ import (
 
 	"github.com/stretchr/testify/suite"
 
-	"github.com/four4two/merlin/v17/x/incentives/types"
-	lockuptypes "github.com/four4two/merlin/v17/x/lockup/types"
+	"github.com/four4two/merlin/v16/x/incentives/types"
+	lockuptypes "github.com/four4two/merlin/v16/x/lockup/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

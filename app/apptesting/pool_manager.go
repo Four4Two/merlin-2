@@ -5,9 +5,9 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/four4two/merlin/v17/x/gamm/pool-models/balancer"
-	poolmanager "github.com/four4two/merlin/v17/x/poolmanager"
-	poolmanagertypes "github.com/four4two/merlin/v17/x/poolmanager/types"
+	"github.com/four4two/merlin/v16/x/gamm/pool-models/balancer"
+	poolmanager "github.com/four4two/merlin/v16/x/poolmanager"
+	poolmanagertypes "github.com/four4two/merlin/v16/x/poolmanager/types"
 )
 
 func (s *KeeperTestHelper) RunBasicSwap(poolId uint64) {

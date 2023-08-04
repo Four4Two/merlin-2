@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/four4two/merlin/v17/x/tokenfactory/types"
+	"github.com/four4two/merlin/v16/x/tokenfactory/types"
 )
 
 func TestGenesisState_Validate(t *testing.T) {

@@ -7,12 +7,12 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/four4two/merlin/v17/app/apptesting"
-	gammtypes "github.com/four4two/merlin/v17/x/gamm/types"
-	incentivestypes "github.com/four4two/merlin/v17/x/incentives/types"
-	"github.com/four4two/merlin/v17/x/pool-incentives/types"
-	poolincentivestypes "github.com/four4two/merlin/v17/x/pool-incentives/types"
-	poolmanagertypes "github.com/four4two/merlin/v17/x/poolmanager/types"
+	"github.com/four4two/merlin/v16/app/apptesting"
+	gammtypes "github.com/four4two/merlin/v16/x/gamm/types"
+	incentivestypes "github.com/four4two/merlin/v16/x/incentives/types"
+	"github.com/four4two/merlin/v16/x/pool-incentives/types"
+	poolincentivestypes "github.com/four4two/merlin/v16/x/pool-incentives/types"
+	poolmanagertypes "github.com/four4two/merlin/v16/x/poolmanager/types"
 )
 
 type KeeperTestSuite struct {

@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/four4two/merlin/v17/x/incentives/types"
+	"github.com/four4two/merlin/v16/x/incentives/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

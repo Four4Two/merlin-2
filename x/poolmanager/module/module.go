@@ -15,14 +15,14 @@ import (
 	"github.com/spf13/cobra"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/four4two/merlin/v17/simulation/simtypes"
-	gammsimulation "github.com/four4two/merlin/v17/x/gamm/simulation"
-	"github.com/four4two/merlin/v17/x/poolmanager"
-	pmclient "github.com/four4two/merlin/v17/x/poolmanager/client"
-	"github.com/four4two/merlin/v17/x/poolmanager/client/cli"
-	"github.com/four4two/merlin/v17/x/poolmanager/client/grpc"
-	"github.com/four4two/merlin/v17/x/poolmanager/client/queryproto"
-	"github.com/four4two/merlin/v17/x/poolmanager/types"
+	"github.com/four4two/merlin/v16/simulation/simtypes"
+	gammsimulation "github.com/four4two/merlin/v16/x/gamm/simulation"
+	"github.com/four4two/merlin/v16/x/poolmanager"
+	pmclient "github.com/four4two/merlin/v16/x/poolmanager/client"
+	"github.com/four4two/merlin/v16/x/poolmanager/client/cli"
+	"github.com/four4two/merlin/v16/x/poolmanager/client/grpc"
+	"github.com/four4two/merlin/v16/x/poolmanager/client/queryproto"
+	"github.com/four4two/merlin/v16/x/poolmanager/types"
 )
 
 var (

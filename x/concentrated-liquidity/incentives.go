@@ -13,10 +13,10 @@ import (
 
 	"github.com/osmosis-labs/osmosis/osmoutils"
 	"github.com/osmosis-labs/osmosis/osmoutils/accum"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/math"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/model"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	gammtypes "github.com/four4two/merlin/v17/x/gamm/types"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/math"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/model"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	gammtypes "github.com/four4two/merlin/v16/x/gamm/types"
 )
 
 // createUptimeAccumulators creates accumulator objects in store for each supported uptime for the given poolId.

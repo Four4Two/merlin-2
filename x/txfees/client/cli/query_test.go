@@ -8,8 +8,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/four4two/merlin/v17/app/apptesting"
-	"github.com/four4two/merlin/v17/x/txfees/types"
+	"github.com/four4two/merlin/v16/app/apptesting"
+	"github.com/four4two/merlin/v16/x/txfees/types"
 )
 
 type QueryTestSuite struct {

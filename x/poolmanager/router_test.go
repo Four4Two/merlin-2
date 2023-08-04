@@ -9,17 +9,17 @@ import (
 	"github.com/golang/mock/gomock"
 
 	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/four4two/merlin/v17/app/apptesting"
-	"github.com/four4two/merlin/v17/tests/mocks"
-	cl "github.com/four4two/merlin/v17/x/concentrated-liquidity"
-	cltypes "github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	cwpool "github.com/four4two/merlin/v17/x/cosmwasmpool"
-	cwmodel "github.com/four4two/merlin/v17/x/cosmwasmpool/model"
-	gamm "github.com/four4two/merlin/v17/x/gamm/keeper"
-	"github.com/four4two/merlin/v17/x/gamm/pool-models/balancer"
-	poolincentivestypes "github.com/four4two/merlin/v17/x/pool-incentives/types"
-	"github.com/four4two/merlin/v17/x/poolmanager"
-	"github.com/four4two/merlin/v17/x/poolmanager/types"
+	"github.com/four4two/merlin/v16/app/apptesting"
+	"github.com/four4two/merlin/v16/tests/mocks"
+	cl "github.com/four4two/merlin/v16/x/concentrated-liquidity"
+	cltypes "github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	cwpool "github.com/four4two/merlin/v16/x/cosmwasmpool"
+	cwmodel "github.com/four4two/merlin/v16/x/cosmwasmpool/model"
+	gamm "github.com/four4two/merlin/v16/x/gamm/keeper"
+	"github.com/four4two/merlin/v16/x/gamm/pool-models/balancer"
+	poolincentivestypes "github.com/four4two/merlin/v16/x/pool-incentives/types"
+	"github.com/four4two/merlin/v16/x/poolmanager"
+	"github.com/four4two/merlin/v16/x/poolmanager/types"
 )
 
 type poolSetup struct {

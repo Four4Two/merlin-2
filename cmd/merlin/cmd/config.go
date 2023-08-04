@@ -20,7 +20,7 @@ import (
 
 // Default constants
 const (
-	chainID        = ""
+	chainID        = "blackfury-1"
 	keyringBackend = "os"
 	output         = "text"
 	node           = "tcp://localhost:26657"

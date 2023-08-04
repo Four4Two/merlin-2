@@ -13,7 +13,7 @@ import (
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 
 	"github.com/osmosis-labs/osmosis/osmoutils"
-	"github.com/four4two/merlin/v17/x/pool-incentives/types"
+	"github.com/four4two/merlin/v16/x/pool-incentives/types"
 )
 
 func NewCmdSubmitUpdatePoolIncentivesProposal() *cobra.Command {

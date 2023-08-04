@@ -9,10 +9,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 
-	"github.com/four4two/merlin/v17/wasmbinding/bindings"
+	"github.com/four4two/merlin/v16/wasmbinding/bindings"
 
-	tokenfactorykeeper "github.com/four4two/merlin/v17/x/tokenfactory/keeper"
-	tokenfactorytypes "github.com/four4two/merlin/v17/x/tokenfactory/types"
+	tokenfactorykeeper "github.com/four4two/merlin/v16/x/tokenfactory/keeper"
+	tokenfactorytypes "github.com/four4two/merlin/v16/x/tokenfactory/types"
 )
 
 // CustomMessageDecorator returns decorator for custom CosmWasm bindings messages

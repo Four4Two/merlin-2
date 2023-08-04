@@ -7,9 +7,9 @@ import (
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/four4two/merlin/v17/app"
-	v8 "github.com/four4two/merlin/v17/app/upgrades/v8"
-	superfluidtypes "github.com/four4two/merlin/v17/x/superfluid/types"
+	"github.com/four4two/merlin/v16/app"
+	v8 "github.com/four4two/merlin/v16/app/upgrades/v8"
+	superfluidtypes "github.com/four4two/merlin/v16/x/superfluid/types"
 )
 
 func noOpAnteDecorator() sdk.AnteHandler {

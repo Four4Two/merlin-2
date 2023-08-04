@@ -8,8 +8,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/four4two/merlin/v17/x/mint/simulation"
-	"github.com/four4two/merlin/v17/x/mint/types"
+	"github.com/four4two/merlin/v16/x/mint/simulation"
+	"github.com/four4two/merlin/v16/x/mint/types"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"

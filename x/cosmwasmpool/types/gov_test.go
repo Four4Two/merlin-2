@@ -5,8 +5,8 @@ import (
 
 	"github.com/stretchr/testify/suite"
 
-	"github.com/four4two/merlin/v17/app/apptesting"
-	"github.com/four4two/merlin/v17/x/cosmwasmpool/types"
+	"github.com/four4two/merlin/v16/app/apptesting"
+	"github.com/four4two/merlin/v16/x/cosmwasmpool/types"
 )
 
 type CWPoolGovTypesSuite struct {

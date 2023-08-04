@@ -9,11 +9,11 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/osmosis-labs/osmosis/osmoutils/cosmwasm"
-	"github.com/four4two/merlin/v17/x/cosmwasmpool/cosmwasm/msg"
-	"github.com/four4two/merlin/v17/x/cosmwasmpool/cosmwasm/msg/transmuter"
-	"github.com/four4two/merlin/v17/x/cosmwasmpool/model"
+	"github.com/four4two/merlin/v16/x/cosmwasmpool/cosmwasm/msg"
+	"github.com/four4two/merlin/v16/x/cosmwasmpool/cosmwasm/msg/transmuter"
+	"github.com/four4two/merlin/v16/x/cosmwasmpool/model"
 
-	cosmwasmpooltypes "github.com/four4two/merlin/v17/x/cosmwasmpool/types"
+	cosmwasmpooltypes "github.com/four4two/merlin/v16/x/cosmwasmpool/types"
 )
 
 const (

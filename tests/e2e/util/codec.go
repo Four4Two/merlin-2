@@ -8,8 +8,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	merlinApp "github.com/four4two/merlin/v17/app"
-	"github.com/four4two/merlin/v17/app/params"
+	merlinApp "github.com/four4two/merlin/v16/app"
+	"github.com/four4two/merlin/v16/app/params"
 )
 
 var (

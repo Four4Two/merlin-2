@@ -3,8 +3,8 @@ package keeper
 import (
 	"github.com/gogo/protobuf/proto"
 
-	lockuptypes "github.com/four4two/merlin/v17/x/lockup/types"
-	"github.com/four4two/merlin/v17/x/superfluid/types"
+	lockuptypes "github.com/four4two/merlin/v16/x/lockup/types"
+	"github.com/four4two/merlin/v16/x/superfluid/types"
 
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	sdk "github.com/cosmos/cosmos-sdk/types"

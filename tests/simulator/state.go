@@ -7,9 +7,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/four4two/merlin/v17/app"
-	furysim "github.com/four4two/merlin/v17/simulation/executor"
-	furysimtypes "github.com/four4two/merlin/v17/simulation/simtypes"
+	"github.com/four4two/merlin/v16/app"
+	furysim "github.com/four4two/merlin/v16/simulation/executor"
+	furysimtypes "github.com/four4two/merlin/v16/simulation/simtypes"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"

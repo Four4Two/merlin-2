@@ -1,9 +1,9 @@
 package keeper_test
 
 import (
-	"github.com/four4two/merlin/v17/app/apptesting"
-	"github.com/four4two/merlin/v17/x/protorev"
-	"github.com/four4two/merlin/v17/x/protorev/types"
+	"github.com/four4two/merlin/v16/app/apptesting"
+	"github.com/four4two/merlin/v16/x/protorev"
+	"github.com/four4two/merlin/v16/x/protorev/types"
 )
 
 // TestSetProtoRevAdminAccount tests that the admin account can be set through a proposal

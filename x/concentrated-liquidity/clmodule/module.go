@@ -16,17 +16,17 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 
-	"github.com/four4two/merlin/v17/simulation/simtypes"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/client/cli"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/client/queryproto"
-	clmodel "github.com/four4two/merlin/v17/x/concentrated-liquidity/model"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/simulation"
+	"github.com/four4two/merlin/v16/simulation/simtypes"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/client/cli"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/client/queryproto"
+	clmodel "github.com/four4two/merlin/v16/x/concentrated-liquidity/model"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/simulation"
 
-	clkeeper "github.com/four4two/merlin/v17/x/concentrated-liquidity"
-	clclient "github.com/four4two/merlin/v17/x/concentrated-liquidity/client"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/client/grpc"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/types/genesis"
+	clkeeper "github.com/four4two/merlin/v16/x/concentrated-liquidity"
+	clclient "github.com/four4two/merlin/v16/x/concentrated-liquidity/client"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/client/grpc"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/types/genesis"
 )
 
 var (

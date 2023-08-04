@@ -6,7 +6,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 
-	"github.com/four4two/merlin/v17/x/tokenfactory/types"
+	"github.com/four4two/merlin/v16/x/tokenfactory/types"
 )
 
 type msgServer struct {

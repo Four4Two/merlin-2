@@ -8,13 +8,13 @@ import (
 
 	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/osmosis-labs/osmosis/osmoutils/accum"
-	events "github.com/four4two/merlin/v17/x/poolmanager/events"
+	events "github.com/four4two/merlin/v16/x/poolmanager/events"
 
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/math"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/swapstrategy"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	gammtypes "github.com/four4two/merlin/v17/x/gamm/types"
-	poolmanagertypes "github.com/four4two/merlin/v17/x/poolmanager/types"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/math"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/swapstrategy"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	gammtypes "github.com/four4two/merlin/v16/x/gamm/types"
+	poolmanagertypes "github.com/four4two/merlin/v16/x/poolmanager/types"
 )
 
 // SwapState defines the state of a swap.

@@ -11,12 +11,12 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/osmosis-labs/osmosis/osmoutils/accum"
-	furyapp "github.com/four4two/merlin/v17/app"
-	cl "github.com/four4two/merlin/v17/x/concentrated-liquidity"
-	clmodule "github.com/four4two/merlin/v17/x/concentrated-liquidity/clmodule"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/model"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/types/genesis"
+	furyapp "github.com/four4two/merlin/v16/app"
+	cl "github.com/four4two/merlin/v16/x/concentrated-liquidity"
+	clmodule "github.com/four4two/merlin/v16/x/concentrated-liquidity/clmodule"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/model"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/types/genesis"
 )
 
 type singlePoolGenesisEntry struct {
