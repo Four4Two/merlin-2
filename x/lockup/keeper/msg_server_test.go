@@ -3,9 +3,9 @@ package keeper_test
 import (
 	"time"
 
-	gammtypes "github.com/four4two/merlin/v17/x/gamm/types"
-	"github.com/four4two/merlin/v17/x/lockup/keeper"
-	"github.com/four4two/merlin/v17/x/lockup/types"
+	gammtypes "github.com/four4two/merlin/v16/x/gamm/types"
+	"github.com/four4two/merlin/v16/x/lockup/keeper"
+	"github.com/four4two/merlin/v16/x/lockup/types"
 
 	"github.com/cosmos/cosmos-sdk/simapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"

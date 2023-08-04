@@ -8,10 +8,10 @@ import (
 	"github.com/cosmos/cosmos-sdk/client"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	merlinapp "github.com/four4two/merlin/v17/app"
+	merlinapp "github.com/four4two/merlin/v16/app"
 
-	"github.com/four4two/merlin/v17/app/apptesting"
-	"github.com/four4two/merlin/v17/x/txfees/types"
+	"github.com/four4two/merlin/v16/app/apptesting"
+	"github.com/four4two/merlin/v16/x/txfees/types"
 )
 
 type KeeperTestSuite struct {

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/four4two/merlin/v17/x/gamm/pool-models/balancer"
-	"github.com/four4two/merlin/v17/x/gamm/types"
+	"github.com/four4two/merlin/v16/x/gamm/pool-models/balancer"
+	"github.com/four4two/merlin/v16/x/gamm/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

@@ -10,8 +10,8 @@ import (
 	"github.com/stretchr/testify/suite"
 	tmcli "github.com/tendermint/tendermint/libs/cli"
 
-	"github.com/four4two/merlin/v17/app"
-	"github.com/four4two/merlin/v17/x/mint/client/cli"
+	"github.com/four4two/merlin/v16/app"
+	"github.com/four4two/merlin/v16/x/mint/client/cli"
 
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	clitestutil "github.com/cosmos/cosmos-sdk/testutil/cli"

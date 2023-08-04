@@ -12,11 +12,11 @@ import (
 	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/osmosis-labs/osmosis/osmoutils"
 	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
-	gammtypes "github.com/four4two/merlin/v17/x/gamm/types"
-	poolmanagertypes "github.com/four4two/merlin/v17/x/poolmanager/types"
-	"github.com/four4two/merlin/v17/x/twap"
-	"github.com/four4two/merlin/v17/x/twap/types"
-	"github.com/four4two/merlin/v17/x/twap/types/twapmock"
+	gammtypes "github.com/four4two/merlin/v16/x/gamm/types"
+	poolmanagertypes "github.com/four4two/merlin/v16/x/poolmanager/types"
+	"github.com/four4two/merlin/v16/x/twap"
+	"github.com/four4two/merlin/v16/x/twap/types"
+	"github.com/four4two/merlin/v16/x/twap/types/twapmock"
 )
 
 var (

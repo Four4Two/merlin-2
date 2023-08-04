@@ -7,12 +7,12 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	cltypes "github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	gammtypes "github.com/four4two/merlin/v17/x/gamm/types"
-	incentivestypes "github.com/four4two/merlin/v17/x/incentives/types"
-	lockuptypes "github.com/four4two/merlin/v17/x/lockup/types"
-	"github.com/four4two/merlin/v17/x/superfluid/keeper"
-	"github.com/four4two/merlin/v17/x/superfluid/types"
+	cltypes "github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	gammtypes "github.com/four4two/merlin/v16/x/gamm/types"
+	incentivestypes "github.com/four4two/merlin/v16/x/incentives/types"
+	lockuptypes "github.com/four4two/merlin/v16/x/lockup/types"
+	"github.com/four4two/merlin/v16/x/superfluid/keeper"
+	"github.com/four4two/merlin/v16/x/superfluid/types"
 )
 
 func (s *KeeperTestSuite) TestUpdateFuryEquivalentMultipliers() {

@@ -13,7 +13,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/osmosis-labs/osmosis/osmoutils"
-	"github.com/four4two/merlin/v17/wasmbinding"
+	"github.com/four4two/merlin/v16/wasmbinding"
 
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
@@ -22,17 +22,17 @@ import (
 	slashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	concentratedliquidityquery "github.com/four4two/merlin/v17/x/concentrated-liquidity/client/queryproto"
-	downtimequerytypes "github.com/four4two/merlin/v17/x/downtime-detector/client/queryproto"
-	gammtypes "github.com/four4two/merlin/v17/x/gamm/types"
-	incentivestypes "github.com/four4two/merlin/v17/x/incentives/types"
-	lockuptypes "github.com/four4two/merlin/v17/x/lockup/types"
-	minttypes "github.com/four4two/merlin/v17/x/mint/types"
-	poolincentivestypes "github.com/four4two/merlin/v17/x/pool-incentives/types"
-	poolmanagerqueryproto "github.com/four4two/merlin/v17/x/poolmanager/client/queryproto"
-	superfluidtypes "github.com/four4two/merlin/v17/x/superfluid/types"
-	twapquerytypes "github.com/four4two/merlin/v17/x/twap/client/queryproto"
-	txfeestypes "github.com/four4two/merlin/v17/x/txfees/types"
+	concentratedliquidityquery "github.com/four4two/merlin/v16/x/concentrated-liquidity/client/queryproto"
+	downtimequerytypes "github.com/four4two/merlin/v16/x/downtime-detector/client/queryproto"
+	gammtypes "github.com/four4two/merlin/v16/x/gamm/types"
+	incentivestypes "github.com/four4two/merlin/v16/x/incentives/types"
+	lockuptypes "github.com/four4two/merlin/v16/x/lockup/types"
+	minttypes "github.com/four4two/merlin/v16/x/mint/types"
+	poolincentivestypes "github.com/four4two/merlin/v16/x/pool-incentives/types"
+	poolmanagerqueryproto "github.com/four4two/merlin/v16/x/poolmanager/client/queryproto"
+	superfluidtypes "github.com/four4two/merlin/v16/x/superfluid/types"
+	twapquerytypes "github.com/four4two/merlin/v16/x/twap/client/queryproto"
+	txfeestypes "github.com/four4two/merlin/v16/x/txfees/types"
 	epochtypes "github.com/osmosis-labs/osmosis/x/epochs/types"
 )
 

@@ -19,20 +19,20 @@ import (
 	"github.com/osmosis-labs/osmosis/osmomath"
 	ibchookskeeper "github.com/osmosis-labs/osmosis/x/ibc-hooks/keeper"
 
-	ibcratelimittypes "github.com/four4two/merlin/v17/x/ibc-rate-limit/types"
-	poolmanagertypes "github.com/four4two/merlin/v17/x/poolmanager/types"
+	ibcratelimittypes "github.com/four4two/merlin/v16/x/ibc-rate-limit/types"
+	poolmanagertypes "github.com/four4two/merlin/v16/x/poolmanager/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	coretypes "github.com/tendermint/tendermint/rpc/core/types"
 
 	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
-	appparams "github.com/four4two/merlin/v17/app/params"
-	v17 "github.com/four4two/merlin/v17/app/upgrades/v17"
-	"github.com/four4two/merlin/v17/tests/e2e/configurer/chain"
-	"github.com/four4two/merlin/v17/tests/e2e/configurer/config"
-	"github.com/four4two/merlin/v17/tests/e2e/initialization"
-	clmath "github.com/four4two/merlin/v17/x/concentrated-liquidity/math"
-	cltypes "github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
+	appparams "github.com/four4two/merlin/v16/app/params"
+	v16 "github.com/four4two/merlin/v16/app/upgrades/v16"
+	"github.com/four4two/merlin/v16/tests/e2e/configurer/chain"
+	"github.com/four4two/merlin/v16/tests/e2e/configurer/config"
+	"github.com/four4two/merlin/v16/tests/e2e/initialization"
+	clmath "github.com/four4two/merlin/v16/x/concentrated-liquidity/math"
+	cltypes "github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
 )
 
 var (
@@ -1758,25 +1758,25 @@ func (s *IntegrationTestSuite) GeometricTWAP() {
 	osmoassert.DecApproxEq(s.T(), sdk.NewDecWithPrec(5, 1), afterSwapTwapBOverA, sdk.NewDecWithPrec(1, 2))
 }
 
-// START: CAN REMOVE POST v17 UPGRADE
+// START: CAN REMOVE POST v16 UPGRADE
 
-// Tests that v17 upgrade correctly creates the canonical pools in the upgrade handler.
+// Tests that v16 upgrade correctly creates the canonical pools in the upgrade handler.
 func (s *IntegrationTestSuite) ConcentratedLiquidity_CanonicalPools() {
 	if s.skipUpgrade {
-		s.T().Skip("Skipping v17 canonical pools creation test because upgrade is not enabled")
+		s.T().Skip("Skipping v16 canonical pools creation test because upgrade is not enabled")
 	}
 
 	_, chainANode := s.getChainACfgs()
 
-	for _, assetPair := range v17.AssetPairsForTestsOnly {
+	for _, assetPair := range v16.AssetPairsForTestsOnly {
 		expectedSpreadFactor := assetPair.SpreadFactor
 		concentratedPoolId := chainANode.QueryConcentratedPooIdLinkFromCFMM(assetPair.LinkedClassicPool)
 		concentratedPool := s.updatedConcentratedPool(chainANode, concentratedPoolId)
 
 		s.Require().Equal(poolmanagertypes.Concentrated, concentratedPool.GetType())
 		s.Require().Equal(assetPair.BaseAsset, concentratedPool.GetToken0())
-		s.Require().Equal(v17.QuoteAsset, concentratedPool.GetToken1())
-		s.Require().Equal(uint64(v17.TickSpacing), concentratedPool.GetTickSpacing())
+		s.Require().Equal(v16.QuoteAsset, concentratedPool.GetToken1())
+		s.Require().Equal(uint64(v16.TickSpacing), concentratedPool.GetTickSpacing())
 		s.Require().Equal(expectedSpreadFactor.String(), concentratedPool.GetSpreadFactor(sdk.Context{}).String())
 
 		superfluidAssets := chainANode.QueryAllSuperfluidAssets()
@@ -1797,7 +1797,7 @@ func (s *IntegrationTestSuite) ConcentratedLiquidity_CanonicalPools() {
 
 		// This spot price is taken from the balancer pool that was initiated pre upgrade.
 		balancerPool := s.updatedCFMMPool(chainANode, assetPair.LinkedClassicPool)
-		expectedSpotPrice, err := balancerPool.SpotPrice(sdk.Context{}, v17.QuoteAsset, assetPair.BaseAsset)
+		expectedSpotPrice, err := balancerPool.SpotPrice(sdk.Context{}, v16.QuoteAsset, assetPair.BaseAsset)
 		s.Require().NoError(err)
 
 		// Allow 0.1% margin of error.
@@ -1811,7 +1811,7 @@ func (s *IntegrationTestSuite) ConcentratedLiquidity_CanonicalPools() {
 	// Check that the community pool module account possesses positions for all the canonical pools.
 	communityPoolAddress := chainANode.QueryCommunityPoolModuleAccount()
 	positions := chainANode.QueryConcentratedPositions(communityPoolAddress)
-	s.Require().Len(positions, len(v17.AssetPairsForTestsOnly))
+	s.Require().Len(positions, len(v16.AssetPairsForTestsOnly))
 }
 
-// END: CAN REMOVE POST v17 UPGRADE
+// END: CAN REMOVE POST v16 UPGRADE

@@ -7,8 +7,8 @@ import (
 
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 
-	"github.com/four4two/merlin/v17/x/gamm/keeper"
-	"github.com/four4two/merlin/v17/x/gamm/types"
+	"github.com/four4two/merlin/v16/x/gamm/keeper"
+	"github.com/four4two/merlin/v16/x/gamm/types"
 )
 
 // NewMigrationRecordHandler is a handler for governance proposals on new migration records.

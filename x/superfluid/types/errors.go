@@ -6,7 +6,7 @@ import (
 
 	errorsmod "cosmossdk.io/errors"
 
-	cltypes "github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
+	cltypes "github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
 )
 
 // x/superfluid module errors.

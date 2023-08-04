@@ -10,9 +10,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/authz"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 
-	"github.com/four4two/merlin/v17/app/keepers"
-	"github.com/four4two/merlin/v17/app/upgrades"
-	txfeestypes "github.com/four4two/merlin/v17/x/txfees/types"
+	"github.com/four4two/merlin/v16/app/keepers"
+	"github.com/four4two/merlin/v16/app/upgrades"
+	txfeestypes "github.com/four4two/merlin/v16/x/txfees/types"
 )
 
 func CreateUpgradeHandler(

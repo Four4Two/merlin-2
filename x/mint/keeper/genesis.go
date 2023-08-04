@@ -3,7 +3,7 @@ package keeper
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/four4two/merlin/v17/x/mint/types"
+	"github.com/four4two/merlin/v16/x/mint/types"
 )
 
 const developerVestingAmount = 225_000_000_000_000

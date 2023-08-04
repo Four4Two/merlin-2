@@ -1,8 +1,8 @@
 package gammsimulation
 
 import (
-	"github.com/four4two/merlin/v17/simulation/simtypes"
-	"github.com/four4two/merlin/v17/x/gamm/keeper"
+	"github.com/four4two/merlin/v16/simulation/simtypes"
+	"github.com/four4two/merlin/v16/x/gamm/keeper"
 )
 
 func DefaultActions(keeper keeper.Keeper) []simtypes.Action {

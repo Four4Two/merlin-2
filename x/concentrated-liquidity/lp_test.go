@@ -9,10 +9,10 @@ import (
 
 	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/osmosis-labs/osmosis/osmoutils"
-	cl "github.com/four4two/merlin/v17/x/concentrated-liquidity"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/model"
-	clmodel "github.com/four4two/merlin/v17/x/concentrated-liquidity/model"
-	types "github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
+	cl "github.com/four4two/merlin/v16/x/concentrated-liquidity"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/model"
+	clmodel "github.com/four4two/merlin/v16/x/concentrated-liquidity/model"
+	types "github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
 )
 
 type lpTest struct {

@@ -10,7 +10,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/four4two/merlin/v17/tests/e2e/initialization"
+	"github.com/four4two/merlin/v16/tests/e2e/initialization"
 )
 
 const forkHeight = 10

@@ -6,14 +6,14 @@ import (
 
 	ibchookstypes "github.com/osmosis-labs/osmosis/x/ibc-hooks/types"
 
-	ibcratelimittypes "github.com/four4two/merlin/v17/x/ibc-rate-limit/types"
+	ibcratelimittypes "github.com/four4two/merlin/v16/x/ibc-rate-limit/types"
 
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/four4two/merlin/v17/app/apptesting"
+	"github.com/four4two/merlin/v16/app/apptesting"
 )
 
 type UpgradeTestSuite struct {

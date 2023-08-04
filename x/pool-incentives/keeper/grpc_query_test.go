@@ -7,10 +7,10 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	cltypes "github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	gammmigration "github.com/four4two/merlin/v17/x/gamm/types/migration"
-	lockuptypes "github.com/four4two/merlin/v17/x/lockup/types"
-	"github.com/four4two/merlin/v17/x/pool-incentives/types"
+	cltypes "github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	gammmigration "github.com/four4two/merlin/v16/x/gamm/types/migration"
+	lockuptypes "github.com/four4two/merlin/v16/x/lockup/types"
+	"github.com/four4two/merlin/v16/x/pool-incentives/types"
 )
 
 var (

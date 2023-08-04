@@ -14,7 +14,7 @@ import (
 	porttypes "github.com/cosmos/ibc-go/v4/modules/core/05-port/types"
 	"github.com/cosmos/ibc-go/v4/modules/core/exported"
 
-	"github.com/four4two/merlin/v17/x/ibc-rate-limit/types"
+	"github.com/four4two/merlin/v16/x/ibc-rate-limit/types"
 )
 
 var (

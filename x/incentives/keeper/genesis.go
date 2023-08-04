@@ -3,7 +3,7 @@ package keeper
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/four4two/merlin/v17/x/incentives/types"
+	"github.com/four4two/merlin/v16/x/incentives/types"
 )
 
 // InitGenesis initializes the incentives module's state from a provided genesis state.

@@ -1,4 +1,4 @@
-module github.com/four4two/merlin/v17
+module github.com/four4two/merlin/v16
 
 go 1.20
 

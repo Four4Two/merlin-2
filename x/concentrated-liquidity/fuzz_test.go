@@ -11,8 +11,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/swapstrategy"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/swapstrategy"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
 )
 
 const (

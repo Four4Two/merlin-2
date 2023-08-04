@@ -5,7 +5,7 @@ import (
 	govkeeper "github.com/cosmos/cosmos-sdk/x/gov/keeper"
 	stakingkeeper "github.com/cosmos/cosmos-sdk/x/staking/keeper"
 
-	"github.com/four4two/merlin/v17/app/keepers"
+	"github.com/four4two/merlin/v16/app/keepers"
 )
 
 // RunForkLogic executes height-gated on-chain fork logic for the Merlin v3

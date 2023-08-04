@@ -3,10 +3,10 @@ package keeper
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/four4two/merlin/v17/x/protorev/types"
+	"github.com/four4two/merlin/v16/x/protorev/types"
 )
 
-// Used in v16 upgrade, can be removed in v17
+// Used in v16 upgrade, can be removed in v16
 // SendDeveloperFeesToDeveloperAccount sends the developer fees from the module account to the developer account
 func (k Keeper) SendDeveloperFeesToDeveloperAccount(ctx sdk.Context) error {
 	// Developer account must be set in order to be able to withdraw developer fees

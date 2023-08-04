@@ -7,8 +7,8 @@ import (
 	errorsmod "cosmossdk.io/errors"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
-	"github.com/four4two/merlin/v17/x/protorev/keeper"
-	"github.com/four4two/merlin/v17/x/protorev/types"
+	"github.com/four4two/merlin/v16/x/protorev/keeper"
+	"github.com/four4two/merlin/v16/x/protorev/types"
 )
 
 func NewProtoRevProposalHandler(k keeper.Keeper) govtypes.Handler {

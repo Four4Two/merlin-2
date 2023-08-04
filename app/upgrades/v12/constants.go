@@ -1,8 +1,8 @@
 package v12
 
 import (
-	"github.com/four4two/merlin/v17/app/upgrades"
-	twaptypes "github.com/four4two/merlin/v17/x/twap/types"
+	"github.com/four4two/merlin/v16/app/upgrades"
+	twaptypes "github.com/four4two/merlin/v16/x/twap/types"
 
 	store "github.com/cosmos/cosmos-sdk/store/types"
 )

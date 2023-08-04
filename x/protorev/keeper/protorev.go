@@ -3,7 +3,7 @@ package keeper
 import (
 	"fmt"
 
-	"github.com/four4two/merlin/v17/x/protorev/types"
+	"github.com/four4two/merlin/v16/x/protorev/types"
 
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 
@@ -250,7 +250,7 @@ func (k Keeper) GetDeveloperFees(ctx sdk.Context, denom string) (sdk.Coin, error
 	return developerFees, nil
 }
 
-// Deprecated: Used in v16 upgrade, can be removed in v17
+// Deprecated: Used in v16 upgrade, can be removed in v16
 // GetAllDeveloperFees returns all the developer fees the developer account can withdraw
 func (k Keeper) GetAllDeveloperFees(ctx sdk.Context) ([]sdk.Coin, error) {
 	fees := make([]sdk.Coin, 0)
@@ -287,7 +287,7 @@ func (k Keeper) SetDeveloperFees(ctx sdk.Context, developerFees sdk.Coin) error 
 	return nil
 }
 
-// Deprecated: Used in v16 upgrade, can be removed in v17
+// Deprecated: Used in v16 upgrade, can be removed in v16
 // DeleteDeveloperFees deletes the developer fees given a denom
 func (k Keeper) DeleteDeveloperFees(ctx sdk.Context, denom string) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefixDeveloperFees)

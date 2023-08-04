@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/four4two/merlin/v17/simulation/simtypes"
+	"github.com/four4two/merlin/v16/simulation/simtypes"
 )
 
 func getTestingMode(tb testing.TB) (testingMode bool, t *testing.T, b *testing.B) {

@@ -15,7 +15,7 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus"
 
-	"github.com/four4two/merlin/v17/app/params"
+	"github.com/four4two/merlin/v16/app/params"
 
 	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
@@ -53,7 +53,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/client/config"
 
-	merlin "github.com/four4two/merlin/v17/app"
+	merlin "github.com/four4two/merlin/v16/app"
 )
 
 type AssetList struct {

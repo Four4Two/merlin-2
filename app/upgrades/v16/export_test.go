@@ -3,7 +3,7 @@ package v16
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	tokenfactorykeeper "github.com/four4two/merlin/v17/x/tokenfactory/keeper"
+	tokenfactorykeeper "github.com/four4two/merlin/v16/x/tokenfactory/keeper"
 )
 
 var (

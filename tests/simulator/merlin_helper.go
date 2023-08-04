@@ -7,10 +7,10 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/simulation"
 	db "github.com/tendermint/tm-db"
 
-	simexec "github.com/four4two/merlin/v17/simulation/executor"
+	simexec "github.com/four4two/merlin/v16/simulation/executor"
 
-	"github.com/four4two/merlin/v17/app"
-	"github.com/four4two/merlin/v17/simulation/simtypes"
+	"github.com/four4two/merlin/v16/app"
+	"github.com/four4two/merlin/v16/simulation/simtypes"
 )
 
 func MerlinAppCreator(logger log.Logger, db db.DB) simtypes.AppCreator {

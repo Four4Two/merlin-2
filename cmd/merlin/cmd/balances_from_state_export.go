@@ -13,9 +13,9 @@ import (
 	tmtypes "github.com/tendermint/tendermint/types"
 
 	"github.com/osmosis-labs/osmosis/osmoutils"
-	appparams "github.com/four4two/merlin/v17/app/params"
-	gammtypes "github.com/four4two/merlin/v17/x/gamm/types"
-	lockuptypes "github.com/four4two/merlin/v17/x/lockup/types"
+	appparams "github.com/four4two/merlin/v16/app/params"
+	gammtypes "github.com/four4two/merlin/v16/x/gamm/types"
+	lockuptypes "github.com/four4two/merlin/v16/x/lockup/types"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/server"

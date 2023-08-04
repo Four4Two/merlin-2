@@ -17,13 +17,13 @@ import (
 	"github.com/spf13/cobra"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/four4two/merlin/v17/simulation/simtypes"
-	keeper "github.com/four4two/merlin/v17/x/valset-pref"
-	validatorprefclient "github.com/four4two/merlin/v17/x/valset-pref/client"
-	valsetprefcli "github.com/four4two/merlin/v17/x/valset-pref/client/cli"
-	"github.com/four4two/merlin/v17/x/valset-pref/client/grpc"
-	"github.com/four4two/merlin/v17/x/valset-pref/client/queryproto"
-	"github.com/four4two/merlin/v17/x/valset-pref/types"
+	"github.com/four4two/merlin/v16/simulation/simtypes"
+	keeper "github.com/four4two/merlin/v16/x/valset-pref"
+	validatorprefclient "github.com/four4two/merlin/v16/x/valset-pref/client"
+	valsetprefcli "github.com/four4two/merlin/v16/x/valset-pref/client/cli"
+	"github.com/four4two/merlin/v16/x/valset-pref/client/grpc"
+	"github.com/four4two/merlin/v16/x/valset-pref/client/queryproto"
+	"github.com/four4two/merlin/v16/x/valset-pref/types"
 )
 
 var (

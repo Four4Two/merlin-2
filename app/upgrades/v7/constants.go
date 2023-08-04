@@ -3,8 +3,8 @@ package v7
 import (
 	"github.com/CosmWasm/wasmd/x/wasm"
 
-	"github.com/four4two/merlin/v17/app/upgrades"
-	superfluidtypes "github.com/four4two/merlin/v17/x/superfluid/types"
+	"github.com/four4two/merlin/v16/app/upgrades"
+	superfluidtypes "github.com/four4two/merlin/v16/x/superfluid/types"
 
 	store "github.com/cosmos/cosmos-sdk/store/types"
 )

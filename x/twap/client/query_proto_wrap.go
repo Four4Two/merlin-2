@@ -5,8 +5,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/four4two/merlin/v17/x/twap"
-	"github.com/four4two/merlin/v17/x/twap/client/queryproto"
+	"github.com/four4two/merlin/v16/x/twap"
+	"github.com/four4two/merlin/v16/x/twap/client/queryproto"
 )
 
 // This file should evolve to being code gen'd, off of `proto/twap/v1beta/query.yml`

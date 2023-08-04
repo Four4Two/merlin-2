@@ -7,10 +7,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/four4two/merlin/v17/app/apptesting"
-	valPref "github.com/four4two/merlin/v17/x/valset-pref"
-	"github.com/four4two/merlin/v17/x/valset-pref/client/queryproto"
-	"github.com/four4two/merlin/v17/x/valset-pref/types"
+	"github.com/four4two/merlin/v16/app/apptesting"
+	valPref "github.com/four4two/merlin/v16/x/valset-pref"
+	"github.com/four4two/merlin/v16/x/valset-pref/client/queryproto"
+	"github.com/four4two/merlin/v16/x/valset-pref/types"
 )
 
 type QueryTestSuite struct {

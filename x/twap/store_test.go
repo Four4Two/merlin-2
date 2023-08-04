@@ -7,10 +7,10 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/four4two/merlin/v17/x/twap"
+	"github.com/four4two/merlin/v16/x/twap"
 
-	gammtypes "github.com/four4two/merlin/v17/x/gamm/types"
-	"github.com/four4two/merlin/v17/x/twap/types"
+	gammtypes "github.com/four4two/merlin/v16/x/gamm/types"
+	"github.com/four4two/merlin/v16/x/twap/types"
 )
 
 // TestTrackChangedPool takes a list of poolIds as test cases, and runs one list per block.

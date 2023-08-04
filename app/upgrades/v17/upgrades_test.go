@@ -1,4 +1,4 @@
-package v17_test
+package v16_test
 
 import (
 	"fmt"
@@ -14,11 +14,11 @@ import (
 	abci "github.com/tendermint/tendermint/abci/types"
 
 	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/four4two/merlin/v17/app/apptesting"
-	"github.com/four4two/merlin/v17/app/keepers"
-	v17 "github.com/four4two/merlin/v17/app/upgrades/v17"
-	cltypes "github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	poolmanagertypes "github.com/four4two/merlin/v17/x/poolmanager/types"
+	"github.com/four4two/merlin/v16/app/apptesting"
+	"github.com/four4two/merlin/v16/app/keepers"
+	v16 "github.com/four4two/merlin/v16/app/upgrades/v16"
+	cltypes "github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	poolmanagertypes "github.com/four4two/merlin/v16/x/poolmanager/types"
 )
 
 type UpgradeTestSuite struct {
@@ -29,7 +29,7 @@ func (suite *UpgradeTestSuite) SetupTest() {
 	suite.Setup()
 }
 
-type ByLinkedClassicPool []v17.AssetPair
+type ByLinkedClassicPool []v16.AssetPair
 
 func (a ByLinkedClassicPool) Len() int      { return len(a) }
 func (a ByLinkedClassicPool) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
@@ -45,7 +45,7 @@ const dummyUpgradeHeight = 5
 
 func dummyUpgrade(suite *UpgradeTestSuite) {
 	suite.Ctx = suite.Ctx.WithBlockHeight(dummyUpgradeHeight - 1)
-	plan := upgradetypes.Plan{Name: "v17", Height: dummyUpgradeHeight}
+	plan := upgradetypes.Plan{Name: "v16", Height: dummyUpgradeHeight}
 	err := suite.App.UpgradeKeeper.ScheduleUpgrade(suite.Ctx, plan)
 	suite.Require().NoError(err)
 	_, exists := suite.App.UpgradeKeeper.GetUpgradePlan(suite.Ctx)
@@ -83,25 +83,25 @@ func (suite *UpgradeTestSuite) TestUpgrade() {
 				// Sort AssetPairs based on LinkedClassicPool values.
 				// We sort both pairs because we use the test asset pairs to create initial state,
 				// then use the actual asset pairs to verify the result is correct.
-				sort.Sort(ByLinkedClassicPool(v17.AssetPairsForTestsOnly))
-				sort.Sort(ByLinkedClassicPool(v17.AssetPairs))
+				sort.Sort(ByLinkedClassicPool(v16.AssetPairsForTestsOnly))
+				sort.Sort(ByLinkedClassicPool(v16.AssetPairs))
 
 				expectedCoinsUsedInUpgradeHandler := sdk.NewCoins()
 
 				// Create earlier pools or dummy pools if needed
-				for _, assetPair := range v17.AssetPairsForTestsOnly {
+				for _, assetPair := range v16.AssetPairsForTestsOnly {
 					poolID := assetPair.LinkedClassicPool
 
 					// If LinkedClassicPool is specified, but it's smaller than the current pool ID,
 					// create dummy pools to fill the gap.
 					for lastPoolID+1 < poolID {
-						poolCoins := sdk.NewCoins(sdk.NewCoin(assetPair.BaseAsset, sdk.NewInt(10000000000)), sdk.NewCoin(v17.QuoteAsset, sdk.NewInt(10000000000)))
+						poolCoins := sdk.NewCoins(sdk.NewCoin(assetPair.BaseAsset, sdk.NewInt(10000000000)), sdk.NewCoin(v16.QuoteAsset, sdk.NewInt(10000000000)))
 						suite.PrepareBalancerPoolWithCoins(poolCoins...)
 						lastPoolID++
 					}
 
 					// Now create the pool with the correct pool ID.
-					poolCoins := sdk.NewCoins(sdk.NewCoin(assetPair.BaseAsset, sdk.NewInt(10000000000)), sdk.NewCoin(v17.QuoteAsset, sdk.NewInt(10000000000)))
+					poolCoins := sdk.NewCoins(sdk.NewCoin(assetPair.BaseAsset, sdk.NewInt(10000000000)), sdk.NewCoin(v16.QuoteAsset, sdk.NewInt(10000000000)))
 					poolId := suite.PrepareBalancerPoolWithCoins(poolCoins...)
 
 					// Send two of the base asset to the community pool.
@@ -112,7 +112,7 @@ func (suite *UpgradeTestSuite) TestUpgrade() {
 					suite.Require().NoError(err)
 
 					// Determine approx how much baseAsset will be used from community pool when 1 FURY used.
-					oneFury := sdk.NewCoin(v17.QuoteAsset, sdk.NewInt(1000000))
+					oneFury := sdk.NewCoin(v16.QuoteAsset, sdk.NewInt(1000000))
 					pool, err := suite.App.PoolManagerKeeper.GetPool(suite.Ctx, poolId)
 					suite.Require().NoError(err)
 					respectiveBaseAsset, err := suite.App.GAMMKeeper.CalcOutAmtGivenIn(suite.Ctx, pool, oneFury, assetPair.BaseAsset, sdk.ZeroDec())
@@ -147,7 +147,7 @@ func (suite *UpgradeTestSuite) TestUpgrade() {
 				communityPoolBalancePost := suite.App.BankKeeper.GetAllBalances(suite.Ctx, communityPoolAddress)
 				feePoolCommunityPoolPost := suite.App.DistrKeeper.GetFeePool(suite.Ctx).CommunityPool
 
-				assetPairs := v17.InitializeAssetPairs(ctx, keepers)
+				assetPairs := v16.InitializeAssetPairs(ctx, keepers)
 
 				for i, assetPair := range assetPairs {
 					// Validate that the community pool balance has been reduced by the amount of baseAsset that was used to create the pool.
@@ -157,7 +157,7 @@ func (suite *UpgradeTestSuite) TestUpgrade() {
 					suite.Require().Equal(communityPoolBalancePost.AmountOf(assetPair.BaseAsset).String(), feePoolCommunityPoolPost.AmountOf(assetPair.BaseAsset).TruncateInt().String())
 
 					// Get balancer pool's spot price.
-					balancerSpotPrice, err := suite.App.GAMMKeeper.CalculateSpotPrice(suite.Ctx, assetPair.LinkedClassicPool, v17.QuoteAsset, assetPair.BaseAsset)
+					balancerSpotPrice, err := suite.App.GAMMKeeper.CalculateSpotPrice(suite.Ctx, assetPair.LinkedClassicPool, v16.QuoteAsset, assetPair.BaseAsset)
 					suite.Require().NoError(err)
 
 					// Validate CL pool was created.
@@ -169,7 +169,7 @@ func (suite *UpgradeTestSuite) TestUpgrade() {
 					concentratedTypePool, ok := concentratedPool.(cltypes.ConcentratedPoolExtension)
 					suite.Require().True(ok)
 					suite.Require().Equal(assetPair.BaseAsset, concentratedTypePool.GetToken0())
-					suite.Require().Equal(v17.QuoteAsset, concentratedTypePool.GetToken1())
+					suite.Require().Equal(v16.QuoteAsset, concentratedTypePool.GetToken1())
 
 					// Validate that the spot price of the CL pool is what we expect
 					suite.Require().Equal(0, multiplicativeTolerance.CompareBigDec(concentratedTypePool.GetCurrentSqrtPrice().PowerInteger(2), osmomath.BigDecFromSDKDec(balancerSpotPrice)))
@@ -193,8 +193,8 @@ func (suite *UpgradeTestSuite) TestUpgrade() {
 				}
 
 				// Check fury balance (was used in every pool creation)
-				suite.Require().Equal(0, multiplicativeTolerance.Compare(communityPoolBalancePre.AmountOf(v17.QuoteAsset), communityPoolBalancePost.AmountOf(v17.QuoteAsset).Sub(expectedCoinsUsedInUpgradeHandler.AmountOf(v17.QuoteAsset))))
-				suite.Require().Equal(communityPoolBalancePost.AmountOf(v17.QuoteAsset).String(), feePoolCommunityPoolPost.AmountOf(v17.QuoteAsset).TruncateInt().String())
+				suite.Require().Equal(0, multiplicativeTolerance.Compare(communityPoolBalancePre.AmountOf(v16.QuoteAsset), communityPoolBalancePost.AmountOf(v16.QuoteAsset).Sub(expectedCoinsUsedInUpgradeHandler.AmountOf(v16.QuoteAsset))))
+				suite.Require().Equal(communityPoolBalancePost.AmountOf(v16.QuoteAsset).String(), feePoolCommunityPoolPost.AmountOf(v16.QuoteAsset).TruncateInt().String())
 
 				// Validate that all links were created.
 				migrationInfo, err := suite.App.GAMMKeeper.GetAllMigrationInfo(suite.Ctx)

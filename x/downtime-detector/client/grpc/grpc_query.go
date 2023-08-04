@@ -10,8 +10,8 @@ import (
 	"google.golang.org/grpc/status"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/four4two/merlin/v17/x/downtime-detector/client"
-	"github.com/four4two/merlin/v17/x/downtime-detector/client/queryproto"
+	"github.com/four4two/merlin/v16/x/downtime-detector/client"
+	"github.com/four4two/merlin/v16/x/downtime-detector/client/queryproto"
 )
 
 type Querier struct {

@@ -1,4 +1,4 @@
-package v17
+package v16
 
 import (
 	"fmt"
@@ -10,13 +10,13 @@ import (
 
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
-	cltypes "github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	gammmigration "github.com/four4two/merlin/v17/x/gamm/types/migration"
-	superfluidtypes "github.com/four4two/merlin/v17/x/superfluid/types"
+	cltypes "github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	gammmigration "github.com/four4two/merlin/v16/x/gamm/types/migration"
+	superfluidtypes "github.com/four4two/merlin/v16/x/superfluid/types"
 
-	"github.com/four4two/merlin/v17/app/keepers"
-	"github.com/four4two/merlin/v17/app/upgrades"
-	"github.com/four4two/merlin/v17/x/protorev/types"
+	"github.com/four4two/merlin/v16/app/keepers"
+	"github.com/four4two/merlin/v16/app/upgrades"
+	"github.com/four4two/merlin/v16/x/protorev/types"
 )
 
 func CreateUpgradeHandler(
