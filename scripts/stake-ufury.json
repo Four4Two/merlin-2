@@ -1,0 +1,7 @@
+{
+ 	"weights": "5jinx,5ufury",
+ 	"initial-deposit": "1000000jinx,1000000ufury",
+ 	"swap-fee": "0.01",
+ 	"exit-fee": "0.01",
+ 	"future-governor": "168h"
+}

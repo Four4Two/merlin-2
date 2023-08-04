@@ -1,23 +1,7 @@
-#!/bin/bash
+#! /bin/bash
 set -e
 
-export validator1Mnemonic="twelve disorder gauge economy lend very decrease toy airport hen delay mouse antenna eye garbage cave soldier knock chase combine tonight sugar reason grocery"
-
-export validator2Mnemonic="glove promote insect vessel table toss secret egg potato banana sudden cheap inch divert silly doctor evolve special flat laundry sustain champion place main"
-
-export validator3Mnemonic="bike debris universe hover view element inhale aware media gun drum hotel nut buddy exact immune grain jealous float case steak sort heart shop"
-
-export validator4Mnemonic="already engage illegal dial onion silly sugar smooth movie museum client speed snake spice fashion verb swear panther oval travel cream emerge chest zone"
-
-export validator5Mnemonic="hawk gasp film enlist talent trap gentle oblige icon gun flee flat switch move local girl very better foot quiz daughter genius secret crystal"
-
-export validator6Mnemonic="endless excess afraid label frequent twenty receive maximum casual clean crawl beyond erosion balance air turn range issue shield trigger busy wing between panda"
-
-export validator7Mnemonic="switch size lend convince raven bone tackle bridge pet vendor pyramid try pledge travel you small chaos mosquito agent club nasty jaguar usage diet"
-
-export validator8Mnemonic="adapt digital repeat shell enhance error accuse promote purpose camp outside decide tortoise laundry tag critic cinnamon whip insect weird reason spray much damage"
-
-export validator9Mnemonic="same grant skull young unable program cream answer twenty camera impact disagree valley style easy transfer wide broken vehicle giraffe version stool session blue"
+export validatorMnemonic="scheme foil gym rival warrior power dry property warfare amateur consider donate try code river awake security fall brand similar perfect sand ivory video"
 
 export airdropMnemonic="coyote glass hamster road rice genre margin once ask setup jaguar session sample hurt solution sound start scare move deal valve novel valid tilt"
 
@@ -55,155 +39,139 @@ export teamMnemonic="enemy venture fire antenna relax muffin below evil dinner t
 
 export ecoMnemonic="adapt digital repeat shell enhance error accuse promote purpose camp outside decide tortoise laundry tag critic cinnamon whip insect weird reason spray much damage"
 
-export ecovestedMnemonic="term relax pretty infant adjust inspire glass shadow misery easily spread hello canyon sorry sadness beef flat chef guitar idea trash this toilet exercise"
+export ecosystemvestedMnemonic="term relax pretty infant adjust inspire glass shadow misery easily spread hello canyon sorry sadness beef flat chef guitar idea trash this toilet exercise"
 
 export liquidityMnemonic="mercy lock dial cricket mass head crater cupboard ecology inmate tooth guitar coyote fix few census person refuse guitar joke friend ecology mean catalog"
 
 export liquidityvestedMnemonic="science dragon debris much spot rather army outer biology honey civil seat broom alone disagree pond stereo sight fantasy cereal inmate meadow grape spy"
 
+export blackdragonvestedMnemonic="science dragon debris much spot rather army outer biology honey civil seat broom alone disagree pond stereo sight fantasy cereal inmate meadow grape spy"
+
 export faucetMnemonic="hair color duty october move bracket deny crisp have awesome tornado syrup veteran modify enemy potato beauty retreat play exact sunny salute area april"
 
-# always returns true so set -e doesn't exit if it is not running.
-killall merlin || true
-rm -rf $HOME/.merlin/
-export BINARY=merlin
+DATA=~/.merlin
+# remove any old state and config
+rm -rf $DATA
 
-# make four merlin directories
-mkdir $HOME/.merlin
-mkdir $HOME/.merlin/validator2
-mkdir $HOME/.merlin/validator3
-mkdir $HOME/.merlin/validator4
-mkdir $HOME/.merlin/validator5
-mkdir $HOME/.merlin/validator6
-mkdir $HOME/.merlin/validator7
-mkdir $HOME/.merlin/validator8
-mkdir $HOME/.merlin/validator9
-# init all three validators
-merlin init --chain-id="blackfury-1" validator1 
-merlin init --chain-id="blackfury-1" validator2 --home=$HOME/.merlin/validator2
-merlin init --chain-id="blackfury-1" validator3 --home=$HOME/.merlin/validator3
-merlin init --chain-id="blackfury-1" validator4 --home=$HOME/.merlin/validator4
-merlin init --chain-id="blackfury-1" validator5 --home=$HOME/.merlin/validator5
-merlin init --chain-id="blackfury-1" validator6 --home=$HOME/.merlin/validator6
-merlin init --chain-id="blackfury-1" validator7 --home=$HOME/.merlin/validator7
-merlin init --chain-id="blackfury-1" validator8 --home=$HOME/.merlin/validator8
-merlin init --chain-id="blackfury-1" validator9 --home=$HOME/.merlin/validator9
-# create keys for all three validators
-printf "$validator1Mnemonic\n" | merlin keys add validator1 --keyring-backend=test --recover 
-printf "$validator2Mnemonic\n" | merlin keys add validator2 --keyring-backend=test --home=$HOME/.merlin/validator2 --recover 
-printf "$validator3Mnemonic\n" | merlin keys add validator3 --keyring-backend=test --home=$HOME/.merlin/validator3 --recover 
-printf "$validator4Mnemonic\n" | merlin keys add validator4 --keyring-backend=test --home=$HOME/.merlin/validator4 --recover 
-printf "$validator5Mnemonic\n" | merlin keys add validator5 --keyring-backend=test --home=$HOME/.merlin/validator5 --recover 
-printf "$validator6Mnemonic\n" | merlin keys add validator6 --keyring-backend=test --home=$HOME/.merlin/validator6 --recover 
-printf "$validator7Mnemonic\n" | merlin keys add validator7 --keyring-backend=test --home=$HOME/.merlin/validator7 --recover 
-printf "$validator8Mnemonic\n" | merlin keys add validator8 --keyring-backend=test --home=$HOME/.merlin/validator8 --recover
-printf "$validator9Mnemonic\n" | merlin keys add validator9 --keyring-backend=test --home=$HOME/.merlin/validator9 --recover 
+BINARY=merlin
 
-update_genesis () {    
-    cat $HOME/.merlin/config/genesis.json | jq "$1" > $HOME/.merlin/config/tmp_genesis.json && mv $HOME/.merlin/config/tmp_genesis.json $HOME/.merlin/config/genesis.json
-}
+# Create new data directory, overwriting any that alread existed
+chainID="blackfury-1"
+$BINARY init validator --chain-id $chainID 
 
-# change staking denom to ufury
-update_genesis '.app_state["staking"]["params"]["bond_denom"]="ufury"'
+# hacky enable of rest api
+sed -in-place='' 's/enable = false/enable = true/g' $DATA/config/app.toml
 
-# create validator node with tokens to transfer to the three other nodes
-merlin add-genesis-account $(merlin keys show validator1 -a --keyring-backend=test) 1500000000000ufury,100000000000jinx --home=$HOME/.merlin
+# Set evm tracer to json
+sed -in-place='' 's/tracer = ""/tracer = "json"/g' $DATA/config/app.toml
+
+# Enable full error trace to be returned on tx failure
+sed -in-place='' '/iavl-cache-size/a\
+trace = true' $DATA/config/app.toml
+
+# Set client chain id
+sed -in-place='' 's/chain-id = ""/chain-id = "blackfury-1"/g' $DATA/config/client.toml
+
+# avoid having to use password for keys
+$BINARY config keyring-backend test
+
+# Create validator keys and add account to genesis
+validatorKeyName="validator"
+printf "$validatorMnemonic\n" | $BINARY keys add $validatorKeyName --recover
+$BINARY add-genesis-account $validatorKeyName 1000000000000ufury
 
 airdropKeyName="airdrop"
-printf "$airdropMnemonic\n" | merlin keys add $airdropKeyName --recover --keyring-backend test 
-merlin add-genesis-account $airdropKeyName 26000000000000ufury --keyring-backend test
+printf "$airdropMnemonic\n" | $BINARY keys add $airdropKeyName --recover
+$BINARY add-genesis-account $airdropKeyName 26000000000000ufury
 
 airdropvestedKeyName="airdropvested"
-printf "$airdropvestedMnemonic\n" | merlin keys add $airdropvestedKeyName --recover --keyring-backend test 
-merlin add-genesis-account $airdropvestedKeyName 53000000000000ufury --keyring-backend test 
+printf "$airdropvestedMnemonic\n" | $BINARY keys add $airdropvestedKeyName --recover
+$BINARY add-genesis-account $airdropvestedKeyName 53000000000000ufury
 
 whitelistKeyName="whitelist"
-printf "$whitelistMnemonic\n" | merlin keys add $whitelistKeyName --recover --keyring-backend test 
-merlin add-genesis-account $whitelistKeyName 5000000000000ufury --keyring-backend test 
+printf "$whitelistMnemonic\n" | $BINARY keys add $whitelistKeyName --recover
+$BINARY add-genesis-account $whitelistKeyName 5000000000ufury
 
 bondingKeyName="bonding"
-printf "$bondingMnemonic\n" | merlin keys add $bondingKeyName --recover --keyring-backend test 
-merlin add-genesis-account $bondingKeyName 19132694938441ufury --keyring-backend test 
+printf "$bondingMnemonic\n" | $BINARY keys add $bondingKeyName --recover
+$BINARY add-genesis-account $bondingKeyName 19132694938441ufury --vesting-amount 19132694938441ufury --vesting-start-time 1688947200 --vesting-end-time 1731263340
 
 bondingvestedKeyName="bondingvested"
-printf "$bondingvestedMnemonic\n" | merlin keys add $bondingvestedKeyName --recover --keyring-backend test 
-merlin add-genesis-account $bondingvestedKeyName 12367305061560ufury --keyring-backend test 
+printf "$bondingvestedMnemonic\n" | $BINARY keys add $bondingvestedKeyName --recover
+$BINARY add-genesis-account $bondingvestedKeyName 12367305061560ufury
 
 seedKeyName="seed"
-printf "$seedMnemonic\n" | merlin keys add $seedKeyName --recover --keyring-backend test
-merlin add-genesis-account $seedKeyName 4487671232877ufury --keyring-backend test --vesting-amount 4487671232877ufury --vesting-start-time 1668018600 --vesting-end-time 1699640700
+printf "$seedMnemonic\n" | $BINARY keys add $seedKeyName --recover
+$BINARY add-genesis-account $seedKeyName 4487671232877ufury
 
 privateKeyName="private"
-printf "$privateMnemonic\n" | merlin keys add $privateKeyName --recover --keyring-backend test 
-merlin add-genesis-account $privateKeyName 8077808219178ufury --keyring-backend test --vesting-amount 8077808219178ufury --vesting-start-time 1668018600 --vesting-end-time 1699640700
+printf "$privateMnemonic\n" | $BINARY keys add $privateKeyName --recover
+$BINARY add-genesis-account $privateKeyName 8077808219178ufury
 
 bonusKeyName="bonus"
-printf "$bonusMnemonic\n" | merlin keys add $bonusKeyName --recover --keyring-backend test 
-merlin add-genesis-account $bonusKeyName 1077041095890ufury --keyring-backend test --vesting-amount 1077041095890ufury --vesting-start-time 1668018600 --vesting-end-time 1699640700
+printf "$bonusMnemonic\n" | $BINARY keys add $bonusKeyName --recover
+$BINARY add-genesis-account $bonusKeyName 1077041095890ufury
 
 atloKeyName="atlo"
-printf "$atloMnemonic\n" | merlin keys add $atloKeyName --recover --keyring-backend test 
-merlin add-genesis-account $atloKeyName 716301369863ufury --keyring-backend test --vesting-amount 716301369863ufury --vesting-start-time 1668018600 --vesting-end-time 1699640700
-
-valkyrieKeyName="valkyrie"
-printf "$valkyrieMnemonic\n" | merlin keys add $valkyrieKeyName --recover --keyring-backend test 
-merlin add-genesis-account $valkyrieKeyName 4200000000000ufury --keyring-backend test 
+printf "$atloMnemonic\n" | $BINARY keys add $atloKeyName --recover
+$BINARY add-genesis-account $atloKeyName 1346301369863ufury
 
 publicKeyName="public"
-printf "$publicMnemonic\n" | merlin keys add $publicKeyName --recover --keyring-backend test 
-merlin add-genesis-account $publicKeyName 25830000000000ufury --keyring-backend test 
+printf "$publicMnemonic\n" | $BINARY keys add $publicKeyName --recover
+$BINARY add-genesis-account $publicKeyName 25830000000000ufury
 
-marketingKeyName="marketing"
-printf "$marketingMnemonic\n" | merlin keys add $marketingKeyName --recover --keyring-backend test 
-merlin add-genesis-account $marketingKeyName 32760000000000ufury --keyring-backend test 
+valkyrieKeyName="valkyrie"
+printf "$valkyrieMnemonic\n" | $BINARY keys add $valkyrieKeyName --recover
+$BINARY add-genesis-account $valkyrieKeyName 4200000000000ufury
 
 advisorsKeyName="advisors"
-printf "$advisorsMnemonic\n" | merlin keys add $advisorsKeyName --recover --keyring-backend test 
-merlin add-genesis-account $advisorsKeyName 4900000000000ufury --keyring-backend test 
+printf "$advisorsMnemonic\n" | $BINARY keys add $advisorsKeyName --recover
+$BINARY add-genesis-account $advisorsKeyName 4900000000000ufury
 
 advisorsvestedKeyName="advisorsvested"
-printf "$advisorsvestedMnemonic\n" | merlin keys add $advisorsvestedKeyName --recover --keyring-backend test 
-merlin add-genesis-account $advisorsvestedKeyName 9800000000000ufury --keyring-backend test  
+printf "$advisorsvestedMnemonic\n" | $BINARY keys add $advisorsvestedKeyName --recover
+$BINARY add-genesis-account $advisorsvestedKeyName 9800000000000ufury --vesting-amount 9800000000000ufury --vesting-start-time 1690243200 --vesting-end-time 1712773500
 
 teamKeyName="team"
-printf "$teamMnemonic\n" | merlin keys add $teamKeyName --recover --keyring-backend test 
-merlin add-genesis-account $teamKeyName 63000000000000ufury --keyring-backend test 
+printf "$teamMnemonic\n" | $BINARY keys add $teamKeyName --recover
+$BINARY add-genesis-account $teamKeyName 1000000000ufury
 
 treasuryKeyName="treasury"
-printf "$treasuryMnemonic\n" | merlin keys add $treasuryKeyName --recover --keyring-backend test 
-merlin add-genesis-account $treasuryKeyName 33024657534247ufury --keyring-backend test 
+printf "$treasuryMnemonic\n" | $BINARY keys add $treasuryKeyName --recover
+$BINARY add-genesis-account $treasuryKeyName 33024657534247ufury
 
 treasuryvestedKeyName="treasuryvested"
-printf "$treasuryvestedMnemonic\n" | merlin keys add $treasuryvestedKeyName --recover --keyring-backend test 
-merlin add-genesis-account $treasuryvestedKeyName 8975342465753ufury --keyring-backend test 
+printf "$treasuryvestedMnemonic\n" | $BINARY keys add $treasuryvestedKeyName --recover
+$BINARY add-genesis-account $treasuryvestedKeyName 8975342465753ufury --vesting-amount 9800000000000ufury --vesting-start-time 1690243200 --vesting-end-time 1699640700
+
+marketingKeyName="marketing"
+printf "$marketingMnemonic\n" | $BINARY keys add $marketingKeyName --recover
+$BINARY add-genesis-account $marketingKeyName 32760000000000ufury
 
 ecoKeyName="eco"
-printf "$ecoMnemonic\n" | merlin keys add $ecoKeyName --recover --keyring-backend test 
-merlin add-genesis-account $ecoKeyName 3691290469676ufury --keyring-backend test 
+printf "$ecoMnemonic\n" | $BINARY keys add $ecoKeyName --recover
+$BINARY add-genesis-account $ecoKeyName 3691290469676ufury
 
-ecovestedKeyName="ecovested"
-printf "$ecovestedMnemonic\n" | merlin keys add $ecovestedKeyName --recover --keyring-backend test 
-merlin add-genesis-account $ecovestedKeyName 16308709530324ufury --keyring-backend test 
+ecosysystemvestedKeyName="ecosysystemvested"
+printf "$ecosysystemvestedMnemonic\n" | $BINARY keys add $ecosysystemvestedKeyName --recover
+$BINARY add-genesis-account $ecosysystemvestedKeyName 16308709530324ufury --vesting-amount 16308709530324ufury --vesting-start-time 1690243200 --vesting-end-time 1715365500
 
 liquidityKeyName="liquidity"
-printf "$liquidityMnemonic\n" | merlin keys add $liquidityKeyName --recover --keyring-backend test 
-merlin add-genesis-account $liquidityKeyName 14326027397260ufury --keyring-backend test 
+printf "$liquidityMnemonic\n" | $BINARY keys add $liquidityKeyName --recover
+$BINARY add-genesis-account $liquidityKeyName 14326027397260ufury
 
 liquidityvestedKeyName="liquidityvested"
-printf "$liquidityvestedMnemonic\n" | merlin keys add $liquidityvestedKeyName --recover --keyring-backend test 
-merlin add-genesis-account $liquidityvestedKeyName 6673972602740ufury --keyring-backend test 
+printf "$liquidityvestedMnemonic\n" | $BINARY keys add $liquidityvestedKeyName --recover
+$BINARY add-genesis-account $liquidityvestedKeyName 6673972602740ufury --vesting-amount 16308709530324ufury --vesting-start-time 1690243200 --vesting-end-time 1715365500
 
 faucetKeyName="faucet"
-printf "$faucetMnemonic\n" | merlin keys add $faucetKeyName --recover --keyring-backend test 
-merlin add-genesis-account $faucetKeyName 100000000000ufury --keyring-backend test 
-
-
-# create investors
+printf "$faucetMnemonic\n" | $BINARY keys add $faucetKeyName --recover
+$BINARY add-genesis-account $faucetKeyName 1000000000ufury
 
 $BINARY add-genesis-account fury1f02wg3dawqdwjv7ak7e6vh2u6sjf5s26um7wa2 2722500000000ufury
 $BINARY add-genesis-account fury1jl2zcz32npjgs88vd60xv5qan5rtzh4xvrsy9m 9375000000000ufury
 $BINARY add-genesis-account fury1kfr4wznhwelzhal8gc8es67tcx4g4tsycpxuru 214286250000ufury
-$BINARY add-genesis-account fury129kdy7qdk5r4qgrenqdd6ftjjuvcc3hqxtuxey 243621661507ufury
+$BINARY add-genesis-account fury129kdy7qdk5r4qgrenqdd6ftjjuvcc3hqxtuxey 235713750000ufury
 $BINARY add-genesis-account fury1e6m3jymsgetz5vyvkvujejqufanpq8mg8wq4h3 2747500000000ufury
 $BINARY add-genesis-account fury1hyxea0xa08wv4y30v5q9g2jwls8cgdk6uag47z 7500000000ufury
 $BINARY add-genesis-account fury1mhv5w6up9ltlwe7ekgfpjhd0upn4f7umdqwsmc 964285500000ufury
@@ -264,7 +232,7 @@ $BINARY add-genesis-account fury1l4ml9eklv84zpm0968jt4hezwaymwr6kx76qsn 81750000
 $BINARY add-genesis-account fury1jhpwxpadlx8ax429ljm5rrqm2pse4sgf2rrkv8 424284750000ufury
 $BINARY add-genesis-account fury1es9fu48yxwd9jdweaykjaf0fr7usw3x0gr6l3r 165000000000ufury
 $BINARY add-genesis-account fury1mz6dr3yzdvnnaeg3e6mgvuwnluq63ep38ghkwr 7500000000ufury
-$BINARY add-genesis-account fury1526zhyrd8fzdvzayct9yfnspsdp9uuqhjagyg7 559992922951ufury
+$BINARY add-genesis-account fury1526zhyrd8fzdvzayct9yfnspsdp9uuqhjagyg7 555000000000ufury
 $BINARY add-genesis-account fury19umlsn9fc3ytfe9s3l9dez4z2ujjljqj8pjz2f 3125000000000ufury
 $BINARY add-genesis-account fury1ja4jpkvf9tw5w9pt3futxq6hxs5lwf849w268k 105000000000ufury
 $BINARY add-genesis-account fury1wknw5glel2jekejuehn4auvfs7dhqf6zl2ud2h 66000000000ufury
@@ -273,9 +241,6 @@ $BINARY add-genesis-account fury1al3k6rd4u550gcvfwd7akl032su2y2vtye0ggp 12728475
 $BINARY add-genesis-account fury1r76xl88z8payyt0zx333c5v5hh5rjp2a5yqdas 7500000000ufury
 $BINARY add-genesis-account fury1cwk4s0jtvt69mawaqsay2a9h20cgqd9hzhe0ee 3881190250000ufury
 $BINARY add-genesis-account fury1kah8qvju0h5g0nslsfhvznrsw0jrhnry2zm2hs 428571750000ufury
-
-# create atlo
-
 $BINARY add-genesis-account fury1002743yxn0akwdh77389sl88zslh0a7nlnrh5f 23610321935ufury
 $BINARY add-genesis-account fury100dxspkurxsa29upl7s9pywqxtff70r6f20fmn 7280000000ufury
 $BINARY add-genesis-account fury105jq8c946et7wss2qkscaagg96pf78zusg2gwj 1820000000ufury
@@ -360,6 +325,7 @@ $BINARY add-genesis-account fury14s3nyfue5hj759rxe0pu4xgfr0236kxpn0ljux 36400000
 $BINARY add-genesis-account fury14tdsywzgsqd3kctlvyx6nz0dyhdeuypxge2sg8 4853333333ufury
 $BINARY add-genesis-account fury14xy6duknx50mja8pnmatzy2wy9mpnfpru7l4hw 2426666667ufury
 $BINARY add-genesis-account fury1523ck98p02q4fv7ua5hurl5aehk8az8x77l6h9 6066666667ufury
+$BINARY add-genesis-account fury1526zhyrd8fzdvzayct9yfnspsdp9uuqhjagyg7 4992922951ufury
 $BINARY add-genesis-account fury153k8gt4zxevw2ny4sl2y6vn3ynhne5flmzlkxt 59375306227ufury
 $BINARY add-genesis-account fury156syqzhxd5n2fevmgnng20744h6pya57fgjnwz 4355866667ufury
 $BINARY add-genesis-account fury156w0r4a9z57tpmccvg0u30jn4yjzk2y7rjzwh7 1686158265ufury
@@ -982,380 +948,137 @@ $BINARY add-genesis-account fury1zqxpdcmr3ylq9356clu99dnant57rvyyr2kgtl 14220919
 $BINARY add-genesis-account fury1zsqu60y738u0jgk36sdrptq44ejke6a707k9pz 10920000000ufury
 $BINARY add-genesis-account fury1zuvurmf9x4tpe3528gj0gxg9mcuxg5ftpfe7mm 1516666667ufury
 $BINARY add-genesis-account fury1zxjll626lrtxqlgsdapy6uw8fkzul9s5ra9pje 3395617872ufury
-
-# create blackdragon 
-
-$BINARY add-genesis-account fury1797slhn49lfmgn42vwjh6c6nrxq7k34n503g5t 29654569863ufury
-$BINARY add-genesis-account fury10h7ln638jkn55h5wfk2enyszhtv3nf3hxl4ccw 28703931507ufury
-$BINARY add-genesis-account fury1wexz2r5g6rsphka9qqvsqsaalc4shw7hm7wtlf 54051142466ufury
-$BINARY add-genesis-account fury13pqlfc4wesmfwg0mh224khsy9nrek2e3pwamx2 28666189041ufury
-$BINARY add-genesis-account fury1gwqvuzl4xwfwaxacygqkrux4dpgsl4duf785cc 22536969863ufury
-$BINARY add-genesis-account fury1kusnsv5evmtujdvr2hvr5chs9aen0gwyc8g0r2 39539950685ufury
-$BINARY add-genesis-account fury1dkmehpuc582evv2uq70kt0jptpehu3yrp5kkn8 26788501370ufury
+$BINARY add-genesis-account fury1797slhn49lfmgn42vwjh6c6nrxq7k34n503g5t 2965456986ufury
+$BINARY add-genesis-account fury10h7ln638jkn55h5wfk2enyszhtv3nf3hxl4ccw 2870393151ufury
+$BINARY add-genesis-account fury1wexz2r5g6rsphka9qqvsqsaalc4shw7hm7wtlf 5405114247ufury
+$BINARY add-genesis-account fury13pqlfc4wesmfwg0mh224khsy9nrek2e3pwamx2 2866618904ufury
+$BINARY add-genesis-account fury1gwqvuzl4xwfwaxacygqkrux4dpgsl4duf785cc 2253696986ufury
+$BINARY add-genesis-account fury1kusnsv5evmtujdvr2hvr5chs9aen0gwyc8g0r2 3953995068ufury
+$BINARY add-genesis-account fury1dkmehpuc582evv2uq70kt0jptpehu3yrp5kkn8 2678850137ufury
 $BINARY add-genesis-account fury122nwk3z6e4yeh4aj4xad3jmjy38h8jw8m0kpla 5931071233ufury
-$BINARY add-genesis-account fury14lkxkdlrmvv732vhygeev95tmerxec6arkq8hy 59309926027ufury
-$BINARY add-genesis-account fury13fdh9uey7t0hxvg825gdfdx346z7wsq2awsajq 287211515068ufury
-$BINARY add-genesis-account fury1nrye3zfvs7l438n6l56avnnzm6f00me8utjfuz 67767383562ufury
-$BINARY add-genesis-account fury1q97lwrj563g8ccfm6kl9zxndf860v60e8kyuey 14353145205ufury
-$BINARY add-genesis-account fury17mrjke5ra03hqnh7tlk265xlj2asz9lajt7h7z 39539950685ufury
-$BINARY add-genesis-account fury1q84cgldq5wf3am3tfuz2lzzx2azala64urfdca 39539950685ufury
-$BINARY add-genesis-account fury1unwqjxcwv95jfu3nt89ky8zqh39xpqvw8lnanw 14333487671ufury
-$BINARY add-genesis-account fury17parq8q75sr2cejrnrurtt7emfrc35a09xklfa 7100301370ufury
-$BINARY add-genesis-account fury199jfnv587vy4f63gn6t2t4dae42prk24lglnjg 39539950685ufury
-$BINARY add-genesis-account fury154sksmrrrveqcdavk4ugyxmwlmdepdg0hhthw8 39558821918ufury
-$BINARY add-genesis-account fury1q5cddxnk7yqxc4fjfmnpxhygkcl3uw6st5hrly 73620610959ufury
+$BINARY add-genesis-account fury14lkxkdlrmvv732vhygeev95tmerxec6arkq8hy 5930992603ufury
+$BINARY add-genesis-account fury13fdh9uey7t0hxvg825gdfdx346z7wsq2awsajq 2872115151ufury
+$BINARY add-genesis-account fury1nrye3zfvs7l438n6l56avnnzm6f00me8utjfuz 6776738356ufury
+$BINARY add-genesis-account fury1q97lwrj563g8ccfm6kl9zxndf860v60e8kyuey 1435314521ufury
+$BINARY add-genesis-account fury17mrjke5ra03hqnh7tlk265xlj2asz9lajt7h7z 3953995068ufury
+$BINARY add-genesis-account fury1q84cgldq5wf3am3tfuz2lzzx2azala64urfdca 3953995068ufury
+$BINARY add-genesis-account fury1unwqjxcwv95jfu3nt89ky8zqh39xpqvw8lnanw 1433348767ufury
+$BINARY add-genesis-account fury17parq8q75sr2cejrnrurtt7emfrc35a09xklfa 710030137ufury
+$BINARY add-genesis-account fury199jfnv587vy4f63gn6t2t4dae42prk24lglnjg 3953995068ufury
+$BINARY add-genesis-account fury154sksmrrrveqcdavk4ugyxmwlmdepdg0hhthw8 3955882192ufury
+$BINARY add-genesis-account fury1q5cddxnk7yqxc4fjfmnpxhygkcl3uw6st5hrly 7362061096ufury
 $BINARY add-genesis-account fury1lw0ruyesylglsu6m7dhefw4vfh8l8qwegdtraa 9885380822ufury
-$BINARY add-genesis-account fury1zm3z7dd4ee8vfxu82lfmma4wmcnt3z87y4tgra 10932734247ufury
+$BINARY add-genesis-account fury1zm3z7dd4ee8vfxu82lfmma4wmcnt3z87y4tgra 1093273425ufury
 $BINARY add-genesis-account fury1wackempnenwpzkywav6hnmdckqmthv30gw98am 4942690411ufury
-$BINARY add-genesis-account fury1cnzy6g0vet3ykdhk2xgvkvc350d3gke4aw89pv 143521230137ufury
+$BINARY add-genesis-account fury1cnzy6g0vet3ykdhk2xgvkvc350d3gke4aw89pv 1435212301ufury
 $BINARY add-genesis-account fury1r9764rmspkpy0qxx5myxq0kz90dukjnap0pgwe 9884594521ufury
-$BINARY add-genesis-account fury1nk2rycxdgl5gxtd0hpncprwfp0lzeafwgeuya2 18544131507ufury
-$BINARY add-genesis-account fury1nhhvjlq376f4gz6jvptsgv665vr3ss4qwj43sy 29654569863ufury
+$BINARY add-genesis-account fury1nk2rycxdgl5gxtd0hpncprwfp0lzeafwgeuya2 1854413151ufury
+$BINARY add-genesis-account fury1nhhvjlq376f4gz6jvptsgv665vr3ss4qwj43sy 2965456986ufury
 $BINARY add-genesis-account fury16kgjjvhq9s07l639ylpc6sfp4cp6ze8huqrp4d 7907832877ufury
-$BINARY add-genesis-account fury1aqqskedu4zgmjqhpztjqzd7g8sfyzya2mrgmll 29654569863ufury
-$BINARY add-genesis-account fury1fdgys6er5ak4syqgvc8uswcedjwknh6q6x6de6 28137008219ufury
-$BINARY add-genesis-account fury1e5pkymea4jlcmnzvrycc97jfhdzcvpd34sfeyy 59320147945ufury
-$BINARY add-genesis-account fury18rp5vnjsswdazjvrdy2lj4cass9z29h56yczv9 8799498630ufury
-$BINARY add-genesis-account fury1ty8uvzrhy5taa4auc9h9c02x0zfugu0ja6jqak 198251736986ufury
-$BINARY add-genesis-account fury1dn8yt2pe62a9nz964vmj2pwreljxehxcukkymy 197698967123ufury
+$BINARY add-genesis-account fury1aqqskedu4zgmjqhpztjqzd7g8sfyzya2mrgmll 2965456986ufury
+$BINARY add-genesis-account fury1fdgys6er5ak4syqgvc8uswcedjwknh6q6x6de6 2813700822ufury
+$BINARY add-genesis-account fury1e5pkymea4jlcmnzvrycc97jfhdzcvpd34sfeyy 5932014795ufury
+$BINARY add-genesis-account fury18rp5vnjsswdazjvrdy2lj4cass9z29h56yczv9 879949863ufury
+$BINARY add-genesis-account fury1ty8uvzrhy5taa4auc9h9c02x0zfugu0ja6jqak 198251737ufury
+$BINARY add-genesis-account fury1dn8yt2pe62a9nz964vmj2pwreljxehxcukkymy 1976989671ufury
 $BINARY add-genesis-account fury16qt98ac36dtaaxr7axu67z68ue8pjpdcx7h5pl 4962347945ufury
-$BINARY add-genesis-account fury1hwapfpynu0evhdvhnge6929eu0hrpj5pmt6de6 83991139726ufury
-$BINARY add-genesis-account fury145wnzde7ak68zm49yhgyc0apxpj6gwjejxpnpz 15923389041ufury
-$BINARY add-genesis-account fury12u9t55uxfmkd8c4mzpeatvnjmyvuj5gexmucrt 148851567123ufury
-$BINARY add-genesis-account fury1xsmep764kqh3fq4rq7yp7t3qgnjycp9lupcl2t 44757846575ufury
-$BINARY add-genesis-account fury16k7xarsvqf7vv0qhu520rmarpt40g6jthg7jrv 296548057534ufury
-$BINARY add-genesis-account fury1zejc6j533jjgzj64munsps257sa952820h270x 17990575342ufury
+$BINARY add-genesis-account fury1hwapfpynu0evhdvhnge6929eu0hrpj5pmt6de6 8399113973ufury
+$BINARY add-genesis-account fury145wnzde7ak68zm49yhgyc0apxpj6gwjejxpnpz 1592338904ufury
+$BINARY add-genesis-account fury12u9t55uxfmkd8c4mzpeatvnjmyvuj5gexmucrt 1488515671ufury
+$BINARY add-genesis-account fury1xsmep764kqh3fq4rq7yp7t3qgnjycp9lupcl2t 4475784658ufury
+$BINARY add-genesis-account fury16k7xarsvqf7vv0qhu520rmarpt40g6jthg7jrv 2965480575ufury
+$BINARY add-genesis-account fury1zejc6j533jjgzj64munsps257sa952820h270x 1799057534ufury
 $BINARY add-genesis-account fury1wypy5jw7xz0lkrz3ky538vr4e7seuvs94q4qf9 4942690411ufury
-$BINARY add-genesis-account fury19frtd7huz6zrefnz3zl64z6q8r9wkt3pgdne7l 14366512329ufury
-$BINARY add-genesis-account fury1lqseqddsce3yu5wa7atf8feqqfyn3lcma03h9p 187606002740ufury
+$BINARY add-genesis-account fury19frtd7huz6zrefnz3zl64z6q8r9wkt3pgdne7l 1436651233ufury
+$BINARY add-genesis-account fury1lqseqddsce3yu5wa7atf8feqqfyn3lcma03h9p 1876060027ufury
 $BINARY add-genesis-account fury1elhw3cct0jgxvf2tw5yrrkc6u02shg8zpr58vq 5931071233ufury
-$BINARY add-genesis-account fury19rn5vwga60kun3j38taxd26cm7lelgdapah08v 14453791781ufury
-$BINARY add-genesis-account fury1htxf0fcfmyxyw8stjw38jz2s3muh3q6y905m29 14392460274ufury
-$BINARY add-genesis-account fury1ymtq3eyk2s6q44phkqv8k35jqve52d0z7dxt52 19788846575ufury
-$BINARY add-genesis-account fury169qmwy36jkhfzjdft3ptqqmj2zgkc3tvja47cd 59309926027ufury
+$BINARY add-genesis-account fury19rn5vwga60kun3j38taxd26cm7lelgdapah08v 1445379178ufury
+$BINARY add-genesis-account fury1htxf0fcfmyxyw8stjw38jz2s3muh3q6y905m29 1439246027ufury
+$BINARY add-genesis-account fury1ymtq3eyk2s6q44phkqv8k35jqve52d0z7dxt52 1978884658ufury
+$BINARY add-genesis-account fury169qmwy36jkhfzjdft3ptqqmj2zgkc3tvja47cd 5930992603ufury
 $BINARY add-genesis-account fury1w6pktm54f5zgq032xxacc3ylme98t560wglncp 9885380822ufury
 $BINARY add-genesis-account fury1zjvwyksf9vnk0dwxx3n8m9xlw6pglnf0g9cga2 4942690411ufury
-$BINARY add-genesis-account fury1zurjhfcc5365dsy58unk6rnh9nltfsqqx8xjz3 19769975342ufury
-$BINARY add-genesis-account fury134fwqahtfrg0zfr8x2su46fmrwme5mzw647qxg 12277309589ufury
-$BINARY add-genesis-account fury1mgmcztfm8vvmfdmtlzk3n523vqm275j7j9h5n2 16234764384ufury
-$BINARY add-genesis-account fury1r0afwj9krzmwsadjm6l6y7mlnq6l7px0w7xrr5 11102575342ufury
-$BINARY add-genesis-account fury1acd5nzld4f3c268cax90lk6he7m2w5ml64qkaw 19769189041ufury
-$BINARY add-genesis-account fury1lmw6wtyk0w6zg6jh05z4t5l7amvsalap5alx6k 39543095890ufury
-$BINARY add-genesis-account fury1wxvs6du63g8nmm5jpd3lzgwl6mqv0je9g6478l 14827284932ufury
-$BINARY add-genesis-account fury17zjpts3cd35tesmwrunkynygyw7fuamsg8ncgk 9390797260ufury
+$BINARY add-genesis-account fury1zurjhfcc5365dsy58unk6rnh9nltfsqqx8xjz3 1976997534ufury
+$BINARY add-genesis-account fury134fwqahtfrg0zfr8x2su46fmrwme5mzw647qxg 1227730959ufury
+$BINARY add-genesis-account fury1mgmcztfm8vvmfdmtlzk3n523vqm275j7j9h5n2 1623476438ufury
+$BINARY add-genesis-account fury1r0afwj9krzmwsadjm6l6y7mlnq6l7px0w7xrr5 1110257534ufury
+$BINARY add-genesis-account fury1acd5nzld4f3c268cax90lk6he7m2w5ml64qkaw 1976918904ufury
+$BINARY add-genesis-account fury1lmw6wtyk0w6zg6jh05z4t5l7amvsalap5alx6k 3954309589ufury
+$BINARY add-genesis-account fury1wxvs6du63g8nmm5jpd3lzgwl6mqv0je9g6478l 1482728493ufury
+$BINARY add-genesis-account fury17zjpts3cd35tesmwrunkynygyw7fuamsg8ncgk 939079726ufury
 $BINARY add-genesis-account fury1ygqgkduw25g5uezflw4gnsm4n2yvawkm33y2ry 4942690411ufury
-$BINARY add-genesis-account fury1zjydgdhd8uk4u29tq2e68j7kmqxrk3vsd4qnjm 14352358904ufury
-$BINARY add-genesis-account fury1x60g2u04z7jzdnjf3znfdcxa9ut5kufql3n6hr 397518589041ufury
-$BINARY add-genesis-account fury15tmdfth2kmmaedag9sk7j0nw4herj39ayu0v3r 177928991781ufury
+$BINARY add-genesis-account fury1zjydgdhd8uk4u29tq2e68j7kmqxrk3vsd4qnjm 143523589ufury
+$BINARY add-genesis-account fury1x60g2u04z7jzdnjf3znfdcxa9ut5kufql3n6hr 397518589ufury
+$BINARY add-genesis-account fury15tmdfth2kmmaedag9sk7j0nw4herj39ayu0v3r 1779289918ufury
 $BINARY add-genesis-account fury1r4w3ae4vuyatckn8pahvexl4kpvmndref9lfwv 7907832877ufury
 $BINARY add-genesis-account fury19j5upjz972gh24890tn6mpf4gzqdk09a8vjw6m 9884594521ufury
 $BINARY add-genesis-account fury1cg3e7sfxkunmwgfsrqj3caju9aheuzlzmh76nx 4942690411ufury
-$BINARY add-genesis-account fury1ca6vj94jtn5v57prr826ncskrm0reatecv6rz7 81993934247ufury
-$BINARY add-genesis-account fury1ltk76ycjtz05j7ww7yznrr5cn5kz58zas0my7l 19769975342ufury
-$BINARY add-genesis-account fury1y26ufq905uy0s27ftujamqm5y8gdys8dv3r3xm 19769975342ufury
+$BINARY add-genesis-account fury1ca6vj94jtn5v57prr826ncskrm0reatecv6rz7 8199393425ufury
+$BINARY add-genesis-account fury1ltk76ycjtz05j7ww7yznrr5cn5kz58zas0my7l 1976997534ufury
+$BINARY add-genesis-account fury1y26ufq905uy0s27ftujamqm5y8gdys8dv3r3xm 1976997534ufury
 $BINARY add-genesis-account fury122phsq2td9x3cv9pwszse3f69smfhhncndny3m 6919452055ufury
-$BINARY add-genesis-account fury1vv6rsgxqh4hyxtt6dt4rmv4a93n7amjt4j0n95 14969605479ufury
-$BINARY add-genesis-account fury14cyvvq5nptglnjy2hg9ky6r26349v73nfwp4qe 41516712329ufury
+$BINARY add-genesis-account fury1vv6rsgxqh4hyxtt6dt4rmv4a93n7amjt4j0n95 1496960548ufury
+$BINARY add-genesis-account fury14cyvvq5nptglnjy2hg9ky6r26349v73nfwp4qe 4151671233ufury
 $BINARY add-genesis-account fury1clseqnswluj79tzpng60sqhy3nf7pz0hvnuhe8 5931071233ufury
-$BINARY add-genesis-account fury1vvgh02zkh4qf9hydk0walw9nyx4udemrnyvmvw 24672564384ufury
+$BINARY add-genesis-account fury1vvgh02zkh4qf9hydk0walw9nyx4udemrnyvmvw 2467256438ufury
 $BINARY add-genesis-account fury1ecm2vqdexfqy6kfpwdxxpl37vy289pmh8ya9hv 4942690411ufury
-$BINARY add-genesis-account fury1je5w89kn456ctj7fd3y4w4rf3f7klj6xr5s0c5 39558035616ufury
-$BINARY add-genesis-account fury1yuqgnfuavv2wf6lpsr0w6wqed9d7grza2675hy 42030167123ufury
+$BINARY add-genesis-account fury1je5w89kn456ctj7fd3y4w4rf3f7klj6xr5s0c5 3955803562ufury
+$BINARY add-genesis-account fury1yuqgnfuavv2wf6lpsr0w6wqed9d7grza2675hy 4203016712ufury
+$BINARY add-genesis-account fury129kdy7qdk5r4qgrenqdd6ftjjuvcc3hqxtuxey 7907911507ufury
 $BINARY add-genesis-account fury10d4udrt2md9dzeqfaytkdhcd9utsmvxk05y4cf 6919452055ufury
-$BINARY add-genesis-account fury108gy2rzhx27jj96argmgpesvlj9ur6k8tejz84 14335060274ufury
+$BINARY add-genesis-account fury108gy2rzhx27jj96argmgpesvlj9ur6k8tejz84 1433506027ufury
 $BINARY add-genesis-account fury1le8x5sn43nxn0sz5vuze509sea70sc6jyqj5ah 6919452055ufury
-$BINARY add-genesis-account fury1xvf0jjf9vkqz40rdlmm67cfhlzcwu520knk7yu 19769975342ufury
-$BINARY add-genesis-account fury1tu4g3fpx9282y2ejt6zv6m9geq97mym57ln33w 10675613699ufury
+$BINARY add-genesis-account fury1xvf0jjf9vkqz40rdlmm67cfhlzcwu520knk7yu 1976997534ufury
+$BINARY add-genesis-account fury1tu4g3fpx9282y2ejt6zv6m9geq97mym57ln33w 106756137ufury
 $BINARY add-genesis-account fury168q4t94pxq97fy8vqenc6fx3znc7p8fe9y8kxq 4942690411ufury
-$BINARY add-genesis-account fury1fzd65shhhkl7d3g2f5377fufd4k9adn2ph7zae 23723498630ufury
-$BINARY add-genesis-account fury1yafjl2890r3gn38dc7ksp5r6vnfmy8udlf4ut6 164714410959ufury
+$BINARY add-genesis-account fury1fzd65shhhkl7d3g2f5377fufd4k9adn2ph7zae 2372349863ufury
+$BINARY add-genesis-account fury1yafjl2890r3gn38dc7ksp5r6vnfmy8udlf4ut6 164714411ufury
 $BINARY add-genesis-account fury1l52awqe7p8r9mmpm27c5avywt9urqdpd9x7qlm 6919452055ufury
 $BINARY add-genesis-account fury1fqtp07xjqwx2my5n42vcwufu6hc70zw4m7wlx0 4942690411ufury
-$BINARY add-genesis-account fury18ws6vgl6w84qcs0wncup25va9ze88852drenza 27677808219ufury
+$BINARY add-genesis-account fury18ws6vgl6w84qcs0wncup25va9ze88852drenza 2767780822ufury
 $BINARY add-genesis-account fury1vu2p0zta4lg4fsdv777ugmajyvqrcsljm56nuq 7907832877ufury
-$BINARY add-genesis-account fury1wltvdtjdnpe6uh5adg0m7ydy8cle8wwykfcqdd 19786487671ufury
-$BINARY add-genesis-account fury12m90u3cetug08frawfu0p6jd96s354xd78z4mg 19769975342ufury
-$BINARY add-genesis-account fury1pm350tzyg0rvvma7e43ezz729yxa5ljukn92z7 182615347945ufury
-$BINARY add-genesis-account fury1pm3pva53gv4nnhvmduuh322pjmxv98t62zu8jx 19783342466ufury
-$BINARY add-genesis-account fury1y2l7gnylqw3yp6u52tfgxuk0klx5uymsplxknl 79079115068ufury
+$BINARY add-genesis-account fury1wltvdtjdnpe6uh5adg0m7ydy8cle8wwykfcqdd 1978648767ufury
+$BINARY add-genesis-account fury12m90u3cetug08frawfu0p6jd96s354xd78z4mg 1976997534ufury
+$BINARY add-genesis-account fury1pm350tzyg0rvvma7e43ezz729yxa5ljukn92z7 1826153479ufury
+$BINARY add-genesis-account fury1pm3pva53gv4nnhvmduuh322pjmxv98t62zu8jx 1978334247ufury
+$BINARY add-genesis-account fury1y2l7gnylqw3yp6u52tfgxuk0klx5uymsplxknl 7907911507ufury
 $BINARY add-genesis-account fury1gyv42pg4j790wlqt5muge7pe9d9xdw7rmlx3rt 4942690411ufury
-$BINARY add-genesis-account fury1klfd2u30qakx8qeqcw0xdcc3p3djq7htt6ny3c 39090972603ufury
-$BINARY add-genesis-account fury145tk8ry9gzmr5jyn96pznfanadxqrvmp069rcz 28691350685ufury
-$BINARY add-genesis-account fury17tc5dxkejps3adusaluzu7xn9jmg7qmwffky7t 19769975342ufury
+$BINARY add-genesis-account fury1klfd2u30qakx8qeqcw0xdcc3p3djq7htt6ny3c 390909726ufury
+$BINARY add-genesis-account fury145tk8ry9gzmr5jyn96pznfanadxqrvmp069rcz 2869135068ufury
+$BINARY add-genesis-account fury17tc5dxkejps3adusaluzu7xn9jmg7qmwffky7t 1976997534ufury
 $BINARY add-genesis-account fury170k6xd7atru2uzmnqy345gyr5xcw8ke7plx6h0 4942690411ufury
 $BINARY add-genesis-account fury1xe7fkxfkl882uua6zyjadv296umtxdyktwunaw 7907832877ufury
 $BINARY add-genesis-account fury1kxyzha73fnrzd8sf3a44dnl89whrvkdyftn23c 5931071233ufury
-$BINARY add-genesis-account fury14z20ghpgxayvll6ppz9m4pxp939tx2uz0p8wcj 19769975342ufury
-$BINARY add-genesis-account fury1cuazcgw2m3x5r9gkyusrugn50wee4t9p9h544m 10928802740ufury
+$BINARY add-genesis-account fury14z20ghpgxayvll6ppz9m4pxp939tx2uz0p8wcj 1976997534ufury
+$BINARY add-genesis-account fury1cuazcgw2m3x5r9gkyusrugn50wee4t9p9h544m 1092880274ufury
 $BINARY add-genesis-account fury1rd4xs8xvggyrejjsemrjs9vxs4h6hdgq2y0hnt 7907832877ufury
 $BINARY add-genesis-account fury1ahrzs5snug646umdeeqrw6dap6ex0mntwjjwq8 5931071233ufury
 $BINARY add-genesis-account fury10qrkeqjjdyx7zsfdx9cszj89xjph2ctm2umzy3 9884594521ufury
-$BINARY add-genesis-account fury1wa3lf2p624khztlrcz8kuh3sq8sfret20czkra 13838904110ufury
-$BINARY add-genesis-account fury1u7wn3x6zphmuh0yuld7jly72725d4re6expcxs 138389041096ufury
-$BINARY add-genesis-account fury1yrd99my556rvsfppfm96z6v7n439rr0xpe5xcm 17793213699ufury
-$BINARY add-genesis-account fury14lxhx09fyemu9lw46c9m9jk63cg6u8wdwgjzd6 18208380822ufury
+$BINARY add-genesis-account fury1wa3lf2p624khztlrcz8kuh3sq8sfret20czkra 1383890411ufury
+$BINARY add-genesis-account fury1u7wn3x6zphmuh0yuld7jly72725d4re6expcxs 1383890411ufury
+$BINARY add-genesis-account fury1yrd99my556rvsfppfm96z6v7n439rr0xpe5xcm 177932137ufury
+$BINARY add-genesis-account fury14lxhx09fyemu9lw46c9m9jk63cg6u8wdwgjzd6 1820838082ufury
 $BINARY add-genesis-account fury14c4ldwt8grnp6p9eq8kumw9uq63h8k46lfhs3a 9884594521ufury
-$BINARY add-genesis-account fury1hqgete6pcc2v6zsp6kl4dr892wwgdkenyf0vns 59309926027ufury
-$BINARY add-genesis-account fury1fh738d3juq6zysrgu5cg52kjqt4d2z3gagg8pr 19990926027ufury
+$BINARY add-genesis-account fury1hqgete6pcc2v6zsp6kl4dr892wwgdkenyf0vns 5930992603ufury
+$BINARY add-genesis-account fury1fh738d3juq6zysrgu5cg52kjqt4d2z3gagg8pr 1999092603ufury
 $BINARY add-genesis-account fury143yykhk2r0hpj572qw4f7669hnx64r8n30j7nl 4942690411ufury
 $BINARY add-genesis-account fury16wxtrzta2c9pnr3gxq7vax48kvhtw32lc9fppd 6919452055ufury
 $BINARY add-genesis-account fury1pzt8ykkt4puf0xef4h0xgf4watffgp405j5wrv 9884594521ufury
-$BINARY add-genesis-account fury1le6qxteptv3cc29cyt2clm6zmzmn4x573unw3m 11862142466ufury
+$BINARY add-genesis-account fury1le6qxteptv3cc29cyt2clm6zmzmn4x573unw3m 1186214247ufury
 $BINARY add-genesis-account fury1d727nqk2j0k8pyd7qt9s4yh7x559r04apwjjc6 4942690411ufury
 $BINARY add-genesis-account fury130s6vp9xk0h2fffcec0km06qp2nkdqjld70zee 9884594521ufury
-$BINARY add-genesis-account fury16uru2e0ja9j9fppg7at7s0pm0en5sr3rlm22u8 39539950685ufury
+$BINARY add-genesis-account fury16uru2e0ja9j9fppg7at7s0pm0en5sr3rlm22u8 3953995068ufury
 $BINARY add-genesis-account fury1fsezzt4rj6cm0my6z3f9hj3scvrkw5nssepqlu 5931071233ufury
 $BINARY add-genesis-account fury12dlda2x3fm6rqyplnk2sdemspcc9gwdjmc0hd5 9884594521ufury
-$BINARY add-genesis-account fury1w4v0tjfpfqrncl3mh8ezmceyjfjnnukzkau37d 10008830137ufury
+$BINARY add-genesis-account fury1w4v0tjfpfqrncl3mh8ezmceyjfjnnukzkau37d 1000883014ufury
 
-merlin gentx validator1 500000000ufury --keyring-backend=test --chain-id="blackfury-1"
-merlin collect-gentxs 
+# Create a delegation tx for the validator and add to genesis
 
-# update staking genesis
-update_genesis '.app_state["staking"]["params"]["unbonding_time"]="240s"'
+$BINARY gentx $validatorKeyName 1000000000ufury --keyring-backend test --chain-id $chainID
+
 
 # Replace stake with ufury
-sed -in-place='' 's/stake/ufury/g' $HOME/.merlin/config/genesis.json
+sed -in-place='' 's/stake/ufury/g' $DATA/config/genesis.json
 
-# update crisis variable to ufury
-update_genesis '.app_state["crisis"]["constant_fee"]["denom"]="ufury"'
-
-# udpate gov genesis
-update_genesis '.app_state["gov"]["voting_params"]["voting_period"]="60s"'
-update_genesis '.app_state["gov"]["deposit_params"]["min_deposit"][0]["denom"]="ufury"'
-
-# update epochs genesis
-update_genesis '.app_state["epochs"]["epochs"][1]["duration"]="60s"'
-
-# update poolincentives genesis
-update_genesis '.app_state["poolincentives"]["lockable_durations"][0]="120s"'
-update_genesis '.app_state["poolincentives"]["lockable_durations"][1]="180s"'
-update_genesis '.app_state["poolincentives"]["lockable_durations"][2]="240s"'
-update_genesis '.app_state["poolincentives"]["params"]["minted_denom"]="ufury"'
-
-# update incentives genesis
-update_genesis '.app_state["incentives"]["lockable_durations"][0]="1s"'
-update_genesis '.app_state["incentives"]["lockable_durations"][1]="120s"'
-update_genesis '.app_state["incentives"]["lockable_durations"][2]="180s"'
-update_genesis '.app_state["incentives"]["lockable_durations"][3]="240s"'
-update_genesis '.app_state["incentives"]["params"]["distr_epoch_identifier"]="day"'
-
-# update mint genesis
-update_genesis '.app_state["mint"]["params"]["mint_denom"]="ufury"'
-update_genesis '.app_state["mint"]["params"]["epoch_identifier"]="day"'
-
-# update gamm genesis
-update_genesis '.app_state["gamm"]["params"]["pool_creation_fee"][0]["denom"]="ufury"'
-
-
-
-# port key (validator1 uses default ports)
-# validator1 1317, 9090, 9091, 26658, 26657, 26656, 6060
-# validator2 1316, 9088, 9089, 26655, 26654, 26653, 6061
-# validator3 1315, 9086, 9087, 26652, 26651, 26650, 6062
-
-
-# change app.toml values
-VALIDATOR2_APP_TOML=$HOME/.merlin/validator2/config/app.toml
-VALIDATOR3_APP_TOML=$HOME/.merlin/validator3/config/app.toml
-VALIDATOR4_APP_TOML=$HOME/.merlin/validator4/config/app.toml
-VALIDATOR5_APP_TOML=$HOME/.merlin/validator5/config/app.toml
-VALIDATOR6_APP_TOML=$HOME/.merlin/validator6/config/app.toml
-VALIDATOR7_APP_TOML=$HOME/.merlin/validator7/config/app.toml
-VALIDATOR8_APP_TOML=$HOME/.merlin/validator8/config/app.toml
-VALIDATOR9_APP_TOML=$HOME/.merlin/validator9/config/app.toml
-
-# validator2
-sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1316|g' $VALIDATOR2_APP_TOML
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:9088|g' $VALIDATOR2_APP_TOML
-sed -i -E 's|0.0.0.0:9091|0.0.0.0:9089|g' $VALIDATOR2_APP_TOML
-
-# validator3
-sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1315|g' $VALIDATOR3_APP_TOML
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:9086|g' $VALIDATOR3_APP_TOML
-sed -i -E 's|0.0.0.0:9091|0.0.0.0:9087|g' $VALIDATOR3_APP_TOML
-
-# validator4
-sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1314|g' $VALIDATOR4_APP_TOML
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:7088|g' $VALIDATOR4_APP_TOML
-sed -i -E 's|0.0.0.0:9091|0.0.0.0:7089|g' $VALIDATOR4_APP_TOML
-
-# validator5
-sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1313|g' $VALIDATOR5_APP_TOML
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:6086|g' $VALIDATOR5_APP_TOML
-sed -i -E 's|0.0.0.0:9091|0.0.0.0:6087|g' $VALIDATOR5_APP_TOML
-
-# validator6
-sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1312|g' $VALIDATOR6_APP_TOML
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:5088|g' $VALIDATOR6_APP_TOML
-sed -i -E 's|0.0.0.0:9091|0.0.0.0:5089|g' $VALIDATOR6_APP_TOML
-
-# validator7
-sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1311|g' $VALIDATOR7_APP_TOML
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:4086|g' $VALIDATOR7_APP_TOML
-sed -i -E 's|0.0.0.0:9091|0.0.0.0:4087|g' $VALIDATOR7_APP_TOML
-
-# validator8
-sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1310|g' $VALIDATOR2_APP_TOML
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:3088|g' $VALIDATOR8_APP_TOML
-sed -i -E 's|0.0.0.0:9091|0.0.0.0:3089|g' $VALIDATOR8_APP_TOML
-
-# validator9
-sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1319|g' $VALIDATOR9_APP_TOML
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:2086|g' $VALIDATOR9_APP_TOML
-sed -i -E 's|0.0.0.0:9091|0.0.0.0:2087|g' $VALIDATOR9_APP_TOML
-
-
-# change config.toml values
-VALIDATOR1_CONFIG=$HOME/.merlin/config/config.toml
-VALIDATOR2_CONFIG=$HOME/.merlin/validator2/config/config.toml
-VALIDATOR3_CONFIG=$HOME/.merlin/validator3/config/config.toml
-VALIDATOR4_CONFIG=$HOME/.merlin/validator4/config/config.toml
-VALIDATOR5_CONFIG=$HOME/.merlin/validator5/config/config.toml
-VALIDATOR6_CONFIG=$HOME/.merlin/validator6/config/config.toml
-VALIDATOR7_CONFIG=$HOME/.merlin/validator7/config/config.toml
-VALIDATOR8_CONFIG=$HOME/.merlin/validator8/config/config.toml
-VALIDATOR9_CONFIG=$HOME/.merlin/validator9/config/config.toml
-
-# validator1
-sed -i -E 's|allow_duplicate_ip = false|allow_duplicate_ip = true|g' $VALIDATOR1_CONFIG
-# validator2
-sed -i -E 's|tcp://127.0.0.1:26658|tcp://127.0.0.1:26668|g' $VALIDATOR2_CONFIG
-sed -i -E 's|tcp://127.0.0.1:26657|tcp://127.0.0.1:26667|g' $VALIDATOR2_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26666|g' $VALIDATOR2_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26666|g' $VALIDATOR2_CONFIG
-sed -i -E 's|allow_duplicate_ip = false|allow_duplicate_ip = true|g' $VALIDATOR2_CONFIG
-# validator3
-sed -i -E 's|tcp://127.0.0.1:26658|tcp://127.0.0.1:26678|g' $VALIDATOR3_CONFIG
-sed -i -E 's|tcp://127.0.0.1:26657|tcp://127.0.0.1:26677|g' $VALIDATOR3_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26676|g' $VALIDATOR3_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26676|g' $VALIDATOR3_CONFIG
-sed -i -E 's|allow_duplicate_ip = false|allow_duplicate_ip = true|g' $VALIDATOR3_CONFIG
-# validator4
-sed -i -E 's|tcp://127.0.0.1:26658|tcp://127.0.0.1:26648|g' $VALIDATOR4_CONFIG
-sed -i -E 's|tcp://127.0.0.1:26657|tcp://127.0.0.1:26647|g' $VALIDATOR4_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26646|g' $VALIDATOR4_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26646|g' $VALIDATOR4_CONFIG
-sed -i -E 's|allow_duplicate_ip = false|allow_duplicate_ip = true|g' $VALIDATOR4_CONFIG
-# validator5
-sed -i -E 's|tcp://127.0.0.1:26658|tcp://127.0.0.1:26638|g' $VALIDATOR5_CONFIG
-sed -i -E 's|tcp://127.0.0.1:26657|tcp://127.0.0.1:26637|g' $VALIDATOR5_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26636|g' $VALIDATOR5_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26636|g' $VALIDATOR5_CONFIG
-sed -i -E 's|allow_duplicate_ip = false|allow_duplicate_ip = true|g' $VALIDATOR5_CONFIG
-# validator6
-sed -i -E 's|tcp://127.0.0.1:26658|tcp://127.0.0.1:26628|g' $VALIDATOR6_CONFIG
-sed -i -E 's|tcp://127.0.0.1:26657|tcp://127.0.0.1:26627|g' $VALIDATOR6_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26626|g' $VALIDATOR6_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26626|g' $VALIDATOR6_CONFIG
-sed -i -E 's|allow_duplicate_ip = false|allow_duplicate_ip = true|g' $VALIDATOR6_CONFIG
-# validator7
-sed -i -E 's|tcp://127.0.0.1:26658|tcp://127.0.0.1:26618|g' $VALIDATOR7_CONFIG
-sed -i -E 's|tcp://127.0.0.1:26657|tcp://127.0.0.1:26617|g' $VALIDATOR7_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26616|g' $VALIDATOR7_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26616|g' $VALIDATOR7_CONFIG
-sed -i -E 's|allow_duplicate_ip = false|allow_duplicate_ip = true|g' $VALIDATOR7_CONFIG
-# validator8
-sed -i -E 's|tcp://127.0.0.1:26658|tcp://127.0.0.1:26698|g' $VALIDATOR8_CONFIG
-sed -i -E 's|tcp://127.0.0.1:26657|tcp://127.0.0.1:26697|g' $VALIDATOR8_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26696|g' $VALIDATOR8_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26696|g' $VALIDATOR8_CONFIG
-sed -i -E 's|allow_duplicate_ip = false|allow_duplicate_ip = true|g' $VALIDATOR8_CONFIG
-# validator9
-sed -i -E 's|tcp://127.0.0.1:26658|tcp://127.0.0.1:26688|g' $VALIDATOR9_CONFIG
-sed -i -E 's|tcp://127.0.0.1:26657|tcp://127.0.0.1:26687|g' $VALIDATOR9_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26686|g' $VALIDATOR9_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26686|g' $VALIDATOR9_CONFIG
-sed -i -E 's|allow_duplicate_ip = false|allow_duplicate_ip = true|g' $VALIDATOR9_CONFIG
-
-# copy validator1 genesis file to validator2-3
-cp $HOME/.merlin/config/genesis.json $HOME/.merlin/validator2/config/genesis.json
-cp $HOME/.merlin/config/genesis.json $HOME/.merlin/validator3/config/genesis.json
-cp $HOME/.merlin/config/genesis.json $HOME/.merlin/validator4/config/genesis.json
-cp $HOME/.merlin/config/genesis.json $HOME/.merlin/validator5/config/genesis.json
-cp $HOME/.merlin/config/genesis.json $HOME/.merlin/validator6/config/genesis.json
-cp $HOME/.merlin/config/genesis.json $HOME/.merlin/validator7/config/genesis.json
-cp $HOME/.merlin/config/genesis.json $HOME/.merlin/validator8/config/genesis.json
-cp $HOME/.merlin/config/genesis.json $HOME/.merlin/validator9/config/genesis.json
-
-# copy tendermint node id of validator1 to persistent peers of validator2-3
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$(merlin tendermint show-node-id --home=$HOME/.merlin)@localhost:26656\"|g" $HOME/.merlin/validator2/config/config.toml
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$(merlin tendermint show-node-id --home=$HOME/.merlin)@localhost:26656\"|g" $HOME/.merlin/validator3/config/config.toml
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$(merlin tendermint show-node-id --home=$HOME/.merlin)@localhost:26656\"|g" $HOME/.merlin/validator4/config/config.toml
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$(merlin tendermint show-node-id --home=$HOME/.merlin)@localhost:26656\"|g" $HOME/.merlin/validator5/config/config.toml
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$(merlin tendermint show-node-id --home=$HOME/.merlin)@localhost:26656\"|g" $HOME/.merlin/validator6/config/config.toml
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$(merlin tendermint show-node-id --home=$HOME/.merlin)@localhost:26656\"|g" $HOME/.merlin/validator7/config/config.toml
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$(merlin tendermint show-node-id --home=$HOME/.merlin)@localhost:26656\"|g" $HOME/.merlin/validator8/config/config.toml
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$(merlin tendermint show-node-id --home=$HOME/.merlin)@localhost:26656\"|g" $HOME/.merlin/validator9/config/config.toml
-
-
-# start all nine validators
-tmux new -s validator1 -d merlin start 
-tmux new -s validator2 -d merlin start --home=$HOME/.merlin/validator2
-tmux new -s validator3 -d merlin start --home=$HOME/.merlin/validator3
-tmux new -s validator4 -d merlin start --home=$HOME/.merlin/validator4
-tmux new -s validator5 -d merlin start --home=$HOME/.merlin/validator5
-tmux new -s validator6 -d merlin start --home=$HOME/.merlin/validator6
-tmux new -s validator7 -d merlin start --home=$HOME/.merlin/validator7
-tmux new -s validator8 -d merlin start --home=$HOME/.merlin/validator8
-tmux new -s validator9 -d merlin start --home=$HOME/.merlin/validator9
-
-# send ufury from first validator to other validators
-echo "Waiting 7 seconds to send funds to validators 2 to 5..."
-sleep 7
-merlin tx bank send validator1 $(merlin keys show validator2 -a --keyring-backend=test --home=$HOME/.merlin/validator2) 100000000000ufury --keyring-backend=test  --chain-id="blackfury-1" --broadcast-mode block --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx bank send validator1 $(merlin keys show validator3 -a --keyring-backend=test --home=$HOME/.merlin/validator3) 100000000000ufury --keyring-backend=test  --chain-id="blackfury-1" --broadcast-mode block --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx bank send validator1 $(merlin keys show validator4 -a --keyring-backend=test --home=$HOME/.merlin/validator4) 100000000000ufury --keyring-backend=test  --chain-id="blackfury-1" --broadcast-mode block --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx bank send validator1 $(merlin keys show validator5 -a --keyring-backend=test --home=$HOME/.merlin/validator5) 100000000000ufury --keyring-backend=test  --chain-id="blackfury-1" --broadcast-mode block --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx bank send validator1 $(merlin keys show validator6 -a --keyring-backend=test --home=$HOME/.merlin/validator6) 100000000000ufury --keyring-backend=test  --chain-id="blackfury-1" --broadcast-mode block --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx bank send validator1 $(merlin keys show validator7 -a --keyring-backend=test --home=$HOME/.merlin/validator7) 100000000000ufury --keyring-backend=test  --chain-id="blackfury-1" --broadcast-mode block --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx bank send validator1 $(merlin keys show validator8 -a --keyring-backend=test --home=$HOME/.merlin/validator8) 100000000000ufury --keyring-backend=test  --chain-id="blackfury-1" --broadcast-mode block --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx bank send validator1 $(merlin keys show validator9 -a --keyring-backend=test --home=$HOME/.merlin/validator9) 100000000000ufury --keyring-backend=test  --chain-id="blackfury-1" --broadcast-mode block --node http://localhost:26657 --yes --fees 200000ufury
-# create second & third validator
-merlin tx staking create-validator --amount=90000000000ufury --from=validator2 --pubkey=$(merlin tendermint show-validator --home=$HOME/.merlin/validator2) --moniker="validator2" --chain-id="blackfury-1" --commission-rate="0.1" --commission-max-rate="0.2" --commission-max-change-rate="0.05" --min-self-delegation="500000000" --keyring-backend=test --home=$HOME/.merlin/validator2 --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx staking create-validator --amount=90000000000ufury --from=validator3 --pubkey=$(merlin tendermint show-validator --home=$HOME/.merlin/validator3) --moniker="validator3" --chain-id="blackfury-1" --commission-rate="0.1" --commission-max-rate="0.2" --commission-max-change-rate="0.05" --min-self-delegation="400000000" --keyring-backend=test --home=$HOME/.merlin/validator3 --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx staking create-validator --amount=90000000000ufury --from=validator4 --pubkey=$(merlin tendermint show-validator --home=$HOME/.merlin/validator4) --moniker="validator4" --chain-id="blackfury-1" --commission-rate="0.1" --commission-max-rate="0.2" --commission-max-change-rate="0.05" --min-self-delegation="500000000" --keyring-backend=test --home=$HOME/.merlin/validator4 --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx staking create-validator --amount=90000000000ufury --from=validator5 --pubkey=$(merlin tendermint show-validator --home=$HOME/.merlin/validator5) --moniker="validator5" --chain-id="blackfury-1" --commission-rate="0.1" --commission-max-rate="0.2" --commission-max-change-rate="0.05" --min-self-delegation="400000000" --keyring-backend=test --home=$HOME/.merlin/validator5 --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx staking create-validator --amount=90000000000ufury --from=validator6 --pubkey=$(merlin tendermint show-validator --home=$HOME/.merlin/validator6) --moniker="validator6" --chain-id="blackfury-1" --commission-rate="0.1" --commission-max-rate="0.2" --commission-max-change-rate="0.05" --min-self-delegation="500000000" --keyring-backend=test --home=$HOME/.merlin/validator6 --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx staking create-validator --amount=90000000000ufury --from=validator7 --pubkey=$(merlin tendermint show-validator --home=$HOME/.merlin/validator7) --moniker="validator7" --chain-id="blackfury-1" --commission-rate="0.1" --commission-max-rate="0.2" --commission-max-change-rate="0.05" --min-self-delegation="400000000" --keyring-backend=test --home=$HOME/.merlin/validator7 --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx staking create-validator --amount=90000000000ufury --from=validator8 --pubkey=$(merlin tendermint show-validator --home=$HOME/.merlin/validator8) --moniker="validator8" --chain-id="blackfury-1" --commission-rate="0.1" --commission-max-rate="0.2" --commission-max-change-rate="0.05" --min-self-delegation="500000000" --keyring-backend=test --home=$HOME/.merlin/validator8 --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx staking create-validator --amount=90000000000ufury --from=validator9 --pubkey=$(merlin tendermint show-validator --home=$HOME/.merlin/validator9) --moniker="validator9" --chain-id="blackfury-1" --commission-rate="0.1" --commission-max-rate="0.2" --commission-max-change-rate="0.05" --min-self-delegation="400000000" --keyring-backend=test --home=$HOME/.merlin/validator9 --node http://localhost:26657 --yes --fees 200000ufury
-
-merlin tx gamm create-pool --pool-file=./stake-ufury.json --from=validator1 --keyring-backend=test --chain-id="blackfury-1" --yes --fees 200000ufury 
-sleep 7
-
-# test swap in pool created
-merlin tx gamm swap-exact-amount-in 100000ufury 50000 --swap-route-pool-ids=1 --swap-route-denoms=jinx --from=validator1 --keyring-backend=test --chain-id=blackfury-1 --yes --fees 200000ufury
-sleep 7
-
-# create a lock up with lockable duration 360h
-merlin tx lockup lock-tokens 10000000000000000000gamm/pool/1 --duration=360h --from=validator1 --keyring-backend=test --chain-id=blackfury-1 --yes --fees 200000ufury
-sleep 7
-
-# submit and pass proposal for superfluid
-merlin tx gov submit-proposal set-superfluid-assets-proposal --title="set superfluid assets" --description="set superfluid assets description" --superfluid-assets="gamm/pool/1" --deposit=10000000ufury --from=validator1 --chain-id=blackfury-1 --keyring-backend=test --yes --fees 200000ufury
-sleep 7
-
-merlin tx gov deposit 1 10000000jinx --from=validator1 --keyring-backend=test --chain-id=blackfury-1 --yes --fees 200000ufury
-sleep 7
-
-merlin tx gov vote 1 yes --from=validator1 --keyring-backend=test --chain-id=blackfury-1 --yes --fees 200000ufury
-sleep 7
-merlin tx gov vote 1 yes --from=validator2 --keyring-backend=test --chain-id=blackfury-1 --yes --home=$HOME/.merlin/validator2 --fees 200000ufury
-sleep 7
-merlin tx gov vote 1 yes --from=validator3 --keyring-backend=test --chain-id=blackfury-1 --yes --home=$HOME/.merlin/validator3 --fees 200000ufury
-sleep 7
-merlin tx gov vote 1 yes --from=validator4 --keyring-backend=test --chain-id=blackfury-1 --yes --home=$HOME/.merlin/validator4 --fees 200000ufury
-sleep 7
-merlin tx gov vote 1 yes --from=validator5 --keyring-backend=test --chain-id=blackfury-1 --yes --home=$HOME/.merlin/validator5 --fees 200000ufury
-sleep 7
-merlin tx gov vote 1 yes --from=validator6 --keyring-backend=test --chain-id=blackfury-1 --yes --home=$HOME/.merlin/validator6 --fees 200000ufury
-sleep 7
-merlin tx gov vote 1 yes --from=validator7 --keyring-backend=test --chain-id=blackfury-1 --yes --home=$HOME/.merlin/validator7 --fees 200000ufury
-sleep 7
-merlin tx gov vote 1 yes --from=validator8 --keyring-backend=test --chain-id=blackfury-1 --yes --home=$HOME/.merlin/validator8 --fees 200000ufury
-sleep 7
-merlin tx gov vote 1 yes --from=validator9 --keyring-backend=test --chain-id=blackfury-1 --yes --home=$HOME/.merlin/validator9 --fees 200000ufury
-sleep 7
-
-echo "All 9 Validators are up and running!"
+# Zero out the total supply so it gets recalculated during InitGenesis
+jq '.app_state.bank.supply = []' $DATA/config/genesis.json|sponge $DATA/config/genesis.json
