@@ -7,8 +7,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	poolmanagertypes "github.com/four4two/merlin/v17/x/poolmanager/types"
-	"github.com/four4two/merlin/v17/x/protorev/types"
+	poolmanagertypes "github.com/four4two/merlin/v16/x/poolmanager/types"
+	"github.com/four4two/merlin/v16/x/protorev/types"
 )
 
 // ----------------------- Statistics Stores  ----------------------- //

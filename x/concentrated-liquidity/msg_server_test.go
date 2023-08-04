@@ -6,10 +6,10 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	cl "github.com/four4two/merlin/v17/x/concentrated-liquidity"
-	clmodel "github.com/four4two/merlin/v17/x/concentrated-liquidity/model"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	poolmanagertypes "github.com/four4two/merlin/v17/x/poolmanager/types"
+	cl "github.com/four4two/merlin/v16/x/concentrated-liquidity"
+	clmodel "github.com/four4two/merlin/v16/x/concentrated-liquidity/model"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	poolmanagertypes "github.com/four4two/merlin/v16/x/poolmanager/types"
 )
 
 // TestCreateConcentratedPool_Events tests that events are correctly emitted

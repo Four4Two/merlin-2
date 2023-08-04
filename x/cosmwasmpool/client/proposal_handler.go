@@ -5,7 +5,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/client"
 
-	"github.com/four4two/merlin/v17/x/cosmwasmpool/client/cli"
+	"github.com/four4two/merlin/v16/x/cosmwasmpool/client/cli"
 
 	govclient "github.com/cosmos/cosmos-sdk/x/gov/client"
 	govrest "github.com/cosmos/cosmos-sdk/x/gov/client/rest"

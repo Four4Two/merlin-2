@@ -3,11 +3,11 @@ package keeper_test
 import (
 	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/osmosis-labs/osmosis/osmoutils/accum"
-	"github.com/four4two/merlin/v17/app/apptesting"
-	cl "github.com/four4two/merlin/v17/x/concentrated-liquidity"
-	cltypes "github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	lockuptypes "github.com/four4two/merlin/v17/x/lockup/types"
-	"github.com/four4two/merlin/v17/x/superfluid/keeper"
+	"github.com/four4two/merlin/v16/app/apptesting"
+	cl "github.com/four4two/merlin/v16/x/concentrated-liquidity"
+	cltypes "github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	lockuptypes "github.com/four4two/merlin/v16/x/lockup/types"
+	"github.com/four4two/merlin/v16/x/superfluid/keeper"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"

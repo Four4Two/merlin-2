@@ -5,7 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	lockuptypes "github.com/four4two/merlin/v17/x/lockup/types"
+	lockuptypes "github.com/four4two/merlin/v16/x/lockup/types"
 )
 
 var (

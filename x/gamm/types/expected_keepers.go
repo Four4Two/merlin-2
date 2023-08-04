@@ -7,10 +7,10 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
-	cltypes "github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	incentivestypes "github.com/four4two/merlin/v17/x/incentives/types"
-	"github.com/four4two/merlin/v17/x/pool-incentives/types"
-	poolmanagertypes "github.com/four4two/merlin/v17/x/poolmanager/types"
+	cltypes "github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	incentivestypes "github.com/four4two/merlin/v16/x/incentives/types"
+	"github.com/four4two/merlin/v16/x/pool-incentives/types"
+	poolmanagertypes "github.com/four4two/merlin/v16/x/poolmanager/types"
 	epochtypes "github.com/osmosis-labs/osmosis/x/epochs/types"
 )
 

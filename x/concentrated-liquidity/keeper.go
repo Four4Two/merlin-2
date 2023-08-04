@@ -8,7 +8,7 @@ import (
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"
 
 	"github.com/osmosis-labs/osmosis/osmoutils"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
 )
 
 type Keeper struct {

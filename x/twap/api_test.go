@@ -9,10 +9,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/osmosis-labs/osmosis/osmomath"
-	sdkrand "github.com/four4two/merlin/v17/simulation/simtypes/random"
-	"github.com/four4two/merlin/v17/x/gamm/pool-models/balancer"
-	"github.com/four4two/merlin/v17/x/twap"
-	"github.com/four4two/merlin/v17/x/twap/types"
+	sdkrand "github.com/four4two/merlin/v16/simulation/simtypes/random"
+	"github.com/four4two/merlin/v16/x/gamm/pool-models/balancer"
+	"github.com/four4two/merlin/v16/x/twap"
+	"github.com/four4two/merlin/v16/x/twap/types"
 )
 
 var (

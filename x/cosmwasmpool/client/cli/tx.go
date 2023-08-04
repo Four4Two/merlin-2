@@ -17,9 +17,9 @@ import (
 	"github.com/spf13/pflag"
 
 	"github.com/osmosis-labs/osmosis/osmoutils/osmocli"
-	"github.com/four4two/merlin/v17/x/cosmwasmpool/cosmwasm/msg"
-	"github.com/four4two/merlin/v17/x/cosmwasmpool/model"
-	"github.com/four4two/merlin/v17/x/cosmwasmpool/types"
+	"github.com/four4two/merlin/v16/x/cosmwasmpool/cosmwasm/msg"
+	"github.com/four4two/merlin/v16/x/cosmwasmpool/model"
+	"github.com/four4two/merlin/v16/x/cosmwasmpool/types"
 )
 
 func NewTxCmd() *cobra.Command {

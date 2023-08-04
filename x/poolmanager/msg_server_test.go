@@ -3,8 +3,8 @@ package poolmanager_test
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	poolmanagerKeeper "github.com/four4two/merlin/v17/x/poolmanager"
-	"github.com/four4two/merlin/v17/x/poolmanager/types"
+	poolmanagerKeeper "github.com/four4two/merlin/v16/x/poolmanager"
+	"github.com/four4two/merlin/v16/x/poolmanager/types"
 )
 
 var (

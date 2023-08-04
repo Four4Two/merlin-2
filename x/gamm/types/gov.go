@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
-	gammmigration "github.com/four4two/merlin/v17/x/gamm/types/migration"
+	gammmigration "github.com/four4two/merlin/v16/x/gamm/types/migration"
 )
 
 const (

@@ -6,15 +6,15 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	v8constants "github.com/four4two/merlin/v17/app/upgrades/v8/constants"
-	cltypes "github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	"github.com/four4two/merlin/v17/x/gamm/pool-models/balancer"
-	gammtypes "github.com/four4two/merlin/v17/x/gamm/types"
-	gammmigration "github.com/four4two/merlin/v17/x/gamm/types/migration"
-	lockupkeeper "github.com/four4two/merlin/v17/x/lockup/keeper"
-	lockuptypes "github.com/four4two/merlin/v17/x/lockup/types"
-	"github.com/four4two/merlin/v17/x/superfluid/keeper"
-	"github.com/four4two/merlin/v17/x/superfluid/types"
+	v8constants "github.com/four4two/merlin/v16/app/upgrades/v8/constants"
+	cltypes "github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	"github.com/four4two/merlin/v16/x/gamm/pool-models/balancer"
+	gammtypes "github.com/four4two/merlin/v16/x/gamm/types"
+	gammmigration "github.com/four4two/merlin/v16/x/gamm/types/migration"
+	lockupkeeper "github.com/four4two/merlin/v16/x/lockup/keeper"
+	lockuptypes "github.com/four4two/merlin/v16/x/lockup/types"
+	"github.com/four4two/merlin/v16/x/superfluid/keeper"
+	"github.com/four4two/merlin/v16/x/superfluid/types"
 )
 
 var defaultFunds = sdk.NewCoins(defaultPoolAssets[0].Token, sdk.NewCoin("stake", sdk.NewInt(5000000000)))

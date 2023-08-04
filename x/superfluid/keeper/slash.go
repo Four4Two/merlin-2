@@ -6,9 +6,9 @@ import (
 	"time"
 
 	"github.com/osmosis-labs/osmosis/osmoutils"
-	cl "github.com/four4two/merlin/v17/x/concentrated-liquidity"
-	cltypes "github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	lockuptypes "github.com/four4two/merlin/v17/x/lockup/types"
+	cl "github.com/four4two/merlin/v16/x/concentrated-liquidity"
+	cltypes "github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	lockuptypes "github.com/four4two/merlin/v16/x/lockup/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

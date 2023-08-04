@@ -4,8 +4,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/osmosis-labs/osmosis/osmoutils"
-	poolincentiveskeeper "github.com/four4two/merlin/v17/x/pool-incentives/keeper"
-	poolincentivestypes "github.com/four4two/merlin/v17/x/pool-incentives/types"
+	poolincentiveskeeper "github.com/four4two/merlin/v16/x/pool-incentives/keeper"
+	poolincentivestypes "github.com/four4two/merlin/v16/x/pool-incentives/types"
 )
 
 // This file implements logic for accelerated incentive proposals.

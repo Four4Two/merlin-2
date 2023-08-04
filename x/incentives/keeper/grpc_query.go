@@ -14,8 +14,8 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/types/query"
 
-	"github.com/four4two/merlin/v17/x/incentives/types"
-	lockuptypes "github.com/four4two/merlin/v17/x/lockup/types"
+	"github.com/four4two/merlin/v16/x/incentives/types"
+	lockuptypes "github.com/four4two/merlin/v16/x/lockup/types"
 )
 
 var _ types.QueryServer = Querier{}

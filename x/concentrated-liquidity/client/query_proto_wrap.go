@@ -6,9 +6,9 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	cl "github.com/four4two/merlin/v17/x/concentrated-liquidity"
-	clquery "github.com/four4two/merlin/v17/x/concentrated-liquidity/client/queryproto"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/model"
+	cl "github.com/four4two/merlin/v16/x/concentrated-liquidity"
+	clquery "github.com/four4two/merlin/v16/x/concentrated-liquidity/client/queryproto"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/model"
 )
 
 // Querier defines a wrapper around the x/concentrated-liquidity keeper providing gRPC method

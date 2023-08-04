@@ -7,8 +7,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/query"
 
 	"github.com/osmosis-labs/osmosis/osmoutils"
-	"github.com/four4two/merlin/v17/x/cosmwasmpool/model"
-	"github.com/four4two/merlin/v17/x/cosmwasmpool/types"
+	"github.com/four4two/merlin/v16/x/cosmwasmpool/model"
+	"github.com/four4two/merlin/v16/x/cosmwasmpool/types"
 )
 
 // SetPool stores the given pool in state.

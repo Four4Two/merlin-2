@@ -5,7 +5,7 @@ import (
 
 	errorsmod "cosmossdk.io/errors"
 
-	"github.com/four4two/merlin/v17/x/txfees/types"
+	"github.com/four4two/merlin/v16/x/txfees/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

@@ -9,9 +9,9 @@ import (
 	"github.com/stretchr/testify/suite"
 
 	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
-	"github.com/four4two/merlin/v17/app/apptesting"
-	"github.com/four4two/merlin/v17/x/twap"
-	"github.com/four4two/merlin/v17/x/twap/types"
+	"github.com/four4two/merlin/v16/app/apptesting"
+	"github.com/four4two/merlin/v16/x/twap"
+	"github.com/four4two/merlin/v16/x/twap/types"
 )
 
 // TODO: Consider switching this everywhere

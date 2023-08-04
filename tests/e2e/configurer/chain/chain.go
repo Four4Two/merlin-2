@@ -11,11 +11,11 @@ import (
 	"github.com/stretchr/testify/require"
 	coretypes "github.com/tendermint/tendermint/rpc/core/types"
 
-	appparams "github.com/four4two/merlin/v17/app/params"
-	"github.com/four4two/merlin/v17/tests/e2e/configurer/config"
+	appparams "github.com/four4two/merlin/v16/app/params"
+	"github.com/four4two/merlin/v16/tests/e2e/configurer/config"
 
-	"github.com/four4two/merlin/v17/tests/e2e/containers"
-	"github.com/four4two/merlin/v17/tests/e2e/initialization"
+	"github.com/four4two/merlin/v16/tests/e2e/containers"
+	"github.com/four4two/merlin/v16/tests/e2e/initialization"
 )
 
 type Config struct {

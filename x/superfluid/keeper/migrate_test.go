@@ -13,14 +13,14 @@ import (
 
 	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/osmosis-labs/osmosis/osmoutils"
-	"github.com/four4two/merlin/v17/app/apptesting"
-	cltypes "github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	"github.com/four4two/merlin/v17/x/gamm/pool-models/balancer"
-	gammtypes "github.com/four4two/merlin/v17/x/gamm/types"
-	gammmigration "github.com/four4two/merlin/v17/x/gamm/types/migration"
-	lockuptypes "github.com/four4two/merlin/v17/x/lockup/types"
-	"github.com/four4two/merlin/v17/x/superfluid/keeper"
-	"github.com/four4two/merlin/v17/x/superfluid/types"
+	"github.com/four4two/merlin/v16/app/apptesting"
+	cltypes "github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	"github.com/four4two/merlin/v16/x/gamm/pool-models/balancer"
+	gammtypes "github.com/four4two/merlin/v16/x/gamm/types"
+	gammmigration "github.com/four4two/merlin/v16/x/gamm/types/migration"
+	lockuptypes "github.com/four4two/merlin/v16/x/lockup/types"
+	"github.com/four4two/merlin/v16/x/superfluid/keeper"
+	"github.com/four4two/merlin/v16/x/superfluid/types"
 )
 
 var (

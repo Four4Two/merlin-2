@@ -8,8 +8,8 @@ import (
 	dbm "github.com/tendermint/tm-db"
 
 	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/math"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/math"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
 )
 
 // oneForZeroStrategy implements the swapStrategy interface.

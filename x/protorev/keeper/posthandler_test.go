@@ -12,10 +12,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authsigning "github.com/cosmos/cosmos-sdk/x/auth/signing"
 
-	"github.com/four4two/merlin/v17/app/apptesting"
-	poolmanagertypes "github.com/four4two/merlin/v17/x/poolmanager/types"
-	"github.com/four4two/merlin/v17/x/protorev/keeper"
-	"github.com/four4two/merlin/v17/x/protorev/types"
+	"github.com/four4two/merlin/v16/app/apptesting"
+	poolmanagertypes "github.com/four4two/merlin/v16/x/poolmanager/types"
+	"github.com/four4two/merlin/v16/x/protorev/keeper"
+	"github.com/four4two/merlin/v16/x/protorev/types"
 )
 
 // BenchmarkBalancerSwapHighestLiquidityArb benchmarks a balancer swap that creates a single three hop arbitrage

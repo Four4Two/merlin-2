@@ -10,8 +10,8 @@ import (
 	"google.golang.org/grpc/status"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/client"
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/client/queryproto"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/client"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/client/queryproto"
 )
 
 type Querier struct {

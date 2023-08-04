@@ -9,10 +9,10 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
 	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/four4two/merlin/v17/app/apptesting"
-	"github.com/four4two/merlin/v17/x/gamm/types"
-	gammmigration "github.com/four4two/merlin/v17/x/gamm/types/migration"
-	poolincentivestypes "github.com/four4two/merlin/v17/x/pool-incentives/types"
+	"github.com/four4two/merlin/v16/app/apptesting"
+	"github.com/four4two/merlin/v16/x/gamm/types"
+	gammmigration "github.com/four4two/merlin/v16/x/gamm/types/migration"
+	poolincentivestypes "github.com/four4two/merlin/v16/x/pool-incentives/types"
 )
 
 const (

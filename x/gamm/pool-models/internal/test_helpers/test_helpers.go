@@ -13,8 +13,8 @@ import (
 	dbm "github.com/tendermint/tm-db"
 
 	"github.com/osmosis-labs/osmosis/osmomath"
-	sdkrand "github.com/four4two/merlin/v17/simulation/simtypes/random"
-	"github.com/four4two/merlin/v17/x/gamm/types"
+	sdkrand "github.com/four4two/merlin/v16/simulation/simtypes/random"
+	"github.com/four4two/merlin/v16/x/gamm/types"
 )
 
 // CfmmCommonTestSuite is the common test suite struct of Constant Function Market Maker,

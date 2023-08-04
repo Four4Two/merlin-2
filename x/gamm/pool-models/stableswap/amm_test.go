@@ -12,10 +12,10 @@ import (
 
 	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
-	sdkrand "github.com/four4two/merlin/v17/simulation/simtypes/random"
-	"github.com/four4two/merlin/v17/x/gamm/pool-models/internal/cfmm_common"
-	"github.com/four4two/merlin/v17/x/gamm/pool-models/internal/test_helpers"
-	types "github.com/four4two/merlin/v17/x/gamm/types"
+	sdkrand "github.com/four4two/merlin/v16/simulation/simtypes/random"
+	"github.com/four4two/merlin/v16/x/gamm/pool-models/internal/cfmm_common"
+	"github.com/four4two/merlin/v16/x/gamm/pool-models/internal/test_helpers"
+	types "github.com/four4two/merlin/v16/x/gamm/types"
 )
 
 var (

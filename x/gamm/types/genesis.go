@@ -2,7 +2,7 @@ package types
 
 import (
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
-	gammmigration "github.com/four4two/merlin/v17/x/gamm/types/migration"
+	gammmigration "github.com/four4two/merlin/v16/x/gamm/types/migration"
 )
 
 // DefaultGenesis creates a default GenesisState object.

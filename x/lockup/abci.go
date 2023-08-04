@@ -3,7 +3,7 @@ package lockup
 import (
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/four4two/merlin/v17/x/lockup/keeper"
+	"github.com/four4two/merlin/v16/x/lockup/keeper"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

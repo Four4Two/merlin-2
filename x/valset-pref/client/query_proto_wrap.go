@@ -5,8 +5,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	validatorprefkeeper "github.com/four4two/merlin/v17/x/valset-pref"
-	"github.com/four4two/merlin/v17/x/valset-pref/client/queryproto"
+	validatorprefkeeper "github.com/four4two/merlin/v16/x/valset-pref"
+	"github.com/four4two/merlin/v16/x/valset-pref/client/queryproto"
 )
 
 type Querier struct {

@@ -6,7 +6,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
-	"github.com/four4two/merlin/v17/x/tokenfactory/types"
+	"github.com/four4two/merlin/v16/x/tokenfactory/types"
 )
 
 func (s *KeeperTestSuite) TestAdminMsgs() {

@@ -1,6 +1,6 @@
 package executortypes
 
-import "github.com/four4two/merlin/v17/simulation/simtypes"
+import "github.com/four4two/merlin/v16/simulation/simtypes"
 
 func totalFrequency(actions []simtypes.ActionsWithMetadata) int {
 	totalFrequency := 0

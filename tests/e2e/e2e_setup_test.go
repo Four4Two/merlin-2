@@ -7,7 +7,7 @@ import (
 
 	"github.com/stretchr/testify/suite"
 
-	configurer "github.com/four4two/merlin/v17/tests/e2e/configurer"
+	configurer "github.com/four4two/merlin/v16/tests/e2e/configurer"
 )
 
 const (

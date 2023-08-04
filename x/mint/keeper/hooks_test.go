@@ -7,9 +7,9 @@ import (
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
 	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
-	furyapp "github.com/four4two/merlin/v17/app"
-	"github.com/four4two/merlin/v17/x/mint/keeper"
-	"github.com/four4two/merlin/v17/x/mint/types"
+	furyapp "github.com/four4two/merlin/v16/app"
+	"github.com/four4two/merlin/v16/x/mint/keeper"
+	"github.com/four4two/merlin/v16/x/mint/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

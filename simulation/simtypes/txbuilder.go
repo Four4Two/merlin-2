@@ -11,8 +11,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/simulation"
 	"github.com/cosmos/cosmos-sdk/types/tx/signing"
 
-	"github.com/four4two/merlin/v17/app/params"
-	tokenfactorytypes "github.com/four4two/merlin/v17/x/tokenfactory/types"
+	"github.com/four4two/merlin/v16/app/params"
+	tokenfactorytypes "github.com/four4two/merlin/v16/x/tokenfactory/types"
 
 	cryptotypes "github.com/cosmos/cosmos-sdk/crypto/types"
 	authsign "github.com/cosmos/cosmos-sdk/x/auth/signing"

@@ -8,7 +8,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/four4two/merlin/v17/x/lockup/types"
+	"github.com/four4two/merlin/v16/x/lockup/types"
 )
 
 // RegisterInvariants registers all governance invariants.

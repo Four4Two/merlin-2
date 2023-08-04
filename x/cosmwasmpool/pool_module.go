@@ -5,10 +5,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/osmosis-labs/osmosis/osmoutils"
-	"github.com/four4two/merlin/v17/x/cosmwasmpool/cosmwasm/msg"
-	"github.com/four4two/merlin/v17/x/cosmwasmpool/model"
-	"github.com/four4two/merlin/v17/x/cosmwasmpool/types"
-	poolmanagertypes "github.com/four4two/merlin/v17/x/poolmanager/types"
+	"github.com/four4two/merlin/v16/x/cosmwasmpool/cosmwasm/msg"
+	"github.com/four4two/merlin/v16/x/cosmwasmpool/model"
+	"github.com/four4two/merlin/v16/x/cosmwasmpool/types"
+	poolmanagertypes "github.com/four4two/merlin/v16/x/poolmanager/types"
 
 	"github.com/osmosis-labs/osmosis/osmoutils/cosmwasm"
 )

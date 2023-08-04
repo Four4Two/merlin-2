@@ -10,12 +10,12 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	appparams "github.com/four4two/merlin/v17/app/params"
-	v17 "github.com/four4two/merlin/v17/app/upgrades/v17"
-	"github.com/four4two/merlin/v17/tests/e2e/configurer/chain"
-	"github.com/four4two/merlin/v17/tests/e2e/configurer/config"
-	"github.com/four4two/merlin/v17/tests/e2e/containers"
-	"github.com/four4two/merlin/v17/tests/e2e/initialization"
+	appparams "github.com/four4two/merlin/v16/app/params"
+	v16 "github.com/four4two/merlin/v16/app/upgrades/v16"
+	"github.com/four4two/merlin/v16/tests/e2e/configurer/chain"
+	"github.com/four4two/merlin/v16/tests/e2e/configurer/config"
+	"github.com/four4two/merlin/v16/tests/e2e/containers"
+	"github.com/four4two/merlin/v16/tests/e2e/initialization"
 )
 
 type UpgradeSettings struct {
@@ -139,9 +139,9 @@ func (uc *UpgradeConfigurer) CreatePreUpgradeState() error {
 	// Wait for all goroutines to complete
 	wg.Wait()
 
-	// START: CAN REMOVE POST v17 UPGRADE
+	// START: CAN REMOVE POST v16 UPGRADE
 
-	v17SuperfluidAssets := v17GetSuperfluidAssets()
+	v16SuperfluidAssets := v16GetSuperfluidAssets()
 
 	wg.Add(4)
 
@@ -157,17 +157,17 @@ func (uc *UpgradeConfigurer) CreatePreUpgradeState() error {
 
 	go func() {
 		defer wg.Done()
-		chainANode.EnableSuperfluidAsset(chainA, v17SuperfluidAssets)
+		chainANode.EnableSuperfluidAsset(chainA, v16SuperfluidAssets)
 	}()
 
 	go func() {
 		defer wg.Done()
-		chainBNode.EnableSuperfluidAsset(chainB, v17SuperfluidAssets)
+		chainBNode.EnableSuperfluidAsset(chainB, v16SuperfluidAssets)
 	}()
 
 	wg.Wait()
 
-	// END: CAN REMOVE POST v17 UPGRADE
+	// END: CAN REMOVE POST v16 UPGRADE
 
 	var (
 		poolShareDenom             string
@@ -403,12 +403,12 @@ func (uc *UpgradeConfigurer) upgradeContainers(chainConfig *chain.Config, propHe
 	return nil
 }
 
-// START: CAN REMOVE POST v17 UPGRADE
+// START: CAN REMOVE POST v16 UPGRADE
 
 func strAllUpgradeBaseDenoms() string {
 	upgradeBaseDenoms := ""
-	n := len(v17.AssetPairsForTestsOnly)
-	for i, assetPair := range v17.AssetPairsForTestsOnly {
+	n := len(v16.AssetPairsForTestsOnly)
+	for i, assetPair := range v16.AssetPairsForTestsOnly {
 		upgradeBaseDenoms += "2000000" + assetPair.BaseAsset
 		if i < n-1 { // Check if it's not the last iteration
 			upgradeBaseDenoms += ","
@@ -417,9 +417,9 @@ func strAllUpgradeBaseDenoms() string {
 	return upgradeBaseDenoms
 }
 
-func v17GetSuperfluidAssets() string {
+func v16GetSuperfluidAssets() string {
 	assets := ""
-	for _, assetPair := range v17.AssetPairsForTestsOnly {
+	for _, assetPair := range v16.AssetPairsForTestsOnly {
 		if assetPair.Superfluid {
 			assets += fmt.Sprintf("gamm/pool/%d,", assetPair.LinkedClassicPool)
 		}
@@ -430,4 +430,4 @@ func v17GetSuperfluidAssets() string {
 	return assets
 }
 
-// END: CAN REMOVE POST v17 UPGRADE
+// END: CAN REMOVE POST v16 UPGRADE

@@ -1,7 +1,7 @@
 package genesis
 
 import (
-	"github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
+	"github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
 )
 
 // DefaultGenesis returns the default GenesisState for the concentrated-liquidity module.

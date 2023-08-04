@@ -12,8 +12,8 @@ import (
 	"github.com/tendermint/tendermint/libs/log"
 	dbm "github.com/tendermint/tm-db"
 
-	"github.com/four4two/merlin/v17/simulation/executor/internal/stats"
-	"github.com/four4two/merlin/v17/simulation/simtypes/simlogger"
+	"github.com/four4two/merlin/v16/simulation/executor/internal/stats"
+	"github.com/four4two/merlin/v16/simulation/simtypes/simlogger"
 )
 
 // List of available flags for the simulator

@@ -9,7 +9,7 @@ import (
 
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 
-	tokenfactorykeeper "github.com/four4two/merlin/v17/x/tokenfactory/keeper"
+	tokenfactorykeeper "github.com/four4two/merlin/v16/x/tokenfactory/keeper"
 )
 
 func RegisterCustomPlugins(

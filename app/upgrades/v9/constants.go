@@ -1,13 +1,13 @@
 package v9
 
 import (
-	"github.com/four4two/merlin/v17/app/upgrades"
+	"github.com/four4two/merlin/v16/app/upgrades"
 
 	store "github.com/cosmos/cosmos-sdk/store/types"
 
 	icahosttypes "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/host/types"
 
-	tokenfactorytypes "github.com/four4two/merlin/v17/x/tokenfactory/types"
+	tokenfactorytypes "github.com/four4two/merlin/v16/x/tokenfactory/types"
 )
 
 // UpgradeName defines the on-chain upgrade name for the Merlin v9 upgrade.

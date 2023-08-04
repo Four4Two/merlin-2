@@ -8,9 +8,9 @@ import (
 	"github.com/stretchr/testify/require"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	furyapp "github.com/four4two/merlin/v17/app"
-	"github.com/four4two/merlin/v17/x/lockup"
-	"github.com/four4two/merlin/v17/x/lockup/types"
+	furyapp "github.com/four4two/merlin/v16/app"
+	"github.com/four4two/merlin/v16/x/lockup"
+	"github.com/four4two/merlin/v16/x/lockup/types"
 
 	"github.com/cosmos/cosmos-sdk/simapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"

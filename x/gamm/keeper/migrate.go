@@ -5,11 +5,11 @@ import (
 	"sort"
 
 	"github.com/osmosis-labs/osmosis/osmoutils"
-	clmodel "github.com/four4two/merlin/v17/x/concentrated-liquidity/model"
-	cltypes "github.com/four4two/merlin/v17/x/concentrated-liquidity/types"
-	"github.com/four4two/merlin/v17/x/gamm/types"
-	gammmigration "github.com/four4two/merlin/v17/x/gamm/types/migration"
-	poolmanagertypes "github.com/four4two/merlin/v17/x/poolmanager/types"
+	clmodel "github.com/four4two/merlin/v16/x/concentrated-liquidity/model"
+	cltypes "github.com/four4two/merlin/v16/x/concentrated-liquidity/types"
+	"github.com/four4two/merlin/v16/x/gamm/types"
+	gammmigration "github.com/four4two/merlin/v16/x/gamm/types/migration"
+	poolmanagertypes "github.com/four4two/merlin/v16/x/poolmanager/types"
 
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	sdk "github.com/cosmos/cosmos-sdk/types"
