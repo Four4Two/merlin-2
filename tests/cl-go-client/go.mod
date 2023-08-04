@@ -6,7 +6,7 @@ require (
 	github.com/cosmos/cosmos-sdk v0.47.3
 	github.com/ignite/cli v0.23.0
 	github.com/osmosis-labs/osmosis/osmoutils v0.0.0-20230623115558-38aaab07d343
-	github.com/four4two/merlin/v16 v16.0.0-fury
+	github.com/osmosis-labs/osmosis/v16 v16.0.0-20230630175215-d5fcd089a71c
 	github.com/osmosis-labs/osmosis/x/epochs v0.0.0-20230328024000-175ec88e4304
 
 )
@@ -156,7 +156,7 @@ replace (
 
 	github.com/ignite/cli => github.com/p0mvn/cli v0.23.1
 
-	github.com/four4two/merlin/v15 => ../../
+	github.com/osmosis/osmosis/v15 => ../../
 
 	// Informal Tendermint fork
 	github.com/tendermint/tendermint => github.com/informalsystems/tendermint v0.34.24

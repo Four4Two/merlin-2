@@ -1,204 +1,172 @@
-#!/bin/bash
+#! /bin/bash
 set -e
 
-export validator1Mnemonic="twelve disorder gauge economy lend very decrease toy airport hen delay mouse antenna eye garbage cave soldier knock chase combine tonight sugar reason grocery"
+validatorMnemonic="scheme foil gym rival warrior power dry property warfare amateur consider donate try code river awake security fall brand similar perfect sand ivory video"
 
-export validator2Mnemonic="glove promote insect vessel table toss secret egg potato banana sudden cheap inch divert silly doctor evolve special flat laundry sustain champion place main"
+airdropMnemonic="coyote glass hamster road rice genre margin once ask setup jaguar session sample hurt solution sound start scare move deal valve novel valid tilt"
 
-export validator3Mnemonic="bike debris universe hover view element inhale aware media gun drum hotel nut buddy exact immune grain jealous float case steak sort heart shop"
+airdropvestedMnemonic="egg parade balcony mouse giggle frequent saddle rice sniff best ancient tonight action exile sunny grow hundred inquiry brass more course thrive village panic"
 
-export validator4Mnemonic="already engage illegal dial onion silly sugar smooth movie museum client speed snake spice fashion verb swear panther oval travel cream emerge chest zone"
+bondingMnemonic="wild solve high size bid cinnamon ostrich couch salt caution already cloud speed occur beach rule squeeze afford history engage devote bridge fossil cup"
 
-export validator5Mnemonic="hawk gasp film enlist talent trap gentle oblige icon gun flee flat switch move local girl very better foot quiz daughter genius secret crystal"
+bondingvestedMnemonic="leg orchard boring strategy syrup brisk month cake mushroom cancel famous hobby buyer cinnamon insane horror enter ranch urban grape elbow flee usual friend"
 
-export validator6Mnemonic="endless excess afraid label frequent twenty receive maximum casual clean crawl beyond erosion balance air turn range issue shield trigger busy wing between panda"
+whitelistMnemonic="sad praise jaguar shuffle display strike toe wasp math iron organ budget clay burger surface black start super remain release distance bar goat fork"
 
-export validator7Mnemonic="switch size lend convince raven bone tackle bridge pet vendor pyramid try pledge travel you small chaos mosquito agent club nasty jaguar usage diet"
+seedMnemonic="ticket cabin insect evoke embrace kiss cross similar collect refuse snack void bid river album ready dumb ski pipe head rude domain witness oil"
 
-export validator8Mnemonic="adapt digital repeat shell enhance error accuse promote purpose camp outside decide tortoise laundry tag critic cinnamon whip insect weird reason spray much damage"
+privateMnemonic="shop silver vessel suit glue recipe night sure trend album sleep leg nature gun tree space fresh brief retire adjust system provide essence pipe"
 
-export validator9Mnemonic="same grant skull young unable program cream answer twenty camera impact disagree valley style easy transfer wide broken vehicle giraffe version stool session blue"
+bonusMnemonic="develop tomato grunt cute safe lecture sibling thing agree express flat urban lumber slot egg flash expect square auto interest circle obvious toward coyote"
 
-export airdropMnemonic="coyote glass hamster road rice genre margin once ask setup jaguar session sample hurt solution sound start scare move deal valve novel valid tilt"
+atloMnemonic="fever digital tumble region ozone tree pass silk differ celery paddle oven plug kidney harbor prevent chalk develop wreck they deal cream frame divert"
 
-export airdropvestedMnemonic="egg parade balcony mouse giggle frequent saddle rice sniff best ancient tonight action exile sunny grow hundred inquiry brass more course thrive village panic"
-
-export bondingMnemonic="wild solve high size bid cinnamon ostrich couch salt caution already cloud speed occur beach rule squeeze afford history engage devote bridge fossil cup"
-
-export bondingvestedMnemonic="leg orchard boring strategy syrup brisk month cake mushroom cancel famous hobby buyer cinnamon insane horror enter ranch urban grape elbow flee usual friend"
-
-export whitelistMnemonic="sad praise jaguar shuffle display strike toe wasp math iron organ budget clay burger surface black start super remain release distance bar goat fork"
-
-export seedMnemonic="ticket cabin insect evoke embrace kiss cross similar collect refuse snack void bid river album ready dumb ski pipe head rude domain witness oil"
-
-export privateMnemonic="shop silver vessel suit glue recipe night sure trend album sleep leg nature gun tree space fresh brief retire adjust system provide essence pipe"
-
-export bonusMnemonic="develop tomato grunt cute safe lecture sibling thing agree express flat urban lumber slot egg flash expect square auto interest circle obvious toward coyote"
-
-export atloMnemonic="fever digital tumble region ozone tree pass silk differ celery paddle oven plug kidney harbor prevent chalk develop wreck they deal cream frame divert"
-
-export valkyrieMnemonic="wrap essence receive acquire holiday deny squirrel flavor inject what piece motor mistake doll provide lunar coffee capital innocent impact use rookie youth since"
+valkyrieMnemonic="wrap essence receive acquire holiday deny squirrel flavor inject what piece motor mistake doll provide lunar coffee capital innocent impact use rookie youth since"
 	
-export publicMnemonic="focus girl what draft ball perfect inspire embark multiply dance grow indoor genuine spell obscure first seek dog dutch reason live tower dice cluster"
+publicMnemonic="focus girl what draft ball perfect inspire embark multiply dance grow indoor genuine spell obscure first seek dog dutch reason live tower dice cluster"
 
-export marketingMnemonic="cruise derive jealous middle antenna annual call satisfy bargain deposit glue convince humble indoor owner sunny faith coin trim phrase choice twice matter tube"
+marketingMnemonic="cruise derive jealous middle antenna annual call satisfy bargain deposit glue convince humble indoor owner sunny faith coin trim phrase choice twice matter tube"
 
-export advisorsMnemonic="island shadow diesel cover stock click pig burger hub sister broken fury film pattern divorce ready assist pulse adult valve dinner visit twelve park"
+advisorsMnemonic="island shadow diesel cover stock click pig burger hub sister broken fury film pattern divorce ready assist pulse adult valve dinner visit twelve park"
 
-export advisorsvestedMnemonic="faint awful jelly town enter keen unlock nation confirm luggage often dynamic nominee explain party dinner frame kiss ginger quantum kind citizen story anxiety"
+advisorsvestedMnemonic="faint awful jelly town enter keen unlock nation confirm luggage often dynamic nominee explain party dinner frame kiss ginger quantum kind citizen story anxiety"
 
-export treasuryMnemonic="early angry accident blouse dust exit weird upon genre embrace fit zone pumpkin raccoon gun please must exchange goose evoke rapid mule define there"
+treasuryMnemonic="early angry accident blouse dust exit weird upon genre embrace fit zone pumpkin raccoon gun please must exchange goose evoke rapid mule define there"
 
-export treasuryvestedMnemonic="diesel ankle cable chalk aerobic rally tackle knee siege shrug lounge island knife axis fog near sign behave giggle water achieve utility almost universe"	
+treasuryvestedMnemonic="diesel ankle cable chalk aerobic rally tackle knee siege shrug lounge island knife axis fog near sign behave giggle water achieve utility almost universe"	
 
-export teamMnemonic="enemy venture fire antenna relax muffin below evil dinner toe sand exile anxiety sorry stage extra armed culture ivory ladder spot twin radar quiz"
+teamMnemonic="enemy venture fire antenna relax muffin below evil dinner toe sand exile anxiety sorry stage extra armed culture ivory ladder spot twin radar quiz"
 
-export ecoMnemonic="adapt digital repeat shell enhance error accuse promote purpose camp outside decide tortoise laundry tag critic cinnamon whip insect weird reason spray much damage"
+ecoMnemonic="wagon dove voyage unique family glue market grit lawsuit volume save income route dismiss involve collect evolve boy sadness early inner immense floor luggage"
 
-export ecovestedMnemonic="term relax pretty infant adjust inspire glass shadow misery easily spread hello canyon sorry sadness beef flat chef guitar idea trash this toilet exercise"
+ecovestedMnemonic="appear noise riot title measure analyst blade analyst tornado width piano paddle only kick rain tortoise glue word daughter behind stomach barely jar alpha"
 
-export liquidityMnemonic="mercy lock dial cricket mass head crater cupboard ecology inmate tooth guitar coyote fix few census person refuse guitar joke friend ecology mean catalog"
+liquidityMnemonic="mercy lock dial cricket mass head crater cupboard ecology inmate tooth guitar coyote fix few census person refuse guitar joke friend ecology mean catalog"
 
-export liquidityvestedMnemonic="science dragon debris much spot rather army outer biology honey civil seat broom alone disagree pond stereo sight fantasy cereal inmate meadow grape spy"
+liquidityvestedMnemonic="science dragon debris much spot rather army outer biology honey civil seat broom alone disagree pond stereo sight fantasy cereal inmate meadow grape spy"
 
-export blackdragonvestedMnemonic="science dragon debris much spot rather army outer biology honey civil seat broom alone disagree pond stereo sight fantasy cereal inmate meadow grape spy"
+blackdragonvestedMnemonic="science dragon debris much spot rather army outer biology honey civil seat broom alone disagree pond stereo sight fantasy cereal inmate meadow grape spy"
 
-export faucetMnemonic="hair color duty october move bracket deny crisp have awesome tornado syrup veteran modify enemy potato beauty retreat play exact sunny salute area april"
+faucetMnemonic="hair color duty october move bracket deny crisp have awesome tornado syrup veteran modify enemy potato beauty retreat play exact sunny salute area april"
 
-# always returns true so set -e doesn't exit if it is not running.
-killall merlin || true
-rm -rf $HOME/.merlin/
+
+DATA=~/.merlin
+rm -rf $DATA
+
 BINARY=merlin
 
-# make four merlin directories
-mkdir $HOME/.merlin
-mkdir $HOME/.merlin/validator2
-mkdir $HOME/.merlin/validator3
-mkdir $HOME/.merlin/validator4
-mkdir $HOME/.merlin/validator5
-mkdir $HOME/.merlin/validator6
-mkdir $HOME/.merlin/validator7
-mkdir $HOME/.merlin/validator8
-mkdir $HOME/.merlin/validator9
-# init all three validators
-merlin init --chain-id="blackfury-1" validator1 
-merlin init --chain-id="blackfury-1" validator2 --home=$HOME/.merlin/validator2
-merlin init --chain-id="blackfury-1" validator3 --home=$HOME/.merlin/validator3
-merlin init --chain-id="blackfury-1" validator1 --home=$HOME/.merlin/validator4
-merlin init --chain-id="blackfury-1" validator2 --home=$HOME/.merlin/validator5
-merlin init --chain-id="blackfury-1" validator3 --home=$HOME/.merlin/validator6
-merlin init --chain-id="blackfury-1" validator1 --home=$HOME/.merlin/validator7
-merlin init --chain-id="blackfury-1" validator2 --home=$HOME/.merlin/validator8
-merlin init --chain-id="blackfury-1" validator3 --home=$HOME/.merlin/validator9
-# create keys for all three validators
-printf "$validator1Mnemonic\n" | merlin keys add validator1 --keyring-backend=test --home=$HOME/.merlin --recover 
-printf "$validator2Mnemonic\n" | merlin keys add validator2 --keyring-backend=test --home=$HOME/.merlin/validator2 --recover 
-printf "$validator3Mnemonic\n" | merlin keys add validator3 --keyring-backend=test --home=$HOME/.merlin/validator3 --recover 
-printf "$validator4Mnemonic\n" | merlin keys add validator4 --keyring-backend=test --home=$HOME/.merlin/validator4 --recover 
-printf "$validator5Mnemonic\n" | merlin keys add validator5 --keyring-backend=test --home=$HOME/.merlin/validator5 --recover 
-printf "$validator6Mnemonic\n" | merlin keys add validator6 --keyring-backend=test --home=$HOME/.merlin/validator6 --recover 
-printf "$validator7Mnemonic\n" | merlin keys add validator7 --keyring-backend=test --home=$HOME/.merlin/validator7 --recover 
-printf "$validator8Mnemonic\n" | merlin keys add validator8 --keyring-backend=test --home=$HOME/.merlin/validator8 --recover
-printf "$validator9Mnemonic\n" | merlin keys add validator9 --keyring-backend=test --home=$HOME/.merlin/validator9 --recover 
+# Create new data directory, overwriting any that alread existed
+chainID="blackfury-1"
+$BINARY init validator --chain-id $chainID 
 
-update_genesis () {    
-    cat $HOME/.merlin/config/genesis.json | jq "$1" > $HOME/.merlin/config/tmp_genesis.json && mv $HOME/.merlin/config/tmp_genesis.json $HOME/.merlin/config/genesis.json
-}
+# hacky enable of rest api
+sed -in-place='' 's/enable = false/enable = true/g' $DATA/config/app.toml
 
-# change staking denom to ufury
-update_genesis '.app_state["staking"]["params"]["bond_denom"]="ufury"'
+# Set evm tracer to json
+sed -in-place='' 's/tracer = ""/tracer = "json"/g' $DATA/config/app.toml
 
-# create validator node with tokens to transfer to the three other nodes
-merlin add-genesis-account $(merlin keys show validator1 -a --keyring-backend=test) 1500000000000ufury,100000000000jinx --home=$HOME/.merlin
+# Enable full error trace to be returned on tx failure
+sed -in-place='' '/iavl-cache-size/a\
+trace = true' $DATA/config/app.toml
+
+# Set client chain id
+sed -in-place='' 's/chain-id = ""/chain-id = "blackfury-1"/g' $DATA/config/client.toml
+
+# avoid having to use password for keys
+$BINARY config keyring-backend test
+
+# Create validator keys and add account to genesis
+validatorKeyName="validator"
+printf "$validatorMnemonic\n" | $BINARY keys add $validatorKeyName --recover --keyring-backend test 
+$BINARY add-genesis-account $validatorKeyName 1000000000000ufury --keyring-backend test 
 
 airdropKeyName="airdrop"
-printf "$airdropMnemonic\n" | merlin keys add $airdropKeyName --recover --keyring-backend test 
-merlin add-genesis-account $airdropKeyName 26000000000000ufury --keyring-backend test
+printf "$airdropMnemonic\n" | $BINARY keys add $airdropKeyName --recover --keyring-backend test 
+$BINARY add-genesis-account $airdropKeyName 26000000000000ufury --keyring-backend test 
 
 airdropvestedKeyName="airdropvested"
-printf "$airdropvestedMnemonic\n" | merlin keys add $airdropvestedKeyName --recover --keyring-backend test 
-merlin add-genesis-account $airdropvestedKeyName 53000000000000ufury --keyring-backend test 
+printf "$airdropvestedMnemonic\n" | $BINARY keys add $airdropvestedKeyName --recover --keyring-backend test 
+$BINARY add-genesis-account $airdropvestedKeyName 53000000000000ufury --keyring-backend test 
 
 whitelistKeyName="whitelist"
-printf "$whitelistMnemonic\n" | merlin keys add $whitelistKeyName --recover --keyring-backend test 
-merlin add-genesis-account $whitelistKeyName 5000000000000ufury --keyring-backend test 
+printf "$whitelistMnemonic\n" | $BINARY keys add $whitelistKeyName --recover --keyring-backend test 
+$BINARY add-genesis-account $whitelistKeyName 5000000000000ufury --keyring-backend test 
 
 bondingKeyName="bonding"
-printf "$bondingMnemonic\n" | merlin keys add $bondingKeyName --recover --keyring-backend test 
-merlin add-genesis-account $bondingKeyName 19132694938441ufury --keyring-backend test 
+printf "$bondingMnemonic\n" | $BINARY keys add $bondingKeyName --recover --keyring-backend test 
+$BINARY add-genesis-account $bondingKeyName 19132694938441ufury --keyring-backend test 
 
 bondingvestedKeyName="bondingvested"
-printf "$bondingvestedMnemonic\n" | merlin keys add $bondingvestedKeyName --recover --keyring-backend test 
-merlin add-genesis-account $bondingvestedKeyName 12367305061560ufury --keyring-backend test 
+printf "$bondingvestedMnemonic\n" | $BINARY keys add $bondingvestedKeyName --recover --keyring-backend test 
+$BINARY add-genesis-account $bondingvestedKeyName 12367305061560ufury --keyring-backend test 
 
 seedKeyName="seed"
-printf "$seedMnemonic\n" | merlin keys add $seedKeyName --recover --keyring-backend test
-merlin add-genesis-account $seedKeyName 4487671232877ufury --keyring-backend test --vesting-amount 4487671232877ufury --vesting-start-time 1668018600 --vesting-end-time 1699640700
+printf "$seedMnemonic\n" | $BINARY keys add $seedKeyName --recover --keyring-backend test
+$BINARY add-genesis-account $seedKeyName 4487671232877ufury --keyring-backend test --vesting-amount 4487671232877ufury --vesting-start-time 1668018600 --vesting-end-time 1699640700
 
 privateKeyName="private"
-printf "$privateMnemonic\n" | merlin keys add $privateKeyName --recover --keyring-backend test 
-merlin add-genesis-account $privateKeyName 8077808219178ufury --keyring-backend test --vesting-amount 8077808219178ufury --vesting-start-time 1668018600 --vesting-end-time 1699640700
+printf "$privateMnemonic\n" | $BINARY keys add $privateKeyName --recover --keyring-backend test 
+$BINARY add-genesis-account $privateKeyName 8077808219178ufury --keyring-backend test --vesting-amount 8077808219178ufury --vesting-start-time 1668018600 --vesting-end-time 1699640700
 
 bonusKeyName="bonus"
-printf "$bonusMnemonic\n" | merlin keys add $bonusKeyName --recover --keyring-backend test 
-merlin add-genesis-account $bonusKeyName 1077041095890ufury --keyring-backend test --vesting-amount 1077041095890ufury --vesting-start-time 1668018600 --vesting-end-time 1699640700
+printf "$bonusMnemonic\n" | $BINARY keys add $bonusKeyName --recover --keyring-backend test 
+$BINARY add-genesis-account $bonusKeyName 1077041095890ufury --keyring-backend test --vesting-amount 1077041095890ufury --vesting-start-time 1668018600 --vesting-end-time 1699640700
 
 atloKeyName="atlo"
-printf "$atloMnemonic\n" | merlin keys add $atloKeyName --recover --keyring-backend test 
-merlin add-genesis-account $atloKeyName 716301369863ufury --keyring-backend test --vesting-amount 716301369863ufury --vesting-start-time 1668018600 --vesting-end-time 1699640700
+printf "$atloMnemonic\n" | $BINARY keys add $atloKeyName --recover --keyring-backend test 
+$BINARY add-genesis-account $atloKeyName 716301369863ufury --keyring-backend test --vesting-amount 716301369863ufury --vesting-start-time 1668018600 --vesting-end-time 1699640700
 
 valkyrieKeyName="valkyrie"
-printf "$valkyrieMnemonic\n" | merlin keys add $valkyrieKeyName --recover --keyring-backend test 
-merlin add-genesis-account $valkyrieKeyName 4200000000000ufury --keyring-backend test 
+printf "$valkyrieMnemonic\n" | $BINARY keys add $valkyrieKeyName --recover --keyring-backend test 
+$BINARY add-genesis-account $valkyrieKeyName 4200000000000ufury --keyring-backend test 
 
 publicKeyName="public"
-printf "$publicMnemonic\n" | merlin keys add $publicKeyName --recover --keyring-backend test 
-merlin add-genesis-account $publicKeyName 25830000000000ufury --keyring-backend test 
+printf "$publicMnemonic\n" | $BINARY keys add $publicKeyName --recover --keyring-backend test 
+$BINARY add-genesis-account $publicKeyName 25830000000000ufury --keyring-backend test 
 
 marketingKeyName="marketing"
-printf "$marketingMnemonic\n" | merlin keys add $marketingKeyName --recover --keyring-backend test 
-merlin add-genesis-account $marketingKeyName 32760000000000ufury --keyring-backend test 
+printf "$marketingMnemonic\n" | $BINARY keys add $marketingKeyName --recover --keyring-backend test 
+$BINARY add-genesis-account $marketingKeyName 32760000000000ufury --keyring-backend test 
 
 advisorsKeyName="advisors"
-printf "$advisorsMnemonic\n" | merlin keys add $advisorsKeyName --recover --keyring-backend test 
-merlin add-genesis-account $advisorsKeyName 4900000000000ufury --keyring-backend test 
+printf "$advisorsMnemonic\n" | $BINARY keys add $advisorsKeyName --recover --keyring-backend test 
+$BINARY add-genesis-account $advisorsKeyName 4900000000000ufury --keyring-backend test 
 
 advisorsvestedKeyName="advisorsvested"
-printf "$advisorsvestedMnemonic\n" | merlin keys add $advisorsvestedKeyName --recover --keyring-backend test 
-merlin add-genesis-account $advisorsvestedKeyName 9800000000000ufury --keyring-backend test  
+printf "$advisorsvestedMnemonic\n" | $BINARY keys add $advisorsvestedKeyName --recover --keyring-backend test 
+$BINARY add-genesis-account $advisorsvestedKeyName 9800000000000ufury --keyring-backend test  
 
 teamKeyName="team"
-printf "$teamMnemonic\n" | merlin keys add $teamKeyName --recover --keyring-backend test 
-merlin add-genesis-account $teamKeyName 63000000000000ufury --keyring-backend test 
+printf "$teamMnemonic\n" | $BINARY keys add $teamKeyName --recover --keyring-backend test 
+$BINARY add-genesis-account $teamKeyName 63000000000000ufury --keyring-backend test 
 
 treasuryKeyName="treasury"
-printf "$treasuryMnemonic\n" | merlin keys add $treasuryKeyName --recover --keyring-backend test 
-merlin add-genesis-account $treasuryKeyName 33024657534247ufury --keyring-backend test 
+printf "$treasuryMnemonic\n" | $BINARY keys add $treasuryKeyName --recover
+$BINARY add-genesis-account $treasuryKeyName 33024657534247ufury
 
 treasuryvestedKeyName="treasuryvested"
-printf "$treasuryvestedMnemonic\n" | merlin keys add $treasuryvestedKeyName --recover --keyring-backend test 
-merlin add-genesis-account $treasuryvestedKeyName 8975342465753ufury --keyring-backend test 
+printf "$treasuryvestedMnemonic\n" | $BINARY keys add $treasuryvestedKeyName --recover --keyring-backend test 
+$BINARY add-genesis-account $treasuryvestedKeyName 8975342465753ufury --keyring-backend test 
 
 ecoKeyName="eco"
-printf "$ecoMnemonic\n" | merlin keys add $ecoKeyName --recover --keyring-backend test 
-merlin add-genesis-account $ecoKeyName 3691290469676ufury --keyring-backend test 
+printf "$ecoMnemonic\n" | $BINARY keys add $ecoKeyName --recover --keyring-backend test 
+$BINARY add-genesis-account $ecoKeyName 3691290469676ufury --keyring-backend test 
 
 ecovestedKeyName="ecovested"
-printf "$ecovestedMnemonic\n" | merlin keys add $ecovestedKeyName --recover --keyring-backend test 
-merlin add-genesis-account $ecovestedKeyName 16308709530324ufury --keyring-backend test 
+printf "$ecovestedMnemonic\n" | $BINARY keys add $ecovestedKeyName --recover --keyring-backend test 
+$BINARY add-genesis-account $ecovestedKeyName 16308709530324ufury --keyring-backend test 
 
 liquidityKeyName="liquidity"
-printf "$liquidityMnemonic\n" | merlin keys add $liquidityKeyName --recover --keyring-backend test 
-merlin add-genesis-account $liquidityKeyName 14326027397260ufury --keyring-backend test 
+printf "$liquidityMnemonic\n" | $BINARY keys add $liquidityKeyName --recover --keyring-backend test 
+$BINARY add-genesis-account $liquidityKeyName 14326027397260ufury --keyring-backend test 
 
 liquidityvestedKeyName="liquidityvested"
-printf "$liquidityvestedMnemonic\n" | merlin keys add $liquidityvestedKeyName --recover --keyring-backend test 
-merlin add-genesis-account $liquidityvestedKeyName 6673972602740ufury --keyring-backend test 
+printf "$liquidityvestedMnemonic\n" | $BINARY keys add $liquidityvestedKeyName --recover --keyring-backend test 
+$BINARY add-genesis-account $liquidityvestedKeyName 6673972602740ufury --keyring-backend test 
 
 faucetKeyName="faucet"
-printf "$faucetMnemonic\n" | merlin keys add $faucetKeyName --recover --keyring-backend test 
-merlin add-genesis-account $faucetKeyName 100000000000ufury --keyring-backend test 
-
+printf "$faucetMnemonic\n" | $BINARY keys add $faucetKeyName --recover --keyring-backend test 
+$BINARY add-genesis-account $faucetKeyName 100000000000ufury --keyring-backend test 
 
 # create investors
 
@@ -1110,218 +1078,13 @@ $BINARY add-genesis-account fury1fsezzt4rj6cm0my6z3f9hj3scvrkw5nssepqlu 59310712
 $BINARY add-genesis-account fury12dlda2x3fm6rqyplnk2sdemspcc9gwdjmc0hd5 9884594521ufury
 $BINARY add-genesis-account fury1w4v0tjfpfqrncl3mh8ezmceyjfjnnukzkau37d 10008830137ufury
 
-merlin gentx validator1 500000000ufury --keyring-backend=test --home=$HOME/.merlin --chain-id="blackfury-1"
-merlin collect-gentxs 
+# Create a delegation tx for the validator and add to genesis
 
-# update staking genesis
-update_genesis '.app_state["staking"]["params"]["unbonding_time"]="240s"'
+$BINARY gentx $validatorKeyName 1000000000ufury --keyring-backend test --chain-id $chainID
+
 
 # Replace stake with ufury
-sed -in-place='' 's/stake/ufury/g' $HOME/.merlin/config/genesis.json
+sed -in-place='' 's/stake/ufury/g' $DATA/config/genesis.json
 
-# update crisis variable to ufury
-update_genesis '.app_state["crisis"]["constant_fee"]["denom"]="ufury"'
-
-# udpate gov genesis
-update_genesis '.app_state["gov"]["voting_params"]["voting_period"]="60s"'
-update_genesis '.app_state["gov"]["deposit_params"]["min_deposit"][0]["denom"]="ufury"'
-
-# update epochs genesis
-update_genesis '.app_state["epochs"]["epochs"][1]["duration"]="60s"'
-
-# update poolincentives genesis
-update_genesis '.app_state["poolincentives"]["lockable_durations"][0]="120s"'
-update_genesis '.app_state["poolincentives"]["lockable_durations"][1]="180s"'
-update_genesis '.app_state["poolincentives"]["lockable_durations"][2]="240s"'
-update_genesis '.app_state["poolincentives"]["params"]["minted_denom"]="ufury"'
-
-# update incentives genesis
-update_genesis '.app_state["incentives"]["lockable_durations"][0]="1s"'
-update_genesis '.app_state["incentives"]["lockable_durations"][1]="120s"'
-update_genesis '.app_state["incentives"]["lockable_durations"][2]="180s"'
-update_genesis '.app_state["incentives"]["lockable_durations"][3]="240s"'
-update_genesis '.app_state["incentives"]["params"]["distr_epoch_identifier"]="day"'
-
-# update mint genesis
-update_genesis '.app_state["mint"]["params"]["mint_denom"]="ufury"'
-update_genesis '.app_state["mint"]["params"]["epoch_identifier"]="day"'
-
-# update gamm genesis
-update_genesis '.app_state["gamm"]["params"]["pool_creation_fee"][0]["denom"]="ufury"'
-
-
-
-# port key (validator1 uses default ports)
-# validator1 1317, 9090, 9091, 26658, 26657, 26656, 6060
-# validator2 1316, 9088, 9089, 26655, 26654, 26653, 6061
-# validator3 1315, 9086, 9087, 26652, 26651, 26650, 6062
-
-
-# change app.toml values
-VALIDATOR2_APP_TOML=$HOME/.merlin/validator2/config/app.toml
-VALIDATOR3_APP_TOML=$HOME/.merlin/validator3/config/app.toml
-VALIDATOR4_APP_TOML=$HOME/.merlin/validator4/config/app.toml
-VALIDATOR5_APP_TOML=$HOME/.merlin/validator5/config/app.toml
-VALIDATOR6_APP_TOML=$HOME/.merlin/validator6/config/app.toml
-VALIDATOR7_APP_TOML=$HOME/.merlin/validator7/config/app.toml
-VALIDATOR8_APP_TOML=$HOME/.merlin/validator8/config/app.toml
-VALIDATOR9_APP_TOML=$HOME/.merlin/validator9/config/app.toml
-
-# validator2
-sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1316|g' $VALIDATOR2_APP_TOML
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:9088|g' $VALIDATOR2_APP_TOML
-sed -i -E 's|0.0.0.0:9091|0.0.0.0:9089|g' $VALIDATOR2_APP_TOML
-
-# validator3
-sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1315|g' $VALIDATOR3_APP_TOML
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:9086|g' $VALIDATOR3_APP_TOML
-sed -i -E 's|0.0.0.0:9091|0.0.0.0:9087|g' $VALIDATOR3_APP_TOML
-
-# validator4
-sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1314|g' $VALIDATOR2_APP_TOML
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:7088|g' $VALIDATOR2_APP_TOML
-sed -i -E 's|0.0.0.0:9091|0.0.0.0:7089|g' $VALIDATOR2_APP_TOML
-
-# validator5
-sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1313|g' $VALIDATOR3_APP_TOML
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:6086|g' $VALIDATOR3_APP_TOML
-sed -i -E 's|0.0.0.0:9091|0.0.0.0:6087|g' $VALIDATOR3_APP_TOML
-
-# validator6
-sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1312|g' $VALIDATOR2_APP_TOML
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:5088|g' $VALIDATOR2_APP_TOML
-sed -i -E 's|0.0.0.0:9091|0.0.0.0:5089|g' $VALIDATOR2_APP_TOML
-
-# validator7
-sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1311|g' $VALIDATOR3_APP_TOML
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:4086|g' $VALIDATOR3_APP_TOML
-sed -i -E 's|0.0.0.0:9091|0.0.0.0:4087|g' $VALIDATOR3_APP_TOML
-
-# validator8
-sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1310|g' $VALIDATOR2_APP_TOML
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:3088|g' $VALIDATOR2_APP_TOML
-sed -i -E 's|0.0.0.0:9091|0.0.0.0:3089|g' $VALIDATOR2_APP_TOML
-
-# validator9
-sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1319|g' $VALIDATOR3_APP_TOML
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:2086|g' $VALIDATOR3_APP_TOML
-sed -i -E 's|0.0.0.0:9091|0.0.0.0:2087|g' $VALIDATOR3_APP_TOML
-
-
-# change config.toml values
-VALIDATOR1_CONFIG=$HOME/.merlin/config/config.toml
-VALIDATOR2_CONFIG=$HOME/.merlin/validator2/config/config.toml
-VALIDATOR3_CONFIG=$HOME/.merlin/validator3/config/config.toml
-VALIDATOR4_CONFIG=$HOME/.merlin/validator4/config/config.toml
-VALIDATOR5_CONFIG=$HOME/.merlin/validator5/config/config.toml
-VALIDATOR6_CONFIG=$HOME/.merlin/validator6/config/config.toml
-VALIDATOR7_CONFIG=$HOME/.merlin/validator7/config/config.toml
-VALIDATOR8_CONFIG=$HOME/.merlin/validator8/config/config.toml
-VALIDATOR9_CONFIG=$HOME/.merlin/validator9/config/config.toml
-
-# validator1
-sed -i -E 's|allow_duplicate_ip = false|allow_duplicate_ip = true|g' $VALIDATOR1_CONFIG
-# validator2
-sed -i -E 's|tcp://127.0.0.1:26658|tcp://127.0.0.1:26668|g' $VALIDATOR2_CONFIG
-sed -i -E 's|tcp://127.0.0.1:26657|tcp://127.0.0.1:26667|g' $VALIDATOR2_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26666|g' $VALIDATOR2_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26666|g' $VALIDATOR2_CONFIG
-sed -i -E 's|allow_duplicate_ip = false|allow_duplicate_ip = true|g' $VALIDATOR2_CONFIG
-# validator3
-sed -i -E 's|tcp://127.0.0.1:26658|tcp://127.0.0.1:26678|g' $VALIDATOR3_CONFIG
-sed -i -E 's|tcp://127.0.0.1:26657|tcp://127.0.0.1:26677|g' $VALIDATOR3_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26676|g' $VALIDATOR3_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26676|g' $VALIDATOR3_CONFIG
-sed -i -E 's|allow_duplicate_ip = false|allow_duplicate_ip = true|g' $VALIDATOR3_CONFIG
-# validator4
-sed -i -E 's|tcp://127.0.0.1:26658|tcp://127.0.0.1:26648|g' $VALIDATOR4_CONFIG
-sed -i -E 's|tcp://127.0.0.1:26657|tcp://127.0.0.1:26647|g' $VALIDATOR4_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26646|g' $VALIDATOR4_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26646|g' $VALIDATOR4_CONFIG
-sed -i -E 's|allow_duplicate_ip = false|allow_duplicate_ip = true|g' $VALIDATOR4_CONFIG
-# validator5
-sed -i -E 's|tcp://127.0.0.1:26658|tcp://127.0.0.1:26638|g' $VALIDATOR5_CONFIG
-sed -i -E 's|tcp://127.0.0.1:26657|tcp://127.0.0.1:26637|g' $VALIDATOR5_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26636|g' $VALIDATOR5_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26636|g' $VALIDATOR5_CONFIG
-sed -i -E 's|allow_duplicate_ip = false|allow_duplicate_ip = true|g' $VALIDATOR5_CONFIG
-# validator6
-sed -i -E 's|tcp://127.0.0.1:26658|tcp://127.0.0.1:26628|g' $VALIDATOR6_CONFIG
-sed -i -E 's|tcp://127.0.0.1:26657|tcp://127.0.0.1:26627|g' $VALIDATOR6_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26626|g' $VALIDATOR6_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26626|g' $VALIDATOR6_CONFIG
-sed -i -E 's|allow_duplicate_ip = false|allow_duplicate_ip = true|g' $VALIDATOR6_CONFIG
-# validator7
-sed -i -E 's|tcp://127.0.0.1:26658|tcp://127.0.0.1:26618|g' $VALIDATOR7_CONFIG
-sed -i -E 's|tcp://127.0.0.1:26657|tcp://127.0.0.1:26617|g' $VALIDATOR7_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26616|g' $VALIDATOR7_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26616|g' $VALIDATOR7_CONFIG
-sed -i -E 's|allow_duplicate_ip = false|allow_duplicate_ip = true|g' $VALIDATOR7_CONFIG
-# validator8
-sed -i -E 's|tcp://127.0.0.1:26658|tcp://127.0.0.1:26698|g' $VALIDATOR8_CONFIG
-sed -i -E 's|tcp://127.0.0.1:26657|tcp://127.0.0.1:26697|g' $VALIDATOR8_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26696|g' $VALIDATOR8_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26696|g' $VALIDATOR8_CONFIG
-sed -i -E 's|allow_duplicate_ip = false|allow_duplicate_ip = true|g' $VALIDATOR8_CONFIG
-# validator9
-sed -i -E 's|tcp://127.0.0.1:26658|tcp://127.0.0.1:26688|g' $VALIDATOR9_CONFIG
-sed -i -E 's|tcp://127.0.0.1:26657|tcp://127.0.0.1:26687|g' $VALIDATOR9_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26686|g' $VALIDATOR9_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26686|g' $VALIDATOR9_CONFIG
-sed -i -E 's|allow_duplicate_ip = false|allow_duplicate_ip = true|g' $VALIDATOR9_CONFIG
-
-# copy validator1 genesis file to validator2-3
-cp $HOME/.merlin/config/genesis.json $HOME/.merlin/validator2/config/genesis.json
-cp $HOME/.merlin/config/genesis.json $HOME/.merlin/validator3/config/genesis.json
-cp $HOME/.merlin/config/genesis.json $HOME/.merlin/validator4/config/genesis.json
-cp $HOME/.merlin/config/genesis.json $HOME/.merlin/validator5/config/genesis.json
-cp $HOME/.merlin/config/genesis.json $HOME/.merlin/validator6/config/genesis.json
-cp $HOME/.merlin/config/genesis.json $HOME/.merlin/validator7/config/genesis.json
-cp $HOME/.merlin/config/genesis.json $HOME/.merlin/validator8/config/genesis.json
-cp $HOME/.merlin/config/genesis.json $HOME/.merlin/validator9/config/genesis.json
-
-# copy tendermint node id of validator1 to persistent peers of validator2-3
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$(merlin tendermint show-node-id --home=$HOME/.merlin)@localhost:26656\"|g" $HOME/.merlin/validator2/config/config.toml
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$(merlin tendermint show-node-id --home=$HOME/.merlin)@localhost:26656\"|g" $HOME/.merlin/validator3/config/config.toml
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$(merlin tendermint show-node-id --home=$HOME/.merlin)@localhost:26656\"|g" $HOME/.merlin/validator4/config/config.toml
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$(merlin tendermint show-node-id --home=$HOME/.merlin)@localhost:26656\"|g" $HOME/.merlin/validator5/config/config.toml
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$(merlin tendermint show-node-id --home=$HOME/.merlin)@localhost:26656\"|g" $HOME/.merlin/validator6/config/config.toml
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$(merlin tendermint show-node-id --home=$HOME/.merlin)@localhost:26656\"|g" $HOME/.merlin/validator7/config/config.toml
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$(merlin tendermint show-node-id --home=$HOME/.merlin)@localhost:26656\"|g" $HOME/.merlin/validator8/config/config.toml
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$(merlin tendermint show-node-id --home=$HOME/.merlin)@localhost:26656\"|g" $HOME/.merlin/validator9/config/config.toml
-
-
-# start all nine validators
-tmux new -s validator1 -d merlin start 
-tmux new -s validator2 -d merlin start --home=$HOME/.merlin/validator2
-tmux new -s validator3 -d merlin start --home=$HOME/.merlin/validator3
-tmux new -s validator4 -d merlin start --home=$HOME/.merlin/validator4
-tmux new -s validator5 -d merlin start --home=$HOME/.merlin/validator5
-tmux new -s validator6 -d merlin start --home=$HOME/.merlin/validator6
-tmux new -s validator7 -d merlin start --home=$HOME/.merlin/validator7
-tmux new -s validator8 -d merlin start --home=$HOME/.merlin/validator8
-tmux new -s validator9 -d merlin start --home=$HOME/.merlin/validator9
-
-# send ufury from first validator to other validators
-echo "Waiting 7 seconds to send funds to validators 2 to 5..."
-sleep 7
-merlin tx bank send validator1 $(merlin keys show validator2 -a --keyring-backend=test --home=$HOME/.merlin/validator2) 100000000000ufury --keyring-backend=test  --chain-id="blackfury-1" --broadcast-mode block --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx bank send validator1 $(merlin keys show validator3 -a --keyring-backend=test --home=$HOME/.merlin/validator3) 100000000000ufury --keyring-backend=test  --chain-id="blackfury-1" --broadcast-mode block --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx bank send validator1 $(merlin keys show validator4 -a --keyring-backend=test --home=$HOME/.merlin/validator4) 100000000000ufury --keyring-backend=test  --chain-id="blackfury-1" --broadcast-mode block --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx bank send validator1 $(merlin keys show validator5 -a --keyring-backend=test --home=$HOME/.merlin/validator5) 100000000000ufury --keyring-backend=test  --chain-id="blackfury-1" --broadcast-mode block --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx bank send validator1 $(merlin keys show validator6 -a --keyring-backend=test --home=$HOME/.merlin/validator6) 100000000000ufury --keyring-backend=test  --chain-id="blackfury-1" --broadcast-mode block --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx bank send validator1 $(merlin keys show validator7 -a --keyring-backend=test --home=$HOME/.merlin/validator7) 100000000000ufury --keyring-backend=test  --chain-id="blackfury-1" --broadcast-mode block --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx bank send validator1 $(merlin keys show validator8 -a --keyring-backend=test --home=$HOME/.merlin/validator8) 100000000000ufury --keyring-backend=test  --chain-id="blackfury-1" --broadcast-mode block --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx bank send validator1 $(merlin keys show validator9 -a --keyring-backend=test --home=$HOME/.merlin/validator9) 100000000000ufury --keyring-backend=test  --chain-id="blackfury-1" --broadcast-mode block --node http://localhost:26657 --yes --fees 200000ufury
-# create second & third validator
-merlin tx staking create-validator --amount=90000000000ufury --from=validator2 --pubkey=$(merlin tendermint show-validator --home=$HOME/.merlin/validator2) --moniker="validator2" --chain-id="blackfury-1" --commission-rate="0.1" --commission-max-rate="0.2" --commission-max-change-rate="0.05" --min-self-delegation="500000000" --keyring-backend=test --home=$HOME/.merlin/validator2 --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx staking create-validator --amount=90000000000ufury --from=validator3 --pubkey=$(merlin tendermint show-validator --home=$HOME/.merlin/validator3) --moniker="validator3" --chain-id="blackfury-1" --commission-rate="0.1" --commission-max-rate="0.2" --commission-max-change-rate="0.05" --min-self-delegation="400000000" --keyring-backend=test --home=$HOME/.merlin/validator3 --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx staking create-validator --amount=90000000000ufury --from=validator4 --pubkey=$(merlin tendermint show-validator --home=$HOME/.merlin/validator4) --moniker="validator4" --chain-id="blackfury-1" --commission-rate="0.1" --commission-max-rate="0.2" --commission-max-change-rate="0.05" --min-self-delegation="500000000" --keyring-backend=test --home=$HOME/.merlin/validator4 --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx staking create-validator --amount=90000000000ufury --from=validator5 --pubkey=$(merlin tendermint show-validator --home=$HOME/.merlin/validator5) --moniker="validator5" --chain-id="blackfury-1" --commission-rate="0.1" --commission-max-rate="0.2" --commission-max-change-rate="0.05" --min-self-delegation="400000000" --keyring-backend=test --home=$HOME/.merlin/validator5 --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx staking create-validator --amount=90000000000ufury --from=validator6 --pubkey=$(merlin tendermint show-validator --home=$HOME/.merlin/validator6) --moniker="validator6" --chain-id="blackfury-1" --commission-rate="0.1" --commission-max-rate="0.2" --commission-max-change-rate="0.05" --min-self-delegation="500000000" --keyring-backend=test --home=$HOME/.merlin/validator6 --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx staking create-validator --amount=90000000000ufury --from=validator7 --pubkey=$(merlin tendermint show-validator --home=$HOME/.merlin/validator7) --moniker="validator7" --chain-id="blackfury-1" --commission-rate="0.1" --commission-max-rate="0.2" --commission-max-change-rate="0.05" --min-self-delegation="400000000" --keyring-backend=test --home=$HOME/.merlin/validator7 --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx staking create-validator --amount=90000000000ufury --from=validator8 --pubkey=$(merlin tendermint show-validator --home=$HOME/.merlin/validator8) --moniker="validator8" --chain-id="blackfury-1" --commission-rate="0.1" --commission-max-rate="0.2" --commission-max-change-rate="0.05" --min-self-delegation="500000000" --keyring-backend=test --home=$HOME/.merlin/validator8 --node http://localhost:26657 --yes --fees 200000ufury
-merlin tx staking create-validator --amount=90000000000ufury --from=validator9 --pubkey=$(merlin tendermint show-validator --home=$HOME/.merlin/validator9) --moniker="validator9" --chain-id="blackfury-1" --commission-rate="0.1" --commission-max-rate="0.2" --commission-max-change-rate="0.05" --min-self-delegation="400000000" --keyring-backend=test --home=$HOME/.merlin/validator9 --node http://localhost:26657 --yes --fees 200000ufury
-
-
-echo "All 9 Validators are up and running!"
+# Zero out the total supply so it gets recalculated during InitGenesis
+jq '.app_state.bank.supply = []' $DATA/config/genesis.json|sponge $DATA/config/genesis.json

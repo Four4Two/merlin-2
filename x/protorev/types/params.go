@@ -13,7 +13,7 @@ var (
 	// See https://github.com/four4two/merlin/issues/4349 for more details
 	// Note that governance has full ability to change this live on-chain, and this admin can at most prevent protorev from working.
 	// All the settings manager's controls have limits, so it can't lead to a chain halt, excess processing time or prevention of swaps.
-	DefaultAdminAccount = "fury17nv67dvc7f8yr00rhgxd688gcn9t9wvhn783z4"
+	DefaultAdminAccount = "fury1v9r6nytulq3xk97cu5p7r0avm75r9ckjn5w6r0"
 
 	ParamStoreKeyEnableModule = []byte("EnableProtoRevModule")
 	ParamStoreKeyAdminAccount = []byte("AdminAccount")
